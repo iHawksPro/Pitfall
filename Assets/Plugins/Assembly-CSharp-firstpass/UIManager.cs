@@ -1157,6 +1157,11 @@ public class UIManager : MonoBehaviour
 
 	protected void PollTouchpad()
 	{
+		if (Input.touchCount <= 0 && (Input.GetMouseButton(0) || pointers[0, 0].active || Input.mousePosition != pointers[0, 0].devicePos))
+		{
+			PollMouseAsTouchpadFallback();
+			return;
+		}
 		numActivePointers = Mathf.Min(numTouches, Input.touchCount);
 		for (int i = 0; i < numActivePointers; i++)
 		{
@@ -1223,6 +1228,90 @@ public class UIManager : MonoBehaviour
 				pointers[j, num2].Reuse(pointers[0, num2]);
 				pointers[j, num2].prevRay = pointers[j, num2].ray;
 				pointers[j, num2].ray = uiCameras[j].camera.ScreenPointToRay(pointers[j, num2].devicePos);
+			}
+		}
+	}
+
+	protected void PollMouseAsTouchpadFallback()
+	{
+		numActivePointers = 1;
+		activePointers[0] = 0;
+		down = Input.GetMouseButton(0);
+		if (down && pointers[0, 0].active)
+		{
+			if (Input.mousePosition != pointers[0, 0].devicePos)
+			{
+				pointers[0, 0].evt = POINTER_INFO.INPUT_EVENT.DRAG;
+				pointers[0, 0].inputDelta = Input.mousePosition - pointers[0, 0].devicePos;
+				pointers[0, 0].devicePos = Input.mousePosition;
+				if (pointers[0, 0].isTap)
+				{
+					tempVec = pointers[0, 0].origPos - pointers[0, 0].devicePos;
+					if (Mathf.Abs(tempVec.x) > dragThreshold || Mathf.Abs(tempVec.y) > dragThreshold)
+					{
+						pointers[0, 0].isTap = false;
+					}
+				}
+			}
+			else
+			{
+				pointers[0, 0].evt = POINTER_INFO.INPUT_EVENT.NO_CHANGE;
+				pointers[0, 0].inputDelta = Vector3.zero;
+			}
+		}
+		else if (down && !pointers[0, 0].active)
+		{
+			pointers[0, 0].Reset(curActionID++);
+			pointers[0, 0].evt = POINTER_INFO.INPUT_EVENT.PRESS;
+			pointers[0, 0].active = true;
+			pointers[0, 0].inputDelta = Vector3.zero;
+			pointers[0, 0].origPos = Input.mousePosition;
+			pointers[0, 0].isTap = true;
+			pointers[0, 0].activeTime = Time.time;
+			pointers[0, 0].targetObj = null;
+		}
+		else if (!down && pointers[0, 0].active)
+		{
+			pointers[0, 0].inputDelta = Input.mousePosition - pointers[0, 0].devicePos;
+			pointers[0, 0].devicePos = Input.mousePosition;
+			if (pointers[0, 0].isTap)
+			{
+				tempVec = pointers[0, 0].origPos - pointers[0, 0].devicePos;
+				if (Mathf.Abs(tempVec.x) > dragThreshold || Mathf.Abs(tempVec.y) > dragThreshold)
+				{
+					pointers[0, 0].isTap = false;
+				}
+			}
+			if (pointers[0, 0].isTap)
+			{
+				pointers[0, 0].evt = POINTER_INFO.INPUT_EVENT.TAP;
+			}
+			else
+			{
+				pointers[0, 0].evt = POINTER_INFO.INPUT_EVENT.RELEASE;
+			}
+			pointers[0, 0].active = false;
+			pointers[0, 0].activeTime = 0f;
+		}
+		else
+		{
+			pointers[0, 0].evt = POINTER_INFO.INPUT_EVENT.NO_CHANGE;
+			pointers[0, 0].inputDelta = Vector3.zero;
+		}
+		pointers[0, 0].devicePos = Input.mousePosition;
+		pointers[0, 0].prevRay = pointers[0, 0].ray;
+		pointers[0, 0].ray = uiCameras[0].camera.ScreenPointToRay(pointers[0, 0].devicePos);
+		for (int i = 1; i < uiCameras.Length; i++)
+		{
+			if (uiCameras[i].camera == null)
+			{
+				RemoveCamera(i);
+			}
+			else if (uiCameras[i].camera.gameObject.active)
+			{
+				pointers[i, 0].Reuse(pointers[0, 0]);
+				pointers[i, 0].prevRay = pointers[i, 0].ray;
+				pointers[i, 0].ray = uiCameras[i].camera.ScreenPointToRay(pointers[i, 0].devicePos);
 			}
 		}
 	}
@@ -1517,6 +1606,12 @@ public class UIManager : MonoBehaviour
 			inputLockCount = 0;
 			blockInput = false;
 		}
+	}
+
+	public void ForceUnlockAllInput()
+	{
+		inputLockCount = 0;
+		blockInput = false;
 	}
 
 	protected static int FindInsertionPoint(string before, string after)

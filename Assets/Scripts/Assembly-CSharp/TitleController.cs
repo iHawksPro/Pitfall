@@ -44,7 +44,7 @@ public class TitleController : StateController
 	{
 		get
 		{
-			return !m_SelectionMade && !DialogManager.DialogActive;
+			return !m_SelectionMade && (RecoveredCompatibility.DisableLegacyStartupPromos || !DialogManager.DialogActive);
 		}
 	}
 
@@ -113,8 +113,9 @@ public class TitleController : StateController
 	protected override void OnStateActivate(string OldStateName)
 	{
 		m_SelectionMade = false;
+		ForceRecoveredTitleInputReady();
 		base.OnStateActivate(OldStateName);
-		if (m_MoreAppsButton != null && (string.IsNullOrEmpty(SwrveServerVariables.Instance.MoreAppsURI) || SwrveServerVariables.Instance.MoreAppsURI == "null"))
+		if (m_MoreAppsButton != null && (SwrveServerVariables.Instance == null || string.IsNullOrEmpty(SwrveServerVariables.Instance.MoreAppsURI) || SwrveServerVariables.Instance.MoreAppsURI == "null"))
 		{
 			UnityEngine.Object.Destroy(m_MoreAppsButton);
 			m_MoreAppsButton = null;
@@ -124,6 +125,7 @@ public class TitleController : StateController
 	protected override IEnumerator AnimateStateIn()
 	{
 		DialogManager.ResetCounter();
+		ForceRecoveredTitleInputReady();
 		if (TBFUtils.Is256mbDevice())
 		{
 			GC.Collect();
@@ -153,12 +155,26 @@ public class TitleController : StateController
 		}
 		base.gameObject.BroadcastMessage("BringOnScreen", SendMessageOptions.DontRequireReceiver);
 		ShowState();
-		MusicManager.Instance.PlayTitleMusic();
+		ForceRecoveredTitleInputReady();
+		try
+		{
+			if (MusicManager.Instance != null)
+			{
+				MusicManager.Instance.PlayTitleMusic();
+			}
+		}
+		catch (Exception ex)
+		{
+			UnityEngine.Debug.LogWarning("Recovered title music fallback: " + ex.Message);
+		}
 		if (!RecoveredCompatibility.DisableLegacyStartupPromos && m_saleDialog != null)
 		{
 			m_saleDialog.ShowItemsOnSale();
 		}
-		Bedrock.AnalyticsLogEvent("UI.Lobby.View");
+		SafeTitleAction(delegate
+		{
+			Bedrock.AnalyticsLogEvent("UI.Lobby.View");
+		}, "title analytics");
 		if (!RecoveredCompatibility.DisableLegacyStartupPromos)
 		{
 			DialogManager.Instance.LaunchTitleDialogs();
@@ -175,14 +191,15 @@ public class TitleController : StateController
 		}
 		m_pendingCheckpointRestart = 0f;
 		m_pendingTutorialLaunch = false;
-		if (OutfitOfTheDayManager.Instance.IsOOTD(SecureStorage.Instance.GetCurrentCostumeType()))
+		if (OutfitOfTheDayManager.Instance != null && OutfitOfTheDayManager.Instance.IsOOTD(SecureStorage.Instance.GetCurrentCostumeType()))
 		{
 			AchievementManager.Instance.SetCompleted("oneshot.pose");
 		}
-		if (!initialLaunch)
+		if (!initialLaunch && SwrveServerVariables.Instance != null)
 		{
 			SwrveServerVariables.Instance.RefreshSelectedVars();
 		}
+		ForceRecoveredTitleInputReady();
 	}
 
 	private float PrepareInitialLaunchBackground()
@@ -217,7 +234,7 @@ public class TitleController : StateController
 	protected override void ShowState()
 	{
 		base.ShowState();
-		UIManager.instance.blockInput = false;
+		ForceRecoveredTitleInputReady();
 		if (m_buildInfo != null)
 		{
 			m_buildInfo.gameObject.SetActiveRecursively(true);
@@ -284,7 +301,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SwrveUserData.UploadAllAttributes();
+			SafeTitleAction(SwrveUserData.UploadAllAttributes, "uploading title analytics");
 			m_SelectionMade = true;
 			StartCoroutine(LaunchGame(null, fromCheckpoint, GameType.GT_CLASSIC));
 		}
@@ -323,7 +340,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SwrveEventsUI.StoreButtonTouched();
+			SafeTitleAction(SwrveEventsUI.StoreButtonTouched, "store analytics");
 			StateManager.Instance.LoadAndActivateState("BaseCamp");
 			m_SelectionMade = true;
 		}
@@ -333,7 +350,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SwrveEventsUI.FieldGuideTouched();
+			SafeTitleAction(SwrveEventsUI.FieldGuideTouched, "field guide analytics");
 			FieldGuideController.Instance.RePopulate();
 			StateManager.Instance.LoadAndActivateState("FieldGuide");
 			m_SelectionMade = true;
@@ -344,7 +361,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SwrveEventsUI.OptionsTouched();
+			SafeTitleAction(SwrveEventsUI.OptionsTouched, "options analytics");
 			StateManager.Instance.LoadAndActivateState("Options");
 			m_SelectionMade = true;
 		}
@@ -353,13 +370,13 @@ public class TitleController : StateController
 	public void OnAchievementsPressed()
 	{
 		MobileNetworkManager.Instance.showAchievements();
-		SwrveEventsUI.AchievementsButtonTouched();
+		SafeTitleAction(SwrveEventsUI.AchievementsButtonTouched, "achievements analytics");
 	}
 
 	public void OnLeaderboardsPressed()
 	{
 		MobileNetworkManager.Instance.showLeaderboards();
-		SwrveEventsUI.LeaderboardsButtonTouched();
+		SafeTitleAction(SwrveEventsUI.LeaderboardsButtonTouched, "leaderboard analytics");
 	}
 
 	public void OnResetPressed()
@@ -370,24 +387,28 @@ public class TitleController : StateController
 
 	public void OnFacebookPressed()
 	{
-		SwrveEventsUI.FacebookButtonTouched();
+		SafeTitleAction(SwrveEventsUI.FacebookButtonTouched, "facebook analytics");
 		DialogManager.Instance.TellFacebookFriends();
 	}
 
 	public void OnTwitterPressed()
 	{
-		SwrveEventsUI.TwitterButtonTouched();
+		SafeTitleAction(SwrveEventsUI.TwitterButtonTouched, "twitter analytics");
 		DialogManager.Instance.TellTwitterFollowers();
 	}
 
 	public void OnGiftPressed()
 	{
-		SwrveEventsUI.GiftButtonTouched();
+		SafeTitleAction(SwrveEventsUI.GiftButtonTouched, "gift analytics");
 	}
 
 	public void OnMoreAppsPressed()
 	{
-		SwrveEventsUI.MoreAppsButtonTouched();
+		SafeTitleAction(SwrveEventsUI.MoreAppsButtonTouched, "more apps analytics");
+		if (SwrveServerVariables.Instance == null || string.IsNullOrEmpty(SwrveServerVariables.Instance.MoreAppsURI))
+		{
+			return;
+		}
 		string strURI = string.Format("{0}?{1}={2}&{3}={4}", SwrveServerVariables.Instance.MoreAppsURI, "referrer", "pitfall", "odid", TBFUtils.ODIN);
 		if (Application.internetReachability == NetworkReachability.NotReachable)
 		{
@@ -403,7 +424,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SwrveEventsUI.TrialsButtonTouched();
+			SafeTitleAction(SwrveEventsUI.TrialsButtonTouched, "trials analytics");
 			StateManager.Instance.LoadAndActivateState("Challenges");
 			m_SelectionMade = true;
 		}
@@ -419,7 +440,7 @@ public class TitleController : StateController
 
 	public void OnFreeDiamondsPressed()
 	{
-		SwrveEventsUI.FreeDiamondsButtonTouched();
+		SafeTitleAction(SwrveEventsUI.FreeDiamondsButtonTouched, "free diamonds analytics");
 		if (CanPressButton)
 		{
 			m_SelectionMade = true;
@@ -453,14 +474,40 @@ public class TitleController : StateController
 	{
 		if (text == Language.Get("S_YES"))
 		{
-		UnityEngine.Debug.Log("Quitting Pitfall : " + text);
+			UnityEngine.Debug.Log("Quitting Pitfall : " + text);
 			Process.GetCurrentProcess().Kill();
 		}
 		else
 		{
-		UnityEngine.Debug.Log("Quit Cancelled : " + text);
+			UnityEngine.Debug.Log("Quit Cancelled : " + text);
 			EtceteraAndroidManager.alertButtonClickedEvent -= ApplicationQuitConfirm;
 			EtceteraAndroidManager.promptCancelledEvent -= ApplicationQuitCancel;
+		}
+	}
+
+	private void ForceRecoveredTitleInputReady()
+	{
+		UIButton.sInputLocked = false;
+		DialogManager.ResetCounter();
+		if (UIManager.Exists())
+		{
+			UIManager.instance.ForceUnlockAllInput();
+		}
+	}
+
+	private void SafeTitleAction(Action action, string context)
+	{
+		if (action == null)
+		{
+			return;
+		}
+		try
+		{
+			action();
+		}
+		catch (Exception ex)
+		{
+			UnityEngine.Debug.LogWarning("Recovered title action fallback (" + context + "): " + ex.Message);
 		}
 	}
 }

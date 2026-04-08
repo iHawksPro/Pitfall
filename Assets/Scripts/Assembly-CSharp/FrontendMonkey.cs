@@ -50,8 +50,14 @@ public class FrontendMonkey : MonoBehaviour
 			m_monkeyModel.transform.position = m_offScreenPos.transform.position;
 			m_monkeyModel.transform.rotation = m_offScreenPos.transform.rotation;
 			m_monkeyModel.transform.parent = base.transform;
-			m_animNames = GetAnimNames(m_monkeyModel.GetComponent<Animation>());
-			if (!flag)
+			Animation monkeyAnimation = GetMonkeyAnimation();
+			m_animNames = GetAnimNames(monkeyAnimation);
+			if (monkeyAnimation == null)
+			{
+				Debug.LogWarning("Recovered monkey fallback: missing Animation component.");
+				SnapToTitlePose();
+			}
+			else if (!flag)
 			{
 				FrontendMonkeyAnimEventHandler frontendMonkeyAnimEventHandler = m_monkeyModel.AddComponent<FrontendMonkeyAnimEventHandler>();
 				frontendMonkeyAnimEventHandler.SetupAnimEvents(this);
@@ -63,6 +69,10 @@ public class FrontendMonkey : MonoBehaviour
 	private static string[] GetAnimNames(Animation anim)
 	{
 		List<string> list = new List<string>();
+		if (anim == null)
+		{
+			return list.ToArray();
+		}
 		foreach (AnimationState item in anim)
 		{
 			list.Add(item.name);
@@ -77,27 +87,30 @@ public class FrontendMonkey : MonoBehaviour
 
 	private void PlayAnim(MonkeyAnim anim, QueueMode queueMode, bool NoTransition)
 	{
-		if (m_monkeyModel != null)
+		Animation monkeyAnimation = GetMonkeyAnimation();
+		string animName = GetAnimName(anim);
+		if (monkeyAnimation != null && !string.IsNullOrEmpty(animName) && monkeyAnimation.GetClip(animName) != null)
 		{
 			if (NoTransition)
 			{
-				m_monkeyModel.GetComponent<Animation>().Play(m_animNames[(int)anim], PlayMode.StopAll);
+				monkeyAnimation.Play(animName, PlayMode.StopAll);
 			}
 			else
 			{
-				m_monkeyModel.GetComponent<Animation>().CrossFadeQueued(m_animNames[(int)anim], 0.3f, queueMode);
+				monkeyAnimation.CrossFadeQueued(animName, 0.3f, queueMode);
 			}
 		}
 	}
 
 	public AnimationClip GetAnim(MonkeyAnim anim)
 	{
-		AnimationClip result = null;
-		if (m_monkeyModel != null)
+		Animation monkeyAnimation = GetMonkeyAnimation();
+		string animName = GetAnimName(anim);
+		if (monkeyAnimation != null && !string.IsNullOrEmpty(animName))
 		{
-			result = m_monkeyModel.GetComponent<Animation>().GetClip(m_animNames[(int)anim]);
+			return monkeyAnimation.GetClip(animName);
 		}
-		return result;
+		return null;
 	}
 
 	public float GetAnimLength(MonkeyAnim anim)
@@ -125,6 +138,11 @@ public class FrontendMonkey : MonoBehaviour
 		{
 			Start();
 		}
+		if (RecoveredCompatibility.IsAndroidRuntime)
+		{
+			RunOnScreen();
+			return 0f;
+		}
 		float animLength = GetAnimLength(MonkeyAnim.MA_VOLCANO_REACT);
 		if (animLength <= 0f)
 		{
@@ -146,13 +164,25 @@ public class FrontendMonkey : MonoBehaviour
 		{
 			return;
 		}
+		if (RecoveredCompatibility.IsAndroidRuntime || GetMonkeyAnimation() == null || GetAnim(MonkeyAnim.MA_TITLE_IDLE) == null)
+		{
+			SnapToTitlePose();
+			PlayTitleIdleFallback();
+			CancelInvoke("IdleBreak");
+			if (GetAnim(MonkeyAnim.MA_TITLE_IDLE) != null)
+			{
+				InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
+			}
+			return;
+		}
 		PlayAnim(MonkeyAnim.MA_TITLE_IDLE, QueueMode.PlayNow, true);
 		InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
 	}
 
 	private void IdleBreak()
 	{
-		if (m_monkeyModel != null && m_monkeyModel.GetComponent<Animation>().IsPlaying(m_animNames[0]))
+		Animation monkeyAnimation = GetMonkeyAnimation();
+		if (monkeyAnimation != null && m_animNames != null && m_animNames.Length > 0 && monkeyAnimation.IsPlaying(m_animNames[0]))
 		{
 			int num = 3;
 			int num2 = 7;
@@ -175,9 +205,53 @@ public class FrontendMonkey : MonoBehaviour
 	public void StopAllAnims()
 	{
 		CancelInvoke("IdleBreak");
-		if (m_monkeyModel != null)
+		Animation monkeyAnimation = GetMonkeyAnimation();
+		if (monkeyAnimation != null)
 		{
-			m_monkeyModel.GetComponent<Animation>().Stop();
+			monkeyAnimation.Stop();
+		}
+	}
+
+	private Animation GetMonkeyAnimation()
+	{
+		if (m_monkeyModel == null)
+		{
+			return null;
+		}
+		return m_monkeyModel.GetComponent<Animation>();
+	}
+
+	private string GetAnimName(MonkeyAnim anim)
+	{
+		if (m_animNames == null)
+		{
+			return null;
+		}
+		int num = (int)anim;
+		if (num < 0 || num >= m_animNames.Length)
+		{
+			return null;
+		}
+		return m_animNames[num];
+	}
+
+	private void SnapToTitlePose()
+	{
+		if (m_monkeyModel == null)
+		{
+			return;
+		}
+		m_monkeyModel.transform.position = base.transform.position;
+		m_monkeyModel.transform.rotation = base.transform.rotation;
+	}
+
+	private void PlayTitleIdleFallback()
+	{
+		Animation monkeyAnimation = GetMonkeyAnimation();
+		AnimationClip anim = GetAnim(MonkeyAnim.MA_TITLE_IDLE);
+		if (monkeyAnimation != null && anim != null)
+		{
+			monkeyAnimation.Play(anim.name, PlayMode.StopAll);
 		}
 	}
 }

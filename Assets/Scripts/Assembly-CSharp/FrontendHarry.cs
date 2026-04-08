@@ -23,6 +23,18 @@ public class FrontendHarry : MonoBehaviour
 
 	private GameObject m_currentModel;
 
+	private Animation CurrentAnimation
+	{
+		get
+		{
+			if (m_currentModel == null)
+			{
+				return null;
+			}
+			return m_currentModel.GetComponent<Animation>();
+		}
+	}
+
 	private void Start()
 	{
 		if (!m_started)
@@ -67,29 +79,24 @@ public class FrontendHarry : MonoBehaviour
 				Resources.UnloadUnusedAssets();
 			}
 		}
-		for (int i = 0; i < m_costumes.Length; i++)
+		HarryCostume harryCostume = FindCostume(CostumeType);
+		if (!TryInstantiateCostume(harryCostume))
 		{
-			if (m_costumes[i].m_costume != CostumeType)
+			harryCostume = FindCostume(Costume.None);
+			if (!TryInstantiateCostume(harryCostume))
 			{
-				continue;
-			}
-			GameObject gameObject = RecoveredResources.Load<GameObject>(m_costumes[i].m_costumeResource);
-			if (gameObject != null)
-			{
-				m_currentModel = (GameObject)Object.Instantiate(gameObject);
-				m_currentModel.transform.position = m_offScreenPos.transform.position;
-				m_currentModel.transform.rotation = m_offScreenPos.transform.rotation;
-				m_currentModel.transform.parent = base.transform;
-				if (CostumeType == Costume.Super && !TrialsDataManager.Instance.HaveCollectedAllRelics)
+				for (int i = 0; i < m_costumes.Length; i++)
 				{
-					SkinnedMeshRenderer componentInChildren = m_currentModel.GetComponentInChildren<SkinnedMeshRenderer>();
-					if (componentInChildren != null)
+					if (TryInstantiateCostume(m_costumes[i]))
 					{
-						componentInChildren.material = m_superLockedMaterial;
+						break;
 					}
 				}
 			}
-			m_currentCostume = m_costumes[i];
+		}
+		if (m_currentModel == null)
+		{
+			Debug.LogWarning("Recovered Harry fallback: unable to load any front-end costume.");
 		}
 	}
 
@@ -100,13 +107,18 @@ public class FrontendHarry : MonoBehaviour
 
 	private void PlayAnim(string animName, QueueMode queueMode, bool NoTransition)
 	{
+		Animation currentAnimation = CurrentAnimation;
+		if (currentAnimation == null || currentAnimation.GetClip(animName) == null)
+		{
+			return;
+		}
 		if (NoTransition)
 		{
-			m_currentModel.GetComponent<Animation>().Play(animName, PlayMode.StopAll);
+			currentAnimation.Play(animName, PlayMode.StopAll);
 		}
 		else
 		{
-			m_currentModel.GetComponent<Animation>().CrossFadeQueued(animName, 0.3f, queueMode);
+			currentAnimation.CrossFadeQueued(animName, 0.3f, queueMode);
 		}
 	}
 
@@ -116,11 +128,11 @@ public class FrontendHarry : MonoBehaviour
 		{
 			Start();
 		}
-		if (m_currentModel == null || m_currentModel.GetComponent<Animation>() == null || m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle") == null)
+		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("IpadToTitle") == null)
 		{
 			return 0f;
 		}
-		return m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle").length;
+		return CurrentAnimation.GetClip("IpadToTitle").length;
 	}
 
 	public float IpadToTitle()
@@ -129,11 +141,16 @@ public class FrontendHarry : MonoBehaviour
 		{
 			Start();
 		}
-		if (m_currentModel == null || m_currentModel.GetComponent<Animation>() == null || m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle") == null)
+		if (RecoveredCompatibility.IsAndroidRuntime)
+		{
+			RunOnScreen();
+			return 0f;
+		}
+		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("IpadToTitle") == null)
 		{
 			return 0f;
 		}
-		float length = m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle").length;
+		float length = CurrentAnimation.GetClip("IpadToTitle").length;
 		PlayAnim("IpadToTitle", QueueMode.PlayNow, true);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
 		float length2 = m_iPad.m_model.GetComponent<Animation>().clip.length;
@@ -160,6 +177,18 @@ public class FrontendHarry : MonoBehaviour
 		{
 			return;
 		}
+		Animation currentAnimation = CurrentAnimation;
+		if (RecoveredCompatibility.IsAndroidRuntime || currentAnimation == null || currentAnimation.GetClip("OffScreenToTitle") == null)
+		{
+			SnapToTitlePose();
+			PlayTitleIdleFallback();
+			CancelInvoke("IdleBreak");
+			if (currentAnimation != null && currentAnimation.GetClip("TitleIdle") != null)
+			{
+				InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
+			}
+			return;
+		}
 		PlayAnim("OffScreenToTitle", QueueMode.PlayNow, true);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
 		InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
@@ -167,7 +196,8 @@ public class FrontendHarry : MonoBehaviour
 
 	private void IdleBreak()
 	{
-		if (m_currentModel.GetComponent<Animation>().IsPlaying("TitleIdle"))
+		Animation currentAnimation = CurrentAnimation;
+		if (currentAnimation != null && currentAnimation.IsPlaying("TitleIdle"))
 		{
 			int num;
 			do
@@ -214,7 +244,7 @@ public class FrontendHarry : MonoBehaviour
 
 	public void ChangeCostume(Costume newCostume)
 	{
-		if (newCostume != m_currentCostume.m_costume)
+		if (m_currentCostume != null && newCostume != m_currentCostume.m_costume)
 		{
 			StartCoroutine(ChangeCostumeCoroutine(newCostume));
 		}
@@ -225,7 +255,7 @@ public class FrontendHarry : MonoBehaviour
 		PlayAnim("ShopExitRight", QueueMode.PlayNow);
 		yield return new WaitForSeconds(0.5f);
 		SetCostume(newCostume);
-		if (m_currentCostume.m_shopAppearSfx != null)
+		if (m_currentCostume != null && m_currentCostume.m_shopAppearSfx != null)
 		{
 			m_currentCostume.m_shopAppearSfx.Play2D();
 		}
@@ -250,19 +280,79 @@ public class FrontendHarry : MonoBehaviour
 
 	public float TitleToGameAnimLength()
 	{
-		if (m_currentModel == null || m_currentModel.GetComponent<Animation>() == null || m_currentModel.GetComponent<Animation>().GetClip("TitleToGame") == null)
+		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("TitleToGame") == null)
 		{
 			return 0f;
 		}
-		return m_currentModel.GetComponent<Animation>().GetClip("TitleToGame").length;
+		return CurrentAnimation.GetClip("TitleToGame").length;
 	}
 
 	public void StopAllAnims()
 	{
 		CancelInvoke("IdleBreak");
-		if (m_currentModel != null && m_currentModel != null)
+		if (CurrentAnimation != null)
 		{
-			m_currentModel.GetComponent<Animation>().Stop();
+			CurrentAnimation.Stop();
+		}
+	}
+
+	private HarryCostume FindCostume(Costume costumeType)
+	{
+		for (int i = 0; i < m_costumes.Length; i++)
+		{
+			if (m_costumes[i].m_costume == costumeType)
+			{
+				return m_costumes[i];
+			}
+		}
+		return null;
+	}
+
+	private bool TryInstantiateCostume(HarryCostume costume)
+	{
+		if (costume == null || string.IsNullOrEmpty(costume.m_costumeResource))
+		{
+			return false;
+		}
+		GameObject gameObject = RecoveredResources.Load<GameObject>(costume.m_costumeResource);
+		if (gameObject == null)
+		{
+			return false;
+		}
+		m_currentModel = (GameObject)Object.Instantiate(gameObject);
+		Transform transform = ((m_offScreenPos != null) ? m_offScreenPos.transform : base.transform);
+		m_currentModel.transform.position = transform.position;
+		m_currentModel.transform.rotation = transform.rotation;
+		m_currentModel.transform.parent = base.transform;
+		if (costume.m_costume == Costume.Super && !TrialsDataManager.Instance.HaveCollectedAllRelics)
+		{
+			SkinnedMeshRenderer componentInChildren = m_currentModel.GetComponentInChildren<SkinnedMeshRenderer>();
+			if (componentInChildren != null)
+			{
+				componentInChildren.material = m_superLockedMaterial;
+			}
+		}
+		m_currentCostume = costume;
+		return true;
+	}
+
+	private void SnapToTitlePose()
+	{
+		if (m_currentModel == null)
+		{
+			return;
+		}
+		Transform transform = ((m_titlePos != null) ? m_titlePos.transform : base.transform);
+		m_currentModel.transform.position = transform.position;
+		m_currentModel.transform.rotation = transform.rotation;
+	}
+
+	private void PlayTitleIdleFallback()
+	{
+		Animation currentAnimation = CurrentAnimation;
+		if (currentAnimation != null && currentAnimation.GetClip("TitleIdle") != null)
+		{
+			currentAnimation.Play("TitleIdle", PlayMode.StopAll);
 		}
 	}
 }

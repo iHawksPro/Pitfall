@@ -9,9 +9,9 @@ public static class AndroidReleaseBuild
 {
 	private const string DefaultApplicationId = "com.ihawkspro.pitfall.recovered";
 
-	private const string DefaultVersion = "1.0.0";
+	private const string DefaultVersion = "1.0.1";
 
-	private const int DefaultVersionCode = 1;
+	private const int DefaultVersionCode = 2;
 
 	[MenuItem("Tools/Pitfall/Build Android APK")]
 	public static void BuildMenu()

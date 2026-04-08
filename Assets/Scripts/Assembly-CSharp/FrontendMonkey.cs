@@ -43,7 +43,7 @@ public class FrontendMonkey : MonoBehaviour
 		bool flag = TBFUtils.Is256mbDevice();
 		string path = ((!flag) ? "Frontend/Monkey_FrontEnd_Prefab" : "Frontend/Monkey_FrontEnd_Lite_Prefab");
 		m_monkeyModel = null;
-		GameObject gameObject = (GameObject)Resources.Load(path);
+		GameObject gameObject = RecoveredResources.Load<GameObject>(path);
 		if (gameObject != null)
 		{
 			m_monkeyModel = (GameObject)Object.Instantiate(gameObject);
@@ -126,6 +126,10 @@ public class FrontendMonkey : MonoBehaviour
 			Start();
 		}
 		float animLength = GetAnimLength(MonkeyAnim.MA_VOLCANO_REACT);
+		if (animLength <= 0f)
+		{
+			return 0f;
+		}
 		PlayAnim(MonkeyAnim.MA_VOLCANO_REACT, QueueMode.PlayNow, true);
 		PlayAnim(MonkeyAnim.MA_TITLE_IDLE, QueueMode.CompleteOthers);
 		InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
@@ -137,6 +141,10 @@ public class FrontendMonkey : MonoBehaviour
 		if (!m_started)
 		{
 			Start();
+		}
+		if (m_monkeyModel == null)
+		{
+			return;
 		}
 		PlayAnim(MonkeyAnim.MA_TITLE_IDLE, QueueMode.PlayNow, true);
 		InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
@@ -156,6 +164,10 @@ public class FrontendMonkey : MonoBehaviour
 
 	public void TitleToGame()
 	{
+		if (m_monkeyModel == null)
+		{
+			return;
+		}
 		PlayAnim(MonkeyAnim.MA_TITLE_TO_GAME, QueueMode.PlayNow);
 		CancelInvoke("IdleBreak");
 	}

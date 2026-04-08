@@ -73,7 +73,7 @@ public class FrontendHarry : MonoBehaviour
 			{
 				continue;
 			}
-			GameObject gameObject = (GameObject)Resources.Load(m_costumes[i].m_costumeResource);
+			GameObject gameObject = RecoveredResources.Load<GameObject>(m_costumes[i].m_costumeResource);
 			if (gameObject != null)
 			{
 				m_currentModel = (GameObject)Object.Instantiate(gameObject);
@@ -116,6 +116,10 @@ public class FrontendHarry : MonoBehaviour
 		{
 			Start();
 		}
+		if (m_currentModel == null || m_currentModel.GetComponent<Animation>() == null || m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle") == null)
+		{
+			return 0f;
+		}
 		return m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle").length;
 	}
 
@@ -124,6 +128,10 @@ public class FrontendHarry : MonoBehaviour
 		if (!m_started)
 		{
 			Start();
+		}
+		if (m_currentModel == null || m_currentModel.GetComponent<Animation>() == null || m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle") == null)
+		{
+			return 0f;
 		}
 		float length = m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle").length;
 		PlayAnim("IpadToTitle", QueueMode.PlayNow, true);
@@ -147,6 +155,10 @@ public class FrontendHarry : MonoBehaviour
 		if (!m_started)
 		{
 			Start();
+		}
+		if (m_currentModel == null)
+		{
+			return;
 		}
 		PlayAnim("OffScreenToTitle", QueueMode.PlayNow, true);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
@@ -172,18 +184,30 @@ public class FrontendHarry : MonoBehaviour
 
 	public void ResultsToShop()
 	{
+		if (m_currentModel == null)
+		{
+			return;
+		}
 		PlayAnim("TitleToShop", QueueMode.PlayNow, true);
 		PlayAnim("ShopIdle", QueueMode.CompleteOthers);
 	}
 
 	public void TitleToShop()
 	{
+		if (m_currentModel == null)
+		{
+			return;
+		}
 		PlayAnim("TitleToShop", QueueMode.PlayNow);
 		PlayAnim("ShopIdle", QueueMode.CompleteOthers);
 	}
 
 	public void ShopToTitle()
 	{
+		if (m_currentModel == null)
+		{
+			return;
+		}
 		PlayAnim("ShopToTitle", QueueMode.PlayNow);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
 	}
@@ -211,6 +235,10 @@ public class FrontendHarry : MonoBehaviour
 
 	public void TitleToGame()
 	{
+		if (m_currentModel == null)
+		{
+			return;
+		}
 		PlayAnim("TitleToGame", QueueMode.PlayNow);
 		CancelInvoke("IdleBreak");
 	}
@@ -222,6 +250,10 @@ public class FrontendHarry : MonoBehaviour
 
 	public float TitleToGameAnimLength()
 	{
+		if (m_currentModel == null || m_currentModel.GetComponent<Animation>() == null || m_currentModel.GetComponent<Animation>().GetClip("TitleToGame") == null)
+		{
+			return 0f;
+		}
 		return m_currentModel.GetComponent<Animation>().GetClip("TitleToGame").length;
 	}
 

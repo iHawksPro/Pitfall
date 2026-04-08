@@ -139,16 +139,13 @@ public class TitleController : StateController
 		if (m_initialLaunch)
 		{
 			LoadingScreen.Instance.Hide();
-			if (!UIMenuBackground.Instance.IsPostSplashPlaying)
+			float waitTime = PrepareInitialLaunchBackground();
+			if (waitTime > 0f)
 			{
-				UIMenuBackground.Instance.SwitchCameraFocus("Title");
-				UIMenuBackground.Instance.Show();
-				UIMenuBackground.Instance.PlayPostSplashAnim();
+				yield return new WaitForSeconds(waitTime);
 			}
-			float waitTime = UIMenuBackground.Instance.PostSplashAnimLength();
-			yield return new WaitForSeconds(waitTime);
 			m_initialLaunch = false;
-			if (!MobileNetworkManager.Instance.IsLoggedIn)
+			if (MobileNetworkManager.Instance != null && !MobileNetworkManager.Instance.IsLoggedIn)
 			{
 				MobileNetworkManager.Instance.Login();
 			}
@@ -185,6 +182,35 @@ public class TitleController : StateController
 		if (!initialLaunch)
 		{
 			SwrveServerVariables.Instance.RefreshSelectedVars();
+		}
+	}
+
+	private float PrepareInitialLaunchBackground()
+	{
+		UIMenuBackground instance = UIMenuBackground.Instance;
+		if (instance == null)
+		{
+			return 0f;
+		}
+		try
+		{
+			instance.SwitchCameraFocus("Title");
+			instance.Show();
+			if (RecoveredCompatibility.SkipLegacySplash)
+			{
+				instance.InitialRunOn();
+				return 0f;
+			}
+			if (!instance.IsPostSplashPlaying)
+			{
+				instance.PlayPostSplashAnim();
+			}
+			return instance.PostSplashAnimLength();
+		}
+		catch (Exception ex)
+		{
+			UnityEngine.Debug.LogWarning("Recovered title intro fallback: " + ex.Message);
+			return 0f;
 		}
 	}
 

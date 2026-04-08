@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class GameCenterBinding
 {
-	[DllImport("__Internal")]
+#if UNITY_IOS && !UNITY_EDITOR
+	private const string NativeLibrary = "__Internal";
+#else
+	private const string NativeLibrary = "__Internal_GameCenterDisabled";
+#endif
+
+	[DllImport(NativeLibrary)]
 	private static extern bool _gameCenterIsGameCenterAvailable();
 
 	public static bool isGameCenterAvailable()
@@ -15,7 +21,7 @@ public class GameCenterBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterAuthenticateLocalPlayer();
 
 	public static void authenticateLocalPlayer()
@@ -26,7 +32,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _gameCenterIsPlayerAuthenticated();
 
 	public static bool isPlayerAuthenticated()
@@ -38,7 +44,7 @@ public class GameCenterBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _gameCenterPlayerAlias();
 
 	public static string playerAlias()
@@ -50,7 +56,7 @@ public class GameCenterBinding
 		return string.Empty;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _gameCenterPlayerIdentifier();
 
 	public static string playerIdentifier()
@@ -62,7 +68,7 @@ public class GameCenterBinding
 		return string.Empty;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _gameCenterIsUnderage();
 
 	public static bool isUnderage()
@@ -74,7 +80,7 @@ public class GameCenterBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterRetrieveFriends(bool loadProfileImages);
 
 	public static void retrieveFriends(bool loadProfileImages)
@@ -85,7 +91,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterLoadPlayerData(string playerIds, bool loadProfileImages);
 
 	public static void loadPlayerData(string[] playerIdArray, bool loadProfileImages)
@@ -96,7 +102,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterLoadProfilePhotoForLocalPlayer();
 
 	public static void loadProfilePhotoForLocalPlayer()
@@ -107,7 +113,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterLoadLeaderboardLeaderboardTitles();
 
 	public static void loadLeaderboardTitles()
@@ -118,7 +124,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterReportScore(long score, string leaderboardId);
 
 	public static void reportScore(long score, string leaderboardId)
@@ -129,7 +135,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterShowLeaderboardWithTimeScope(int timeScope);
 
 	public static void showLeaderboardWithTimeScope(GameCenterLeaderboardTimeScope timeScope)
@@ -140,7 +146,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterShowLeaderboardWithTimeScopeAndLeaderboardId(int timeScope, string leaderboardId);
 
 	public static void showLeaderboardWithTimeScopeAndLeaderboard(GameCenterLeaderboardTimeScope timeScope, string leaderboardId)
@@ -151,7 +157,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterRetrieveScores(bool friendsOnly, int timeScope, int start, int end);
 
 	public static void retrieveScores(bool friendsOnly, GameCenterLeaderboardTimeScope timeScope, int start, int end)
@@ -162,7 +168,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterRetrieveScoresForLeaderboard(bool friendsOnly, int timeScope, int start, int end, string leaderboardId);
 
 	public static void retrieveScores(bool friendsOnly, GameCenterLeaderboardTimeScope timeScope, int start, int end, string leaderboardId)
@@ -173,7 +179,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterRetrieveScoresForPlayerId(string playerId);
 
 	public static void retrieveScoresForPlayerId(string playerId)
@@ -184,7 +190,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterRetrieveScoresForPlayerIdAndLeaderboard(string playerId, string leaderboardId);
 
 	public static void retrieveScoresForPlayerId(string playerId, string leaderboardId)
@@ -195,7 +201,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterReportAchievement(string identifier, float percent, bool showCompletionBanner);
 
 	public static void reportAchievement(string identifier, float percent, bool showCompletionBanner)
@@ -206,7 +212,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterGetAchievements();
 
 	public static void getAchievements()
@@ -217,7 +223,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterResetAchievements();
 
 	public static void resetAchievements()
@@ -228,7 +234,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterShowAchievements();
 
 	public static void showAchievements()
@@ -239,7 +245,7 @@ public class GameCenterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _gameCenterRetrieveAchievementMetadata();
 
 	public static void retrieveAchievementMetadata()

@@ -24,7 +24,7 @@ public class PrivacyPolicy : MonoBehaviour
 
 	public static string[] m_creditList = new string[380]
 	{
-		"<L>" + Language.Get("S_PRIVACY_POLICY_URI"),
+		"<L>S_PRIVACY_POLICY_URI",
 		string.Empty,
 		"<H>Privacy Policy",
 		string.Empty,
@@ -428,6 +428,7 @@ public class PrivacyPolicy : MonoBehaviour
 
 	private void OnEnable()
 	{
+		m_creditList[0] = "<L>" + Language.Get("S_PRIVACY_POLICY_URI");
 		m_ScrollList.SetInputDelegate(OnInput);
 		m_ManualScroll = false;
 		m_ManualScrollCooldown = 0f;

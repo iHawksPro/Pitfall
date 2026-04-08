@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class TwitterBinding
 {
-	[DllImport("__Internal")]
+#if UNITY_IOS && !UNITY_EDITOR
+	private const string NativeLibrary = "__Internal";
+#else
+	private const string NativeLibrary = "__Internal_TwitterDisabled";
+#endif
+
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterInit(string consumerKey, string consumerSecret);
 
 	public static void init(string consumerKey, string consumerSecret)
@@ -15,7 +21,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _twitterIsLoggedIn();
 
 	public static bool isLoggedIn()
@@ -27,7 +33,7 @@ public class TwitterBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _twitterLoggedInUsername();
 
 	public static string loggedInUsername()
@@ -39,7 +45,7 @@ public class TwitterBinding
 		return string.Empty;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterLogin(string username, string password);
 
 	public static void login(string username, string password)
@@ -50,7 +56,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterShowOauthLoginDialog();
 
 	public static void showOauthLoginDialog()
@@ -61,7 +67,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterLogout();
 
 	public static void logout()
@@ -72,7 +78,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterPostStatusUpdate(string status);
 
 	public static void postStatusUpdate(string status)
@@ -83,7 +89,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterPostStatusUpdateWithImage(string status, string imagePath);
 
 	public static void postStatusUpdate(string status, string pathToImage)
@@ -94,7 +100,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterGetHomeTimeline();
 
 	public static void getHomeTimeline()
@@ -105,7 +111,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterPerformRequest(string methodType, string path, string parameters);
 
 	public static void performRequest(string methodType, string path, Dictionary<string, string> parameters)
@@ -116,7 +122,7 @@ public class TwitterBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _twitterIsTweetSheetSupported();
 
 	public static bool isTweetSheetSupported()
@@ -128,7 +134,7 @@ public class TwitterBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _twitterCanUserTweet();
 
 	public static bool canUserTweet()
@@ -140,7 +146,7 @@ public class TwitterBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _twitterShowTweetComposer(string status, string imagePath, string url);
 
 	public static void showTweetComposer(string status)

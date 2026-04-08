@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class EtceteraBinding
 {
+#if UNITY_IOS && !UNITY_EDITOR
+	private const string NativeLibrary = "__Internal";
+#else
+	private const string NativeLibrary = "__Internal_EtceteraDisabled";
+#endif
+
 	public static IEnumerator takeScreenShot(string filename)
 	{
 		yield return new WaitForEndOfFrame();
@@ -19,7 +25,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _etceteraGetCurrentLanguage();
 
 	public static string getCurrentLanguage()
@@ -31,7 +37,7 @@ public class EtceteraBinding
 		return "en";
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _etceteraGetLocalizedString(string key, string defaultValue);
 
 	public static string getLocalizedString(string key, string defaultValue)
@@ -43,7 +49,7 @@ public class EtceteraBinding
 		return string.Empty;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowAlertWithTitleMessageAndButton(string title, string message, string buttonTitle);
 
 	public static void showAlertWithTitleMessageAndButton(string title, string message, string buttonTitle)
@@ -54,7 +60,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowAlertWithTitleMessageAndButtons(string title, string message, string buttonTitle, string otherButtonTitle);
 
 	public static void showAlertWithTitleMessageAndButtons(string title, string message, string buttonTitle, string otherButtonTitle)
@@ -65,7 +71,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraSetPromptColors(uint borderColor, uint gradientStopOne, uint gradientStopTwo);
 
 	public static void setPromptColors(uint borderColor, uint gradientStopOne, uint gradientStopTwo)
@@ -76,7 +82,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowPromptWithOneField(string title, string message, string placeHolder, bool autocomplete);
 
 	public static void showPromptWithOneField(string title, string message, string placeHolder, bool autocomplete)
@@ -87,7 +93,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowPromptWithTwoFields(string title, string message, string placeHolder1, string placeHolder2, bool autocomplete);
 
 	public static void showPromptWithTwoFields(string title, string message, string placeHolder1, string placeHolder2, bool autocomplete)
@@ -98,7 +104,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowWebPage(string url, bool showControls);
 
 	public static void showWebPage(string url, bool showControls)
@@ -109,7 +115,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _etceteraIsEmailAvailable();
 
 	public static bool isEmailAvailable()
@@ -121,7 +127,7 @@ public class EtceteraBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _etceteraIsSMSAvailable();
 
 	public static bool isSMSAvailable()
@@ -133,7 +139,7 @@ public class EtceteraBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowMailComposer(string toAddress, string subject, string body, bool isHTML);
 
 	public static void showMailComposer(string toAddress, string subject, string body, bool isHTML)
@@ -155,7 +161,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowMailComposerWithAttachment(string filePathToAttachment, string attachementMimeType, string attachmentFilename, string toAddress, string subject, string body, bool isHTML);
 
 	public static void showMailComposerWithAttachment(string filePathToAttachment, string attachmentMimeType, string attachmentFilename, string toAddress, string subject, string body, bool isHTML)
@@ -166,7 +172,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowSMSComposer(string body);
 
 	public static void showSMSComposer(string body)
@@ -177,7 +183,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowActivityView();
 
 	public static void showActivityView()
@@ -188,7 +194,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraHideActivityView();
 
 	public static void hideActivityView()
@@ -199,7 +205,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowBezelActivityViewWithLabel(string label);
 
 	public static void showBezelActivityViewWithLabel(string label)
@@ -210,7 +216,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraShowBezelActivityViewWithImage(string label, string imagePath);
 
 	public static void showBezelActivityViewWithImage(string label, string imagePath)
@@ -221,7 +227,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraAskForReview(int launchCount, int hoursBetweenPrompts, string title, string message, string iTunesUrl);
 
 	public static void askForReview(int launchCount, int hoursBetweenPrompts, string title, string message, string iTunesUrl)
@@ -232,7 +238,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraAskForReviewImmediately(string title, string message, string iTunesUrl);
 
 	public static void askForReview(string title, string message, string iTunesUrl)
@@ -243,7 +249,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraSetPopoverPoint(float xPos, float yPos);
 
 	public static void setPopoverPoint(float xPos, float yPos)
@@ -254,7 +260,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraPromptForPhoto(float scaledToSize);
 
 	public static void promptForPhoto(float scaledToSize)
@@ -265,7 +271,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraResizeImageAtPath(string filePath, float width, float height);
 
 	public static void resizeImageAtPath(string filePath, float width, float height)
@@ -276,7 +282,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _etceteraGetImageSize(string filePath);
 
 	public static Vector2 getImageSize(string filePath)
@@ -293,7 +299,7 @@ public class EtceteraBinding
 		return Vector2.zero;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraSaveImageToPhotoAlbum(string filePath);
 
 	public static void saveImageToPhotoAlbum(string filePath)
@@ -304,7 +310,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraSetUrbanAirshipCredentials(string appKey, string appSecret);
 
 	public static void setUrbanAirshipCredentials(string appKey, string appSecret)
@@ -315,7 +321,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraRegisterForRemoteNotifications(int types);
 
 	public static void registerForRemoteNotifcations(RemoteNotificationType types)
@@ -326,7 +332,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern int _etceteraGetEnabledRemoteNotificationTypes();
 
 	public static RemoteNotificationType getEnabledRemoteNotificationTypes()
@@ -338,7 +344,7 @@ public class EtceteraBinding
 		return RemoteNotificationType.None;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern int _etceteraGetBadgeCount();
 
 	public static int getBadgeCount()
@@ -350,7 +356,7 @@ public class EtceteraBinding
 		return 0;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern void _etceteraSetBadgeCount(int badgeCount);
 
 	public static void setBadgeCount(int badgeCount)
@@ -361,7 +367,7 @@ public class EtceteraBinding
 		}
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern bool _etceteraUnzipFile(string filePath, string destinationFolderName);
 
 	public static bool unzipFile(string filePath, string destinationFolderName)
@@ -373,7 +379,7 @@ public class EtceteraBinding
 		return false;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern int _etceteraGetStatusBarOrientation();
 
 	public static UIInterfaceOrientation getStatusBarOrientation()
@@ -385,7 +391,7 @@ public class EtceteraBinding
 		return UIInterfaceOrientation.Portrait;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _etceteraUniqueDeviceIdentifier();
 
 	public static string uniqueDeviceIdentifier()
@@ -397,7 +403,7 @@ public class EtceteraBinding
 		return string.Empty;
 	}
 
-	[DllImport("__Internal")]
+	[DllImport(NativeLibrary)]
 	private static extern string _etceteraUniqueGlobalDeviceIdentifier();
 
 	public static string uniqueGlobalDeviceIdentifier()

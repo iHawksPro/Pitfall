@@ -28,7 +28,7 @@ public static class AndroidReleaseBuild
 	{
 		string projectPath = Directory.GetParent(Application.dataPath).FullName;
 		string outputDirectory = Path.Combine(projectPath, "Builds", "Android");
-		string outputPath = Path.Combine(outputDirectory, "Pitfall-recovered-armv7.apk");
+		string outputPath = Path.Combine(outputDirectory, "Pitfall-recovered-arm64.apk");
 		string[] scenes = EditorBuildSettings.scenes.Where(scene => scene.enabled).Select(scene => scene.path).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
 		if (scenes.Length == 0)
 		{
@@ -43,8 +43,8 @@ public static class AndroidReleaseBuild
 		PlayerSettings.Android.bundleVersionCode = DefaultVersionCode;
 		PlayerSettings.Android.minSdkVersion = AndroidSdkVersions.AndroidApiLevel25;
 		PlayerSettings.Android.targetSdkVersion = AndroidSdkVersions.AndroidApiLevelAuto;
-		PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARMv7;
-		PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.Mono2x);
+		PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
+		PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
 		PlayerSettings.productName = "Pitfall Recovered";
 		PlayerSettings.companyName = "iHawksPro";
 		BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions

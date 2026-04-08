@@ -375,8 +375,14 @@ public class UIMenuBackground : SingletonMonoBehaviour
 	{
 		m_camera.PlayIdle();
 		TweenCameraTo(m_titleViewpoint);
-		m_harry.RunOnScreen();
-		m_monkey.RunOnScreen();
+		if (m_harry != null)
+		{
+			m_harry.EnsureRecoveredTitleVisible();
+		}
+		if (m_monkey != null)
+		{
+			m_monkey.EnsureRecoveredTitleVisible();
+		}
 	}
 
 	public void ShopToTitle()

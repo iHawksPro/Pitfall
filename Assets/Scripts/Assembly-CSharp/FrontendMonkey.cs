@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,34 +37,7 @@ public class FrontendMonkey : MonoBehaviour
 
 	private void Start()
 	{
-		if (m_started)
-		{
-			return;
-		}
-		bool flag = TBFUtils.Is256mbDevice();
-		string path = ((!flag) ? "Frontend/Monkey_FrontEnd_Prefab" : "Frontend/Monkey_FrontEnd_Lite_Prefab");
-		m_monkeyModel = null;
-		GameObject gameObject = RecoveredResources.Load<GameObject>(path);
-		if (gameObject != null)
-		{
-			m_monkeyModel = (GameObject)Object.Instantiate(gameObject);
-			m_monkeyModel.transform.position = m_offScreenPos.transform.position;
-			m_monkeyModel.transform.rotation = m_offScreenPos.transform.rotation;
-			m_monkeyModel.transform.parent = base.transform;
-			Animation monkeyAnimation = GetMonkeyAnimation();
-			m_animNames = GetAnimNames(monkeyAnimation);
-			if (monkeyAnimation == null)
-			{
-				Debug.LogWarning("Recovered monkey fallback: missing Animation component.");
-				SnapToTitlePose();
-			}
-			else if (!flag)
-			{
-				FrontendMonkeyAnimEventHandler frontendMonkeyAnimEventHandler = m_monkeyModel.AddComponent<FrontendMonkeyAnimEventHandler>();
-				frontendMonkeyAnimEventHandler.SetupAnimEvents(this);
-			}
-		}
-		m_started = true;
+		EnsureInitialized();
 	}
 
 	private static string[] GetAnimNames(Animation anim)
@@ -125,22 +99,16 @@ public class FrontendMonkey : MonoBehaviour
 
 	public float IpadToTitleLen()
 	{
-		if (!m_started)
-		{
-			Start();
-		}
+		EnsureInitialized();
 		return GetAnimLength(MonkeyAnim.MA_VOLCANO_REACT);
 	}
 
 	public float IpadToTitle()
 	{
-		if (!m_started)
-		{
-			Start();
-		}
+		EnsureInitialized();
 		if (RecoveredCompatibility.IsAndroidRuntime)
 		{
-			RunOnScreen();
+			EnsureRecoveredTitleVisible();
 			return 0f;
 		}
 		float animLength = GetAnimLength(MonkeyAnim.MA_VOLCANO_REACT);
@@ -156,10 +124,7 @@ public class FrontendMonkey : MonoBehaviour
 
 	public void RunOnScreen()
 	{
-		if (!m_started)
-		{
-			Start();
-		}
+		EnsureRecoveredTitleVisible();
 		if (m_monkeyModel == null)
 		{
 			return;
@@ -186,7 +151,7 @@ public class FrontendMonkey : MonoBehaviour
 		{
 			int num = 3;
 			int num2 = 7;
-			MonkeyAnim anim = (MonkeyAnim)Random.Range(num, num + num2);
+			MonkeyAnim anim = (MonkeyAnim)UnityEngine.Random.Range(num, num + num2);
 			PlayAnim(anim, QueueMode.PlayNow);
 			PlayAnim(MonkeyAnim.MA_TITLE_IDLE, QueueMode.CompleteOthers);
 		}
@@ -252,6 +217,87 @@ public class FrontendMonkey : MonoBehaviour
 		if (monkeyAnimation != null && anim != null)
 		{
 			monkeyAnimation.Play(anim.name, PlayMode.StopAll);
+		}
+	}
+
+	public void EnsureRecoveredTitleVisible()
+	{
+		EnsureInitialized();
+		if (m_monkeyModel == null)
+		{
+			TryInstantiateMonkeyModel();
+		}
+		if (m_monkeyModel == null)
+		{
+			return;
+		}
+		m_monkeyModel.SetActiveRecursively(true);
+		EnableHierarchyRenderers(m_monkeyModel);
+		SnapToTitlePose();
+		PlayTitleIdleFallback();
+	}
+
+	private void EnsureInitialized()
+	{
+		if (m_started)
+		{
+			return;
+		}
+		m_started = true;
+		TryInstantiateMonkeyModel();
+	}
+
+	private void TryInstantiateMonkeyModel()
+	{
+		bool flag = TBFUtils.Is256mbDevice();
+		string path = ((!flag) ? "Frontend/Monkey_FrontEnd_Prefab" : "Frontend/Monkey_FrontEnd_Lite_Prefab");
+		if (m_monkeyModel != null)
+		{
+			return;
+		}
+		try
+		{
+			GameObject gameObject = RecoveredResources.Load<GameObject>(path);
+			if (gameObject == null)
+			{
+				Debug.LogWarning("Recovered monkey fallback: missing prefab " + path);
+				return;
+			}
+			m_monkeyModel = (GameObject)UnityEngine.Object.Instantiate(gameObject);
+			Transform transform = ((m_offScreenPos != null) ? m_offScreenPos.transform : base.transform);
+			m_monkeyModel.transform.position = transform.position;
+			m_monkeyModel.transform.rotation = transform.rotation;
+			m_monkeyModel.transform.parent = base.transform;
+			Animation monkeyAnimation = GetMonkeyAnimation();
+			m_animNames = GetAnimNames(monkeyAnimation);
+			if (monkeyAnimation == null)
+			{
+				Debug.LogWarning("Recovered monkey fallback: missing Animation component.");
+				SnapToTitlePose();
+			}
+			else if (!flag)
+			{
+				FrontendMonkeyAnimEventHandler frontendMonkeyAnimEventHandler = m_monkeyModel.AddComponent<FrontendMonkeyAnimEventHandler>();
+				frontendMonkeyAnimEventHandler.SetupAnimEvents(this);
+			}
+		}
+		catch (Exception ex)
+		{
+			Debug.LogWarning("Recovered monkey startup fallback: " + ex.Message);
+		}
+	}
+
+	private static void EnableHierarchyRenderers(GameObject root)
+	{
+		Renderer[] componentsInChildren = root.GetComponentsInChildren<Renderer>(true);
+		for (int i = 0; i < componentsInChildren.Length; i++)
+		{
+			componentsInChildren[i].enabled = true;
+		}
+		Animation[] componentsInChildren2 = root.GetComponentsInChildren<Animation>(true);
+		for (int j = 0; j < componentsInChildren2.Length; j++)
+		{
+			componentsInChildren2[j].enabled = true;
 		}
 	}
 }

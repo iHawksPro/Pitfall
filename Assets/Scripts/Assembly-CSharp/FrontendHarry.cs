@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -37,17 +38,7 @@ public class FrontendHarry : MonoBehaviour
 
 	private void Start()
 	{
-		if (!m_started)
-		{
-			Costume currentCostumeType = SecureStorage.Instance.GetCurrentCostumeType();
-			SetCostume(currentCostumeType);
-			GameObject gameObject = (GameObject)Object.Instantiate(m_iPad.m_iPadPrefab);
-			gameObject.transform.position = m_offScreenPos.transform.position;
-			gameObject.transform.rotation = m_offScreenPos.transform.rotation;
-			gameObject.transform.parent = base.transform;
-			m_iPad.m_model = gameObject;
-			m_started = true;
-		}
+		EnsureInitialized();
 	}
 
 	private void WipeAnimations(GameObject go)
@@ -58,7 +49,7 @@ public class FrontendHarry : MonoBehaviour
 			bool playAutomatically = go.GetComponent<Animation>().playAutomatically;
 			bool animatePhysics = go.GetComponent<Animation>().animatePhysics;
 			AnimationCullingType cullingType = go.GetComponent<Animation>().cullingType;
-			Object.DestroyImmediate(go.GetComponent<Animation>());
+			UnityEngine.Object.DestroyImmediate(go.GetComponent<Animation>());
 			Animation animation = go.AddComponent<Animation>();
 			animation.wrapMode = wrapMode;
 			animation.playAutomatically = playAutomatically;
@@ -72,7 +63,7 @@ public class FrontendHarry : MonoBehaviour
 		if (m_currentModel != null)
 		{
 			WipeAnimations(m_currentModel);
-			Object.DestroyImmediate(m_currentModel);
+			UnityEngine.Object.DestroyImmediate(m_currentModel);
 			m_currentModel = null;
 			if (TBFUtils.Is256mbDevice())
 			{
@@ -124,10 +115,7 @@ public class FrontendHarry : MonoBehaviour
 
 	public float IpadToTitleLen()
 	{
-		if (!m_started)
-		{
-			Start();
-		}
+		EnsureInitialized();
 		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("IpadToTitle") == null)
 		{
 			return 0f;
@@ -137,13 +125,10 @@ public class FrontendHarry : MonoBehaviour
 
 	public float IpadToTitle()
 	{
-		if (!m_started)
-		{
-			Start();
-		}
+		EnsureInitialized();
 		if (RecoveredCompatibility.IsAndroidRuntime)
 		{
-			RunOnScreen();
+			EnsureRecoveredTitleVisible();
 			return 0f;
 		}
 		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("IpadToTitle") == null)
@@ -169,10 +154,7 @@ public class FrontendHarry : MonoBehaviour
 
 	public void RunOnScreen()
 	{
-		if (!m_started)
-		{
-			Start();
-		}
+		EnsureRecoveredTitleVisible();
 		if (m_currentModel == null)
 		{
 			return;
@@ -202,7 +184,7 @@ public class FrontendHarry : MonoBehaviour
 			int num;
 			do
 			{
-				num = Random.Range(0, 4);
+				num = UnityEngine.Random.Range(0, 4);
 			}
 			while (num == m_lastTitleIdle);
 			m_lastTitleIdle = num;
@@ -319,7 +301,7 @@ public class FrontendHarry : MonoBehaviour
 		{
 			return false;
 		}
-		m_currentModel = (GameObject)Object.Instantiate(gameObject);
+		m_currentModel = (GameObject)UnityEngine.Object.Instantiate(gameObject);
 		Transform transform = ((m_offScreenPos != null) ? m_offScreenPos.transform : base.transform);
 		m_currentModel.transform.position = transform.position;
 		m_currentModel.transform.rotation = transform.rotation;
@@ -353,6 +335,103 @@ public class FrontendHarry : MonoBehaviour
 		if (currentAnimation != null && currentAnimation.GetClip("TitleIdle") != null)
 		{
 			currentAnimation.Play("TitleIdle", PlayMode.StopAll);
+		}
+	}
+
+	public void EnsureRecoveredTitleVisible()
+	{
+		EnsureInitialized();
+		if (m_currentModel == null)
+		{
+			RecoverCurrentCostume();
+		}
+		if (m_currentModel == null)
+		{
+			return;
+		}
+		m_currentModel.SetActiveRecursively(true);
+		EnableHierarchyRenderers(m_currentModel);
+		SnapToTitlePose();
+		PlayTitleIdleFallback();
+	}
+
+	private void EnsureInitialized()
+	{
+		if (m_started)
+		{
+			return;
+		}
+		m_started = true;
+		RecoverCurrentCostume();
+		TryCreateIpadModel();
+	}
+
+	private void RecoverCurrentCostume()
+	{
+		Costume costume = Costume.None;
+		try
+		{
+			costume = SecureStorage.Instance.GetCurrentCostumeType();
+		}
+		catch (Exception ex)
+		{
+			Debug.LogWarning("Recovered Harry costume lookup fallback: " + ex.Message);
+		}
+		try
+		{
+			SetCostume(costume);
+		}
+		catch (Exception ex2)
+		{
+			Debug.LogWarning("Recovered Harry costume load fallback: " + ex2.Message);
+			TryRestoreFallbackCostume();
+		}
+	}
+
+	private void TryRestoreFallbackCostume()
+	{
+		try
+		{
+			SetCostume(Costume.None);
+		}
+		catch (Exception ex)
+		{
+			Debug.LogWarning("Recovered Harry default costume fallback: " + ex.Message);
+		}
+	}
+
+	private void TryCreateIpadModel()
+	{
+		if (m_iPad == null || m_iPad.m_iPadPrefab == null || m_iPad.m_model != null)
+		{
+			return;
+		}
+		try
+		{
+			GameObject gameObject = (GameObject)UnityEngine.Object.Instantiate(m_iPad.m_iPadPrefab);
+			Transform transform = ((m_offScreenPos != null) ? m_offScreenPos.transform : base.transform);
+			gameObject.transform.position = transform.position;
+			gameObject.transform.rotation = transform.rotation;
+			gameObject.transform.parent = base.transform;
+			m_iPad.m_model = gameObject;
+		}
+		catch (Exception ex)
+		{
+			Debug.LogWarning("Recovered Harry iPad fallback: " + ex.Message);
+		}
+	}
+
+	private static void EnableHierarchyRenderers(GameObject root)
+	{
+		Renderer[] componentsInChildren = root.GetComponentsInChildren<Renderer>(true);
+		for (int i = 0; i < componentsInChildren.Length; i++)
+		{
+			componentsInChildren[i].enabled = true;
+		}
+		Animation[] componentsInChildren2 = root.GetComponentsInChildren<Animation>(true);
+		for (int j = 0; j < componentsInChildren2.Length; j++)
+		{
+			componentsInChildren2[j].enabled = true;
 		}
 	}
 }

@@ -34,6 +34,8 @@ public class TitleController : StateController
 
 	private bool m_SelectionMade;
 
+	private float m_recoveredTitleRefreshTime;
+
 	[HideInInspector]
 	public static float m_pendingCheckpointRestart;
 
@@ -120,6 +122,7 @@ public class TitleController : StateController
 			UnityEngine.Object.Destroy(m_MoreAppsButton);
 			m_MoreAppsButton = null;
 		}
+		EnsureRecoveredTitlePresentation();
 	}
 
 	protected override IEnumerator AnimateStateIn()
@@ -147,7 +150,7 @@ public class TitleController : StateController
 				yield return new WaitForSeconds(waitTime);
 			}
 			m_initialLaunch = false;
-			if (MobileNetworkManager.Instance != null && !MobileNetworkManager.Instance.IsLoggedIn)
+			if (!RecoveredCompatibility.IsAndroidRuntime && MobileNetworkManager.Instance != null && !MobileNetworkManager.Instance.IsLoggedIn)
 			{
 				MobileNetworkManager.Instance.Login();
 			}
@@ -156,6 +159,7 @@ public class TitleController : StateController
 		base.gameObject.BroadcastMessage("BringOnScreen", SendMessageOptions.DontRequireReceiver);
 		ShowState();
 		ForceRecoveredTitleInputReady();
+		EnsureRecoveredTitlePresentation();
 		try
 		{
 			if (MusicManager.Instance != null)
@@ -235,6 +239,7 @@ public class TitleController : StateController
 	{
 		base.ShowState();
 		ForceRecoveredTitleInputReady();
+		EnsureRecoveredTitlePresentation();
 		if (m_buildInfo != null)
 		{
 			m_buildInfo.gameObject.SetActiveRecursively(true);
@@ -450,6 +455,11 @@ public class TitleController : StateController
 
 	private void Update()
 	{
+		if (RecoveredCompatibility.IsAndroidRuntime && StateManager.Instance != null && StateManager.Instance.CurrentStateName == "Title" && !m_SelectionMade && Time.unscaledTime >= m_recoveredTitleRefreshTime)
+		{
+			MaintainRecoveredTitleRuntime();
+			m_recoveredTitleRefreshTime = Time.unscaledTime + 0.25f;
+		}
 		if (StateManager.Instance.CurrentStateName == "Title" && Input.GetKeyDown(KeyCode.Escape))
 		{
 			EtceteraAndroidManager.alertButtonClickedEvent += ApplicationQuitConfirm;
@@ -493,6 +503,17 @@ public class TitleController : StateController
 		{
 			UIManager.instance.ForceUnlockAllInput();
 		}
+		EnsureTitleButtonsEnabled();
+		DisableRecoveredTitleOverlays();
+	}
+
+	private void MaintainRecoveredTitleRuntime()
+	{
+		ForceRecoveredTitleInputReady();
+		if (UIMenuBackground.Instance != null)
+		{
+			UIMenuBackground.Instance.InitialRunOn();
+		}
 	}
 
 	private void SafeTitleAction(Action action, string context)
@@ -509,5 +530,134 @@ public class TitleController : StateController
 		{
 			UnityEngine.Debug.LogWarning("Recovered title action fallback (" + context + "): " + ex.Message);
 		}
+	}
+
+	private void EnsureRecoveredTitlePresentation()
+	{
+		if (!RecoveredCompatibility.IsAndroidRuntime)
+		{
+			return;
+		}
+		EnsureTitleButtonsEnabled();
+		DisableRecoveredTitleOverlays();
+		try
+		{
+			if (UIMenuBackground.Instance != null)
+			{
+				UIMenuBackground.Instance.SwitchCameraFocus("Title");
+				UIMenuBackground.Instance.InitialRunOn();
+			}
+		}
+		catch (Exception ex)
+		{
+			UnityEngine.Debug.LogWarning("Recovered title presentation fallback: " + ex.Message);
+		}
+	}
+
+	private void EnsureTitleButtonsEnabled()
+	{
+		EnableAllRecoveredTitleButtons();
+		EnableButton(m_startButton);
+		EnableButton(m_storeButton);
+		EnableButtonOnObject(m_challengesButton);
+		EnableButtonOnObject(m_MoreAppsButton);
+		EnableButtonOnObject(m_facebookButton);
+		EnableButtonOnObject(m_twitterButton);
+	}
+
+	private void EnableButtonOnObject(GameObject buttonRoot)
+	{
+		if (!(buttonRoot == null))
+		{
+			EnableButton(buttonRoot.GetComponentInChildren<UIButton>());
+		}
+	}
+
+	private static void EnableButton(UIButton button)
+	{
+		if (!(button == null))
+		{
+			button.gameObject.SetActiveRecursively(true);
+			button.controlIsEnabled = true;
+			button.Hide(false);
+			Collider component = button.GetComponent<Collider>();
+			if (component != null)
+			{
+				component.enabled = true;
+			}
+		}
+	}
+
+	private void DisableRecoveredTitleOverlays()
+	{
+		if (!RecoveredCompatibility.DisableLegacyStartupPromos)
+		{
+			return;
+		}
+		DisableOverlayObject("TransparentButton");
+		DisableOverlayObject("DialogBackground");
+		DisableOverlayObject("DialogBackground Grid [1,1]");
+		DisableOverlayObject("DialogBackground Grid [1,2]");
+		DisableOverlayObject("DialogBackground Grid [1,3]");
+		DisableOverlayObject("DialogBackground Grid [2,1]");
+		DisableOverlayObject("DialogBackground Grid [2,2]");
+		DisableOverlayObject("DialogBackground Grid [2,3]");
+		DisableOverlayObject("DialogBackground Grid [3,1]");
+		DisableOverlayObject("DialogBackground Grid [3,2]");
+		DisableOverlayObject("DialogBackground Grid [3,3]");
+		DisableOverlayObject("OnSaleDialog");
+		if (m_saleDialog != null)
+		{
+			try
+			{
+				m_saleDialog.Hide();
+			}
+			catch (Exception ex)
+			{
+				UnityEngine.Debug.LogWarning("Recovered sale dialog hide fallback: " + ex.Message);
+			}
+			m_saleDialog.gameObject.SetActiveRecursively(false);
+		}
+	}
+
+	private void EnableAllRecoveredTitleButtons()
+	{
+		UIButton[] componentsInChildren = GetComponentsInChildren<UIButton>(true);
+		for (int i = 0; i < componentsInChildren.Length; i++)
+		{
+			if (!(componentsInChildren[i] == null) && !IsRecoveredBlockedOverlayName(componentsInChildren[i].gameObject.name))
+			{
+				EnableButton(componentsInChildren[i]);
+			}
+		}
+	}
+
+	private static bool IsRecoveredBlockedOverlayName(string objectName)
+	{
+		if (string.IsNullOrEmpty(objectName))
+		{
+			return false;
+		}
+		return objectName == "TransparentButton" || objectName == "DialogBackground" || objectName == "OnSaleDialog" || objectName.StartsWith("DialogBackground Grid ");
+	}
+
+	private static void DisableOverlayObject(string objectName)
+	{
+		GameObject gameObject = GameObject.Find(objectName);
+		if (gameObject == null)
+		{
+			return;
+		}
+		UIButton component = gameObject.GetComponent<UIButton>();
+		if (component != null)
+		{
+			component.controlIsEnabled = false;
+		}
+		Collider component2 = gameObject.GetComponent<Collider>();
+		if (component2 != null)
+		{
+			component2.enabled = false;
+		}
+		gameObject.SetActiveRecursively(false);
 	}
 }

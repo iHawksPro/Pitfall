@@ -66,7 +66,7 @@ public class InputController : MonoBehaviour
 		mKeyHandler.Add("TiltLeft", PlayerYoke.SetTiltLeft, KeyHandler.ButtonInputType.BUTTON_HOLD);
 		mKeyHandler.Add("TiltRight", PlayerYoke.SetTiltRight, KeyHandler.ButtonInputType.BUTTON_HOLD);
 		mKeyHandler.Add("Attack", PlayerYoke.SetTap, KeyHandler.ButtonInputType.BUTTON_PRESS);
-		mEnableMouseInput = true;
+		mEnableMouseInput = Application.isMobilePlatform;
 	}
 
 	public void Reset()

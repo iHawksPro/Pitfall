@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1845417d05c44039ec1b576ff55ee1, type: 3}
+  m_Name: Consumables
+  m_EditorClassIdentifier:
+  products:
+  - Identifier: consumable.macaw
+    AssociatedUpgradeID: upgrade.macaw
+    Category: 0
+    Title: S_CON_MACAW_T
+    Levels:
+    - Description: S_CON_MACAW_D
+      CoinPrice: 6000
+      GemPrice: 10
+      Quantity: 10
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: consumable.jungle
+    AssociatedUpgradeID: upgrade.jungle
+    Category: 0
+    Title: S_CON_JUNGLE_T
+    Levels:
+    - Description: S_CON_JUNGLE_D
+      CoinPrice: 4000
+      GemPrice: 10
+      Quantity: 10
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: consumable.speedincrease
+    AssociatedUpgradeID: upgrade.speedincrease
+    Category: 0
+    Title: S_CON_SPEEDINCREASE_T
+    Levels:
+    - Description: S_CON_SPEEDINCREASE_D
+      CoinPrice: 1600
+      GemPrice: 6
+      Quantity: 10
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: consumable.antivenom
+    AssociatedUpgradeID: upgrade.antivenom
+    Category: 0
+    Title: S_CON_ANTIVENOM_T
+    Levels:
+    - Description: S_CON_ANTIVENOM_D
+      CoinPrice: 3000
+      GemPrice: 8
+      Quantity: 10
+    LevelUnlock: 0
+    Discount: 0

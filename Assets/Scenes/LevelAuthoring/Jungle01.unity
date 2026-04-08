@@ -1,0 +1,2519 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &3
+SceneSettings:
+  m_ObjectHideFlags: 0
+  m_PVSData:
+  m_PVSObjectsArray: []
+  m_PVSPortalsArray: []
+  m_OcclusionBakeSettings:
+    smallestOccluder: 0
+    smallestHole: 0
+    backfaceThreshold: 0
+--- !u!104 &4
+RenderSettings:
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientLight: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 0}
+  m_ObjectHideFlags: 0
+--- !u!127 &5
+HaloManager:
+  m_ObjectHideFlags: 0
+--- !u!157 &6
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  m_LightProbes: {fileID: 0}
+  m_Lightmaps: []
+  m_LightmapsMode: 1
+  m_BakedColorSpace: 0
+  m_UseDualLightmapsInForward: 0
+  m_LightmapEditorSettings:
+    m_Resolution: 2
+    m_LastUsedResolution: 0
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
+    m_BounceBoost: 1
+    m_BounceIntensity: 1
+    m_SkyLightColor: {r: 0.86, g: 0.93, b: 1, a: 1}
+    m_SkyLightIntensity: 0
+    m_Quality: 0
+    m_Bounces: 1
+    m_FinalGatherRays: 1000
+    m_FinalGatherContrastThreshold: 0.05
+    m_FinalGatherGradientThreshold: 0
+    m_FinalGatherInterpolationPoints: 15
+    m_AOAmount: 0
+    m_AOMaxDistance: 1
+    m_AOContrast: 1
+    m_LODSurfaceMappingDistance: 1
+    m_Padding: 2
+    m_TextureCompression: 1
+    m_LockAtlas: 0
+--- !u!196 &7
+NavMeshSettings:
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    accuratePlacement: 0
+    minRegionArea: 2
+    widthInaccuracy: 0
+    heightInaccuracy: 0
+  m_NavMesh: {fileID: 0}
+--- !u!1 &1
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Component:
+  - 4: {fileID: 2}
+  - 114: {fileID: 8}
+  m_Layer: 0
+  m_Name: SetPiece
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -375.3469, y: -2.1079254, z: 882.3127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &8
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6056100f01a1fdcc97bfbf2c7a554073, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  AuthoredLevelName: Jungle
+  DebugMenu: 0
+  SpeedMinimum: 0
+  SpeedMaximum: 50
+  OccurenceTimer: 20
+  SectionList:
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_1
+      ElementHash: 0
+      ListIndex: 38
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_2
+      ElementHash: 0
+      ListIndex: 92
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_Slide_A_1
+      ElementHash: 0
+      ListIndex: 4
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_Bend_L3_A_1
+      ElementHash: 0
+      ListIndex: 26
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_3
+      ElementHash: 0
+      ListIndex: 40
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_1
+      ElementHash: 0
+      ListIndex: 50
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_2
+      ElementHash: 0
+      ListIndex: 51
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Reduce_L_In_A_1
+      ElementHash: 0
+      ListIndex: 79
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Reduce_L_Tile_A_1
+      ElementHash: 0
+      ListIndex: 81
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Reduce_L_Tile_A_2
+      ElementHash: 0
+      ListIndex: 82
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Reduce_L_Out_A_1
+      ElementHash: 0
+      ListIndex: 80
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_B_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_1
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_2
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_3
+      ElementHash: 0
+      ListIndex: 40
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_1
+      ElementHash: 0
+      ListIndex: 91
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_3
+      ElementHash: 0
+      ListIndex: 40
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_SlideJump_12m_A_1
+      ElementHash: 0
+      ListIndex: 98
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_1
+      ElementHash: 0
+      ListIndex: 50
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_2
+      ElementHash: 0
+      ListIndex: 51
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_3
+      ElementHash: 0
+      ListIndex: 40
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_1
+      ElementHash: 0
+      ListIndex: 91
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_SlideJump_12m_A_1
+      ElementHash: 0
+      ListIndex: 98
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_A_2
+      ElementHash: 0
+      ListIndex: 6
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_SlideJump_12m_A_3
+      ElementHash: 0
+      ListIndex: 100
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_A_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_A_2
+      ElementHash: 0
+      ListIndex: 6
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_1
+      ElementHash: 0
+      ListIndex: 38
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_3
+      ElementHash: 0
+      ListIndex: 93
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_2
+      ElementHash: 0
+      ListIndex: 92
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_SlideJump_12m_A_3
+      ElementHash: 0
+      ListIndex: 100
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_A_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_1
+      ElementHash: 0
+      ListIndex: 38
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_2
+      ElementHash: 0
+      ListIndex: 51
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_2
+      ElementHash: 0
+      ListIndex: 92
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_4
+      ElementHash: 0
+      ListIndex: 49
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_1
+      ElementHash: 0
+      ListIndex: 50
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_1
+      ElementHash: 0
+      ListIndex: 38
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_1
+      ElementHash: 0
+      ListIndex: 38
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_2
+      ElementHash: 0
+      ListIndex: 51
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_3
+      ElementHash: 0
+      ListIndex: 40
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_1
+      ElementHash: 0
+      ListIndex: 38
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_Slide_A_1
+      ElementHash: 0
+      ListIndex: 4
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_2
+      ElementHash: 0
+      ListIndex: 47
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_1
+      ElementHash: 0
+      ListIndex: 91
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_12m_A_2
+      ElementHash: 0
+      ListIndex: 92
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_In_A_1
+      ElementHash: 0
+      ListIndex: 59
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_Tile_A_1
+      ElementHash: 0
+      ListIndex: 77
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_Out_A_1
+      ElementHash: 0
+      ListIndex: 66
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_Jump_24m_A_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_3
+      ElementHash: 0
+      ListIndex: 48
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_Bend_L2_A_1
+      ElementHash: 0
+      ListIndex: 25
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_Bend_L3_A_1
+      ElementHash: 0
+      ListIndex: 26
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Slide_24m_A_4
+      ElementHash: 0
+      ListIndex: 94
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_3
+      ElementHash: 0
+      ListIndex: 40
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_In_A_1
+      ElementHash: 0
+      ListIndex: 59
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_Tile_A_1
+      ElementHash: 0
+      ListIndex: 77
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_Out_A_1
+      ElementHash: 0
+      ListIndex: 66
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_In_A_1
+      ElementHash: 0
+      ListIndex: 59
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_Tile_A_1
+      ElementHash: 0
+      ListIndex: 77
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_Out_A_1
+      ElementHash: 0
+      ListIndex: 66
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_1
+      ElementHash: 0
+      ListIndex: 46
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_A_2
+      ElementHash: 0
+      ListIndex: 6
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_Bend_L6_A_1
+      ElementHash: 0
+      ListIndex: 28
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Jump_12m_A_2
+      ElementHash: 0
+      ListIndex: 39
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_B_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_B_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_1
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_2
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_2
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_B_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_1
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_2
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_B_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Reduce_In_B_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_B_1
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_B_1
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_B_1
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Reduce_Out_B_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Slide_24m_D_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Jump_12m_D_1
+      ElementHash: 0
+      ListIndex: 8
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Slide_24m_D_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Jump_12m_D_1
+      ElementHash: 0
+      ListIndex: 8
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Slide_24m_D_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_D_2
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_Jump_24m_D_2
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Jump_12m_D_1
+      ElementHash: 0
+      ListIndex: 8
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Junc_L_D_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Slide_24m_D_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_Jump_24m_D_2
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_D_2
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_D_2
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Jump_24m_D_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Junc_L_D_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Junc_R_D_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_SlideJump_12m_D_1
+      ElementHash: 0
+      ListIndex: 13
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_SlideJump_12m_D_2
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_2m_D_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_ANIM_Jump_24m_D_2
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    - Element: JNG_Flat_6m_D_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 0
+      Group: 4
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_ANIM_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_1
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_6m_B_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Slide_12m_B_2
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_B_1
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_2m_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Jump_12m_B_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_HazardBend_L90_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Bend_L45_C_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_12m_C_3
+      ElementHash: 0
+      ListIndex: 8
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Slide_6m_C_1
+      ElementHash: 0
+      ListIndex: 32
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_12m_C_1
+      ElementHash: 0
+      ListIndex: 6
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_SlideJump_12m_C_1
+      ElementHash: 0
+      ListIndex: 33
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_12m_C_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_HazardBend_R90_C_1
+      ElementHash: 0
+      ListIndex: 13
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_12m_C_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_In_C_1
+      ElementHash: 0
+      ListIndex: 25
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_C_1
+      ElementHash: 0
+      ListIndex: 27
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_C_1
+      ElementHash: 0
+      ListIndex: 27
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Out_C_1
+      ElementHash: 0
+      ListIndex: 26
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_6m_C_1
+      ElementHash: 0
+      ListIndex: 14
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Slide_6m_C_1
+      ElementHash: 0
+      ListIndex: 32
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_12m_C_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_12m_C_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_6m_C_1
+      ElementHash: 0
+      ListIndex: 14
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_2m_C_1
+      ElementHash: 0
+      ListIndex: 4
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Slide_6m_C_1
+      ElementHash: 0
+      ListIndex: 32
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_ANIM_HouseTest_R90_C_1
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_6m_C_1
+      ElementHash: 0
+      ListIndex: 14
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Bend_L45_C_1
+      ElementHash: 0
+      ListIndex: 2
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_12m_C_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Slide_6m_C_1
+      ElementHash: 0
+      ListIndex: 32
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Junc_L_C_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Junc_R_C_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Slide_6m_C_1
+      ElementHash: 0
+      ListIndex: 32
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_2m_C_1
+      ElementHash: 0
+      ListIndex: 4
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_2m_C_1
+      ElementHash: 0
+      ListIndex: 4
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Jump_6m_C_1
+      ElementHash: 0
+      ListIndex: 14
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Flat_6m_C_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_In_C_1
+      ElementHash: 0
+      ListIndex: 25
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_C_1
+      ElementHash: 0
+      ListIndex: 27
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_C_1
+      ElementHash: 0
+      ListIndex: 27
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Tile_C_1
+      ElementHash: 0
+      ListIndex: 27
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_Reduce_Out_C_1
+      ElementHash: 0
+      ListIndex: 26
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    - Element: JNG_ANIM_HouseTest_R90_C_1
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 0
+      Group: 3
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_L_In_A_1
+      ElementHash: 0
+      ListIndex: 60
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_L_Tile_A_1
+      ElementHash: 0
+      ListIndex: 62
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_L_Tile_A_4
+      ElementHash: 0
+      ListIndex: 65
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Pit_L_Out_A_1
+      ElementHash: 0
+      ListIndex: 61
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 0
+  SetPiece: 1
+  AuthoredSectionsActive: 0
+  TestWorld: 0
+  TestSection: -1

@@ -1,0 +1,398 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: AppearanceRulesController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.6568418, y: 3.103445, z: 1.6606827}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16946f6bfbb0e7cc6bbf182818b7a49, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Rules:
+  - StartDistance: 0
+    EndDistance: 1100
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 0
+    - DifficultyID: 30
+      Chance: 0
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 0
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 1100
+    EndDistance: 1300
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 0
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 0
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 1300
+    EndDistance: 1500
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 0
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 1500
+    EndDistance: 3000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 3000
+    EndDistance: 4500
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 4500
+    EndDistance: 5000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 5000
+    EndDistance: 10000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 10000
+    EndDistance: 11000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 50
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 11000
+    EndDistance: 16000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 30
+    - DifficultyID: 90
+      Chance: 50
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 16000
+    EndDistance: 20000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 50
+    - DifficultyID: 90
+      Chance: 50
+    - DifficultyID: 100
+      Chance: 50
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  Crocodile: 500
+  Scorpion: 510
+  Snake: 520
+  Meteor: 530
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

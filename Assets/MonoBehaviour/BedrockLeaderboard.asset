@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1793b2b79615192f4213f0799829157, type: 3}
+  m_Name: BedrockLeaderboard
+  m_EditorClassIdentifier:
+  BoardConfigs:
+  - Name: runner.distance
+    BedrockID: 1
+    WriteType: 2
+  - Name: runner.score
+    BedrockID: 2
+    WriteType: 2
+  - Name: runner.enemies
+    BedrockID: 3
+    WriteType: 2
+  - Name: jungle.easy
+    BedrockID: 4
+    WriteType: 3
+  - Name: jungle.medium
+    BedrockID: 5
+    WriteType: 3
+  - Name: jungle.hard
+    BedrockID: 6
+    WriteType: 3
+  - Name: mountain.easy
+    BedrockID: 7
+    WriteType: 3
+  - Name: mountain.medium
+    BedrockID: 8
+    WriteType: 3
+  - Name: jungle.pro
+    BedrockID: 9
+    WriteType: 3
+  - Name: mountain.hard
+    BedrockID: 10
+    WriteType: 3
+  - Name: mountain.pro
+    BedrockID: 11
+    WriteType: 3
+  - Name: mine.easy
+    BedrockID: 12
+    WriteType: 3
+  - Name: mine.medium
+    BedrockID: 13
+    WriteType: 3
+  - Name: mine.hard
+    BedrockID: 14
+    WriteType: 3
+  - Name: mine.pro
+    BedrockID: 15
+    WriteType: 3

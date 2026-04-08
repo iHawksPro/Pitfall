@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: StoreProductManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464bc9c41bdb1f8f47eaef9e5f11bee2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_storeProductDefs:
+  - {fileID: 11400000, guid: 77d79deb6f685b146a42c05d682b4230, type: 2}
+  - {fileID: 11400000, guid: 339371ec17e0be34f9858f23af094376, type: 2}
+  - {fileID: 11400000, guid: 6ed6f969c7fb47b45a087f808b2a8e0f, type: 2}
+  - {fileID: 11400000, guid: a31e8bbd120519040935fb18a7e038ca, type: 2}
+  - {fileID: 11400000, guid: 43f6c7d53a0f5454187d9429307bc27c, type: 2}
+  m_gemProductDefs: {fileID: 11400000, guid: 9e3a6513fe081ae46bc3dc454f8aff64, type: 2}
+  GooglePlaySecret: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgWNBhSitMAYYBhsJ0oS7SnX7tajKsS8k1jk7pDs1EtGIHhgZY2nsOcJd3xe8KAePfRlKiCrCeO/rMPBrCqR9Z8zwFLp/WST3gWorAQp5XRMuId8hcxRLLjzBcGkhFsi7l8WBOa99PcFIxqSblVBt3nsy9oM8Ii3+E+ci+44qp4YBt3xBbQ5yNRZcSEGxlX4rPokYj0Y8thkwDTT+rpJvnXV5YqXMq1ImNRwfgy54B/D3ifUF8uxWCU/b/oQXWSs+FEQy8dzUafJ3m50CbFJm77H4RtVsVNpGqKJM9DmMkQDjf/ElGJ3JOpCQcIdwD78jZ3a9CVdL8enXN78z0W7WKQIDAQAB
+  GoogleProductSkus: []
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

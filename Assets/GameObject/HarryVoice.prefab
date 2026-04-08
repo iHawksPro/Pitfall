@@ -1,0 +1,239 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: HarryVoice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e872c932fd3062e7a6c2d69f854009da, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Jump:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 7f316294a69b6ef449f29b2d7046f26d, type: 3}
+    - {fileID: 8300000, guid: 3be689a55dcc4664aaf066aed9e7291c, type: 3}
+    - {fileID: 8300000, guid: 991536ea1b715224690f0a4704da8348, type: 3}
+    - {fileID: 8300000, guid: f57389a66a11f9e4cae23e3fab9d90fc, type: 3}
+    - {fileID: 8300000, guid: cccecceb791ce4f4bbfffeb4a7b17018, type: 3}
+    - {fileID: 8300000, guid: 81a2160ae814a1948a8b6a402e7e143f, type: 3}
+    - {fileID: 8300000, guid: 4c6d85a55f5786541beb0e609a1e3122, type: 3}
+    - {fileID: 8300000, guid: 425474d1d2ec86746b33b8b4cc449408, type: 3}
+    - {fileID: 8300000, guid: 9aa99b1afbbcb984683d60e9dd2f06c9, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  Landing:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 46bd301bccfc4cb478a415fc17bce7a6, type: 3}
+    - {fileID: 8300000, guid: f97ed4e60bf157049be90b7d31904398, type: 3}
+    - {fileID: 8300000, guid: 1481b134a26273d4a87ed470e5751dcb, type: 3}
+    - {fileID: 8300000, guid: e0a1e01d31c0d704ea86d870f728dae4, type: 3}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  Rope:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 430f3426b55076e4c933ba24e6998540, type: 3}
+    - {fileID: 8300000, guid: 001615c78250e084eaccb7b0bc1aea8d, type: 3}
+    - {fileID: 8300000, guid: 232c2518a03695e49a884caf53ba8362, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  Sidestep:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 655ff5912e1c5324e99988f912372cac, type: 3}
+    - {fileID: 8300000, guid: ac9f5ad3c60639046a40039b75d0236d, type: 3}
+    - {fileID: 8300000, guid: 323f960491b69894ab55cd3a5f6a72e9, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  WallDeath:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: a54729bcca6a35f46ae91d0d9a6dea3b, type: 3}
+    - {fileID: 8300000, guid: 2eff06ece64e88c4797e9ab1293cb3c0, type: 3}
+    - {fileID: 8300000, guid: cecceab47e59d1a4aaf1b3fc84a860f9, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  PitDeath:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 2b643b07d99e7884694bfb5abfc1a0c7, type: 3}
+    - {fileID: 8300000, guid: 053c52952ebbc91429a3d7a3b7d0e852, type: 3}
+    - {fileID: 8300000, guid: 2da3abfb6fde69a408ac7f8902907e75, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  CrocDeath:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: d64e1ba80ef08ac4d9548b1579478323, type: 3}
+    - {fileID: 8300000, guid: e67cf494ca0291142a8ddd6eebf4613b, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  Poisoned:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: dd57b883f00c66649a38b463817bfec9, type: 3}
+    m_bypassEffects: 0
+    m_loop: 1
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  Recovered:
+    m_nextSoundChoice: 1
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 6620d3b1c1448bb4faae891c81f04da0, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

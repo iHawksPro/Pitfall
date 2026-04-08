@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: DialogManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c575b4dd5bcdd24148ed8581813da4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_standardDialogPrefab: {fileID: 114302127217294661, guid: 8183847eb6212f64592338c78273ba52, type: 2}
+  m_rateAppDialogPrefab: {fileID: 114587397909062814, guid: 819c09092add5e64a90a23d2e398c7e6, type: 2}
+  m_noButtonDialogPrefab: {fileID: 114256069497284392, guid: 1cf3dbf917fb07a4482f49edd5a75ea5, type: 2}
+  m_standardMessageBoxPrefab: {fileID: 114634108722742392, guid: 479148a1dfc7ede48ba46b29aee4799a, type: 2}
+  m_rewardsDialogPrefab: {fileID: 114302127217294661, guid: d5cb336142eaea4439b77dec82b61ae2, type: 2}
+  m_whatsNewDialogPrefab: {fileID: 114694121525821480, guid: aeb9f732f8d373542ba84af62c34b82b, type: 2}
+  m_ootdInfoDialogPrefab: {fileID: 114642988549198181, guid: f3fbe90095a862540b27bb0962b44f83, type: 2}
+  m_newSaleDialogPrefab: {fileID: 114969106005120503, guid: dd0ca3b635077f040b5e807da8783ff6, type: 2}
+  m_diamondsToContinueDialogPrefab: {fileID: 114808113985169905, guid: e746a087762908c42b9a656f940df0d9, type: 2}
+  m_diamondsOrAdvertsToContinueDialogPrefab: {fileID: 114632746491512912, guid: a022ba246cdff7644aea3c7213a3ff2f, type: 2}
+  m_countDownPrefab: {fileID: 114044625135789424, guid: 08ddebe861dbc6b458b4e1929206c1eb, type: 2}
+  m_firstCheckpoint: checkpoint.2000
+  m_6kCheckpoint: checkpoint.6000
+  m_macawConsumable: consumable.macaw
+  m_jaguarUpgrade: upgrade.jaguar
+  m_spiritJungleConsumable: consumable.jungle
+  m_poisonUpgrade: upgrade.poison
+  m_antiVenomConsumable: consumable.antivenom
+  m_speedIncreaseConsumable: consumable.speedincrease
+  m_firstOutfit: outfit.ninja
+  m_products:
+  - {fileID: 11400000, guid: a31e8bbd120519040935fb18a7e038ca, type: 2}
+  - {fileID: 11400000, guid: 77d79deb6f685b146a42c05d682b4230, type: 2}
+  - {fileID: 11400000, guid: 6ed6f969c7fb47b45a087f808b2a8e0f, type: 2}
+  - {fileID: 11400000, guid: 339371ec17e0be34f9858f23af094376, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

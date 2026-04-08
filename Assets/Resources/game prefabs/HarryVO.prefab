@@ -1,0 +1,238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: HarryVO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08aceee15167094b07bcc7e94f731f3, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  StartRun:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: dc8a9c78fa00d9d409f7928251e4d9a5, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: f583f6903d502be4aaa3eba59db268e3, type: 3}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  WhipSnake:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: cec7d429145e1b34faa107df953e99fc, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: b61ae7d4120e7c34ca29a7800b3eccd0, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  WhipScorpion:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 2ada4d7d776f36a4da11d8c5f3958043, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: e3b14b3a8d59dcc4f809b3bf7da6ce52, type: 3}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  WhipCroc:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 92249680c910f234a9d2838e09277650, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: bea7fce627839b343bf21110158251fb, type: 3}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  RopeSwing:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: a3ba8d33677fdbe4ba006ded540c64a9, type: 3}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 7847ff742e64a7b49838f2bdcff17031, type: 3}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  StylishDismount:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 1d95e65ef80259e4291a018f357d0a5e, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 8300000, guid: b4bbaf8ebe66a3d40a5e877cfacdc71f, type: 3}
+    - {fileID: 0}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  StartMinecart:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 9c0ab060dbbb49146a135f04f7b387c8, type: 3}
+    - {fileID: 8300000, guid: fadc5cface87d694393a352bcd84541c, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  StartBike:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 6f30f673b3b1e0e44b1e2c9db65a7ca0, type: 3}
+    - {fileID: 8300000, guid: 36ad60d245107ed4588aaa02aa488321, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+  StartJaguar:
+    m_nextSoundChoice: 2
+    m_audioSourceData:
+    - {fileID: 8300000, guid: 54d39dcdd299f994d8ec42828450004f, type: 3}
+    - {fileID: 8300000, guid: 0cfcfdba60284354fb457504216eb0d3, type: 3}
+    m_bypassEffects: 0
+    m_loop: 0
+    m_priority: 128
+    m_volume: 1
+    m_pitch: 1
+    m_maxInstances: 1
+    m_timeBetweenDuplicatePlay: 0.1
+    m_panLevel: 1
+    m_spread: 0
+    m_dopplerLevel: 0
+    m_minDistance: 5
+    m_maxDistance: 50
+    m_rollOffMode: 1
+    m_pan2D: 0
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

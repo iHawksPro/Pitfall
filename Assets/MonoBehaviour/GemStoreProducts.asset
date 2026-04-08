@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edcd52d7046c12a949b99fae0f757b4, type: 3}
+  m_Name: GemStoreProducts
+  m_EditorClassIdentifier:
+  products:
+  - Identifier: treasure.permanentupgrade
+    Title: S_TREASURE_UPGRADE
+    Description: S_TREASURE_UPG_D
+    Price: 1.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 0
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle1
+    Title: S_DIAMOND_BUNDLE1
+    Description: S_GEM_BUNDLE_D
+    Price: 1.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 20
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle2
+    Title: S_DIAMOND_BUNDLE2
+    Description: S_GEM_BUNDLE_D
+    Price: 4.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 60
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle3
+    Title: S_DIAMOND_BUNDLE3
+    Description: S_GEM_BUNDLE_D
+    Price: 14.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 230
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle4
+    Title: S_DIAMOND_BUNDLE4
+    Description: S_GEM_BUNDLE_D
+    Price: 29.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 700
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle5
+    Title: S_DIAMOND_BUNDLE5
+    Description: S_GEM_BUNDLE_D
+    Price: 49.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 1500
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle5a
+    Title: S_DIAMOND_BUNDLE5
+    Description: S_GEM_BUNDLE_D
+    Price: 99.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 3000
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle1a
+    Title: S_DIAMOND_BUNDLE1
+    Description: S_GEM_BUNDLE_D
+    Price: 0.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 8
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle3a
+    Title: S_DIAMOND_BUNDLE3
+    Description: S_GEM_BUNDLE_D
+    Price: 9.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 110
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle4a
+    Title: S_DIAMOND_BUNDLE4
+    Description: S_GEM_BUNDLE_D
+    Price: 19.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 400
+    PercentageOffAmount: 0
+    IsIAP: 1
+  - Identifier: gems.bundle4b
+    Title: S_DIAMOND_BUNDLE4
+    Description: S_GEM_BUNDLE_D
+    Price: 49.99
+    CurrencySymbol: $
+    CurrencyCode:
+    AmountOfGems: 1500
+    PercentageOffAmount: 0
+    IsIAP: 1

@@ -1,0 +1,877 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: TurnLeft
+  m_AnimationType: 1
+  m_Compressed: 1
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves:
+  - m_Path: BikeRoot
+    m_Times:
+      m_NumItems: 12
+      m_Data: 403575944a719802
+      m_BitSize: 5
+    m_Values:
+      m_NumItems: 12
+      m_Data: 1b14ed3e33846b3d4be4283b0324ed3ed12710bd3968cfb441684fb3592751b7f313ef40fbd32e400ea8dfbf2608e0bf
+    m_Slopes:
+      m_NumItems: 48
+      m_Range: 3.1559334
+      m_Start: -1.3355713
+      m_Data: 9b95759e7291d8b75dd12f025abc0920584dd1357a15f581e054891e67619ca851dda761
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/Bone067
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7dfadfbf7dfad
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/Bone067/Bone068
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf75fd2fbf75fd2
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/Bone067/Bone068/Steering
+    m_Times:
+      m_NumItems: 9
+      m_Data: 4051c5d48903
+      m_BitSize: 5
+    m_Values:
+      m_NumItems: 9
+      m_Data: 1bd71ea49b875fa47b8860a45b471fa423c65da37b675fa4abb820a4332860a4231860a4
+    m_Slopes:
+      m_NumItems: 36
+      m_Range: 4.167562
+      m_Start: -1.7018242
+      m_Data: 9d9669a897698e956940945d9c9669ffa86ded9761d19569159665
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/Bone067/Bone068/Steering/Bone070
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/Bone067/Bone068/Steering/FrontWheel
+    m_Times:
+      m_NumItems: 30
+      m_Data: d0aa75eac68da239aae2a802
+      m_BitSize: 3
+    m_Values:
+      m_NumItems: 30
+      m_Data: bc69759cbc58368ccc16366df404734fb7940db49f168a95b7980974a71a0c558e98a244be1a32643edbc38778ca0ba881d7d0c2b97318d5198f21da412aebcd1cbbf2b1fc38f68f9ac6a64dbf848db3bfe6099307c9096f274b0d4d7e99274f265b397270190a9748cb4db509d613cc2171ddd9f9ede3d8
+    m_Slopes:
+      m_NumItems: 120
+      m_Range: 17.716694
+      m_Start: -8.858347
+      m_Data: 1c2442de022e659115ee011df6733c3a3660ba3888377bb071ddd4e86eeddd1eee13bee2894ccb42baa700f77382c33b4d111799500aee011df6733c7c26647c2994385cc06ffee464aff5d86eee4ffdd6859bbb03a99389477b
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/Bone067/Bone068/Steering/FrontWheel/Bone080
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/LeftExhaust
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: db77df27db77df27
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/LeftExhaust/Bone078
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/BackWheel
+    m_Times:
+      m_NumItems: 30
+      m_Data: d0aa75eac6cda438aae2a802
+      m_BitSize: 3
+    m_Values:
+      m_NumItems: 30
+      m_Data: 611555cf919398d5f1ef5fda198ce7d471e82ec36c4ab4a63c88f683346635635c44314687a50ba7cf670982c7890a637f4b8e47ee992a553edbbc797e985dbbe9f4d5d089d01edaf9eb67d401c8efbf040a75a0c487b67cbcb5b45c0c34304175eb282df76709802f2a8b5c16982041ee1ab5693e1b4386
+    m_Slopes:
+      m_NumItems: 120
+      m_Range: 16.832684
+      m_Start: -8.409151
+      m_Data: 12c9920c2993c5977f459557c9522fd2c00e1d1002e8600df3b11c7c14447d0774f9599cb67cc8ee0eede2cffd8b3ddb03bbb300e88300d553c7611f13b0021ff0016a4115b4a228fb344cfe077cfc1aacb67ee86a4ff521dee1
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/BackWheel/Bone082
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/RightExhaust
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: 0b48e0270b48e027
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/RightExhaust/Bone076
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/LeftBag
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: 42f1bf8042f1bf80
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/LeftBag/Bone072
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/RightBag
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: a2eebf7fa2eebf7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  - m_Path: BikeRoot/RightBag/Bone074
+    m_Times:
+      m_NumItems: 2
+      m_Data: 08
+      m_BitSize: 2
+    m_Values:
+      m_NumItems: 2
+      m_Data: fbf7df7ffbf7df7f
+    m_Slopes:
+      m_NumItems: 8
+      m_Range: 0
+      m_Start: 0
+      m_Data: 000000000000
+      m_BitSize: 6
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.25718844, y: 0.0012732107, z: 0.0032919396}
+        inSlope: {x: 4.003563E-06, y: 1.2971995E-08, z: -1.762859E-08}
+        outSlope: {x: 4.003563E-06, y: 1.2971995E-08, z: -1.762859E-08}
+        tangentMode: 0
+      - time: 0.23333333
+        value: {x: 0.45894986, y: 0.00127292, z: 0.0032918635}
+        inSlope: {x: 7.196673E-06, y: -3.7211341E-06, z: -1.7628599E-08}
+        outSlope: {x: -5.4227644E-06, y: -3.7547245E-06, z: -4.1300172E-08}
+        tangentMode: 0
+      - time: 0.56666666
+        value: {x: -0.22140165, y: 0.0012695137, z: 0.0038400895}
+        inSlope: {x: -2.6554105E-06, y: 1.1142927E-08, z: -4.130023E-08}
+        outSlope: {x: 1.5107479E-06, y: 2.0788065E-08, z: -1.1050417E-07}
+        tangentMode: 0
+      - time: 0.7
+        value: {x: -0.2058552, y: 0.0012702984, z: 0.002836136}
+        inSlope: {x: 0.34979424, y: 3.770695E-06, z: -1.4642684E-07}
+        outSlope: {x: 0.34979054, y: 3.757384E-06, z: 3.8205222E-08}
+        tangentMode: 0
+      - time: 1
+        value: {x: -0.0052081347, y: 0.0012711535, z: 0.003199658}
+        inSlope: {x: 1.4080526E-06, y: 1.5799177E-08, z: 3.1220363E-08}
+        outSlope: {x: 1.4080526E-06, y: 1.5799177E-08, z: 3.1220363E-08}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.4198977, y: -1.0151416E-07, z: 2.5178684E-08}
+        inSlope: {x: -4.460717E-15, y: -8.2718056E-22, z: 6.2038546E-22}
+        outSlope: {x: -4.460717E-15, y: -8.2718056E-22, z: 6.2038546E-22}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.4198977, y: -1.0151416E-07, z: 2.5178684E-08}
+        inSlope: {x: 9.41707E-15, y: -3.54506E-22, z: 2.658795E-22}
+        outSlope: {x: 9.41707E-15, y: -3.54506E-22, z: 2.658795E-22}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.9132528, y: 5.9604645E-08, z: 6.729598E-08}
+        inSlope: {x: -2.0816682E-14, y: 8.2718056E-22, z: 1.6543611E-21}
+        outSlope: {x: -2.0816682E-14, y: 8.2718056E-22, z: 1.6543611E-21}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.9132528, y: 5.9604645E-08, z: 6.729598E-08}
+        inSlope: {x: -8.9214355E-15, y: 3.54506E-22, z: 7.09012E-22}
+        outSlope: {x: -8.9214355E-15, y: 3.54506E-22, z: 7.09012E-22}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.103055954, y: 0, z: 1.2484289E-09}
+        inSlope: {x: -1.7347234E-15, y: -0, z: 2.5849393E-23}
+        outSlope: {x: -1.7347234E-15, y: -0, z: 2.5849393E-23}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.103055954, y: 0, z: 1.2484289E-09}
+        inSlope: {x: -7.4345294E-16, y: -0, z: 1.1078312E-23}
+        outSlope: {x: -7.4345294E-16, y: -0, z: 1.1078312E-23}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.6643115, y: -5.9604645E-07, z: 6.742366E-09}
+        inSlope: {x: -1.3877787E-14, y: -1.3234889E-20, z: -0}
+        outSlope: {x: -1.3877787E-14, y: -1.3234889E-20, z: -0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.6643115, y: -5.9604645E-07, z: 6.742366E-09}
+        inSlope: {x: -5.9476235E-15, y: -5.672096E-21, z: -0}
+        outSlope: {x: -5.9476235E-15, y: -5.672096E-21, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering/Bone070
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.66145504, y: -0.002297163, z: -0.08499206}
+        inSlope: {x: -6.9388935E-15, y: -2.7105053E-17, z: -8.673617E-16}
+        outSlope: {x: -6.9388935E-15, y: -2.7105053E-17, z: -8.673617E-16}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.66145504, y: -0.002297163, z: -0.08499206}
+        inSlope: {x: -2.9738118E-15, y: -1.1616452E-17, z: -3.7172647E-16}
+        outSlope: {x: -2.9738118E-15, y: -1.1616452E-17, z: -3.7172647E-16}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering/FrontWheel
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.13495775, y: 0, z: 0}
+        inSlope: {x: -0, y: -0, z: -0}
+        outSlope: {x: -0, y: -0, z: -0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.13495775, y: 0, z: 0}
+        inSlope: {x: -0, y: -0, z: -0}
+        outSlope: {x: -0, y: -0, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering/FrontWheel/Bone080
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.38739246, y: 0.23506625, z: -0.18006083}
+        inSlope: {x: -4.460717E-15, y: -0, z: -0}
+        outSlope: {x: -4.460717E-15, y: -0, z: -0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.38739246, y: 0.23506625, z: -0.18006083}
+        inSlope: {x: 9.41707E-15, y: -0, z: -0}
+        outSlope: {x: 9.41707E-15, y: -0, z: -0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftExhaust
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.80068237, y: -1.7881393E-07, z: 9.5255785E-08}
+        inSlope: {x: -1.3877787E-14, y: -0, z: 1.6543611E-21}
+        outSlope: {x: -1.3877787E-14, y: -0, z: 1.6543611E-21}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.80068237, y: -1.7881393E-07, z: 9.5255785E-08}
+        inSlope: {x: -5.9476235E-15, y: -0, z: 7.09012E-22}
+        outSlope: {x: -5.9476235E-15, y: -0, z: 7.09012E-22}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftExhaust/Bone078
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.42722523, y: 0.68431425, z: -0.09267223}
+        inSlope: {x: -0, y: 6.9388935E-15, z: -1.7347234E-15}
+        outSlope: {x: -0, y: 6.9388935E-15, z: -1.7347234E-15}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.42722523, y: 0.68431425, z: -0.09267223}
+        inSlope: {x: -0, y: 2.9738118E-15, z: -7.4345294E-16}
+        outSlope: {x: -0, y: 2.9738118E-15, z: -7.4345294E-16}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/BackWheel
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.15475157, y: -1.4901161E-08, z: -7.771561E-16}
+        inSlope: {x: -1.7347234E-15, y: -2.0679514E-22, z: -6.1629754E-30}
+        outSlope: {x: -1.7347234E-15, y: -2.0679514E-22, z: -6.1629754E-30}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.15475157, y: -1.4901161E-08, z: -7.771561E-16}
+        inSlope: {x: -7.4345294E-16, y: -8.86265E-23, z: -2.6412754E-30}
+        outSlope: {x: -7.4345294E-16, y: -8.86265E-23, z: -2.6412754E-30}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/BackWheel/Bone082
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.38727415, y: 0.23001318, z: 0.17081453}
+        inSlope: {x: -3.4694467E-15, y: -0, z: 3.4694467E-15}
+        outSlope: {x: -3.4694467E-15, y: -0, z: 3.4694467E-15}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.38727415, y: 0.23001318, z: 0.17081453}
+        inSlope: {x: -1.4869059E-15, y: -0, z: 1.4869059E-15}
+        outSlope: {x: -1.4869059E-15, y: -0, z: 1.4869059E-15}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightExhaust
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.81608367, y: -1.4901161E-07, z: 9.7075926E-08}
+        inSlope: {x: -1.3877787E-14, y: -3.3087222E-21, z: 1.6543611E-21}
+        outSlope: {x: -1.3877787E-14, y: -3.3087222E-21, z: 1.6543611E-21}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.81608367, y: -1.4901161E-07, z: 9.7075926E-08}
+        inSlope: {x: -5.9476235E-15, y: -1.418024E-21, z: 7.09012E-22}
+        outSlope: {x: -5.9476235E-15, y: -1.418024E-21, z: 7.09012E-22}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightExhaust/Bone076
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.9419553, y: 0.7793385, z: -0.1577028}
+        inSlope: {x: -2.7755574E-14, y: 2.0816682E-14, z: -1.7347234E-15}
+        outSlope: {x: -2.7755574E-14, y: 2.0816682E-14, z: -1.7347234E-15}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.9419553, y: 0.7793385, z: -0.1577028}
+        inSlope: {x: -1.1895247E-14, y: 8.9214355E-15, z: -7.4345294E-16}
+        outSlope: {x: -1.1895247E-14, y: 8.9214355E-15, z: -7.4345294E-16}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftBag
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.38688308, y: -1.1920929E-07, z: 4.7081812E-08}
+        inSlope: {x: -5.9476235E-15, y: -1.6543611E-21, z: 4.1359028E-22}
+        outSlope: {x: -5.9476235E-15, y: -1.6543611E-21, z: 4.1359028E-22}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.38688308, y: -1.1920929E-07, z: 4.7081812E-08}
+        inSlope: {x: -1.3877787E-14, y: -7.09012E-22, z: 1.77253E-22}
+        outSlope: {x: -1.3877787E-14, y: -7.09012E-22, z: 1.77253E-22}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftBag/Bone072
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.93796813, y: 0.777384, z: 0.16843241}
+        inSlope: {x: -1.1895247E-14, y: 1.1895247E-14, z: 2.2303585E-15}
+        outSlope: {x: -1.1895247E-14, y: 1.1895247E-14, z: 2.2303585E-15}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.93796813, y: 0.777384, z: 0.16843241}
+        inSlope: {x: -2.7755574E-14, y: 2.7755574E-14, z: -4.708535E-15}
+        outSlope: {x: -2.7755574E-14, y: 2.7755574E-14, z: -4.708535E-15}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightBag
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: -0.38171816, y: -5.9604645E-08, z: 3.126388E-13}
+        inSlope: {x: -0, y: -8.2718056E-22, z: 3.1554434E-27}
+        outSlope: {x: -0, y: -8.2718056E-22, z: 3.1554434E-27}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: -0.38171816, y: -5.9604645E-08, z: 3.126388E-13}
+        inSlope: {x: -0, y: -3.54506E-22, z: 1.352333E-27}
+        outSlope: {x: -0, y: -3.54506E-22, z: 1.352333E-27}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightBag/Bone074
+  m_ScaleCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 1
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1.0000001, y: 1.0000001, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1.0000001, y: 1.0000001, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering/Bone070
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 0.9999999, z: 0.9999999}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 0.9999999, z: 0.9999999}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering/FrontWheel
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/Bone067/Bone068/Steering/FrontWheel/Bone080
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.99999994, y: 1.0000001, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 0.99999994, y: 1.0000001, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftExhaust
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.99999994, y: 0.99999994, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 0.99999994, y: 0.99999994, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftExhaust/Bone078
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/BackWheel
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/BackWheel/Bone082
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 0.9999999, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 0.9999999, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightExhaust
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 0.99999994, y: 0.99999994, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 0.99999994, y: 0.99999994, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightExhaust/Bone076
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 0.99999994}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 0.99999994}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftBag
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/LeftBag/Bone072
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightBag
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - time: 0.033333335
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+    path: BikeRoot/RightBag/Bone074
+  m_FloatCurves: []
+  m_PPtrCurves: []
+  m_SampleRate: 30
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0.14383167, y: 0.70552206, z: 0.09822941}
+    m_Extent: {x: 0.89354604, y: 0.72463834, z: 1.2974446}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_StartTime: 0
+    m_StopTime: 1
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_Events: []

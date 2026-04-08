@@ -1,0 +1,665 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: GameTutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -375.3469, y: -2.1079254, z: 882.3127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6056100f01a1fdcc97bfbf2c7a554073, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  AuthoredLevelName: Tutorial
+  DebugMenu: 0
+  SpeedMinimum: 0
+  SpeedMaximum: 50
+  OccurenceTimer: 20
+  SectionList:
+  - Name:
+    ElementList:
+    - Element: MNT_Trans_FromMenu_B_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_6m_B_1
+      ElementHash: 0
+      ListIndex: 4
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_2m_B_1
+      ElementHash: 0
+      ListIndex: 3
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: 1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  - Name:
+    ElementList:
+    - Element: MNT_West_LedgeDown4_24m_L12_B_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_LedgeDown4_24m_R12_B_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_Jump_B_1
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_B_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_B_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_In_B_1
+      ElementHash: 0
+      ListIndex: 18
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_Node_B_1
+      ElementHash: 0
+      ListIndex: 19
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_Tile_B_1
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_Out_B_1
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_B_3
+      ElementHash: 0
+      ListIndex: 7
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_LedgeDown2_24m_L8_B_1
+      ElementHash: 0
+      ListIndex: 14
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: 2
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  - Name:
+    ElementList:
+    - Element: MNT_West_LedgeDown2_24m_R8_B_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_LedgeDown4_24m_L12_B_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Temple_BE_1
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Temple_E_4
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_West_Temple_Slide_E_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_West_Temple_E_1
+      ElementHash: 0
+      ListIndex: 6
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_West_Temple_E_3
+      ElementHash: 0
+      ListIndex: 8
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_West_Temple_E_4
+      ElementHash: 0
+      ListIndex: 9
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_ANIM_Incidental_E_1
+      ElementHash: 0
+      ListIndex: 0
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_West_Temple_EB_1
+      ElementHash: 0
+      ListIndex: 11
+      Spawn: 0
+      Theme: 1
+      Group: 5
+      relicIndex: -1
+    - Element: MNT_West_LedgeDown2_24m_L8_B_1
+      ElementHash: 0
+      ListIndex: 14
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: 3
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  - Name:
+    ElementList:
+    - Element: MNT_West_Ledge_B_3
+      ElementHash: 0
+      ListIndex: 7
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_B_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_Jump_B_2
+      ElementHash: 0
+      ListIndex: 10
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_B_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_In_B_1
+      ElementHash: 0
+      ListIndex: 18
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_Node_B_1
+      ElementHash: 0
+      ListIndex: 19
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_Tile_B_1
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Pit_Swing_Out_B_1
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_LedgeDown4_24m_L12_B_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_slide_B_1
+      ElementHash: 0
+      ListIndex: 12
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Ledge_BA_1
+      ElementHash: 0
+      ListIndex: 8
+      Spawn: 0
+      Theme: 1
+      Group: 2
+      relicIndex: -1
+    - Element: MNT_West_Down2_24m_A_1
+      ElementHash: 0
+      ListIndex: 15
+      Spawn: 0
+      Theme: 1
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: 4
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  - Name:
+    ElementList:
+    - Element: JNG_Trans_FromMnt_A_1
+      ElementHash: 0
+      ListIndex: 104
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_2
+      ElementHash: 0
+      ListIndex: 47
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_4
+      ElementHash: 0
+      ListIndex: 35
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_R_A_3
+      ElementHash: 0
+      ListIndex: 52
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_3
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_5
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Junc_L_A_3
+      ElementHash: 0
+      ListIndex: 48
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_6
+      ElementHash: 0
+      ListIndex: 36
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: 5
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_3
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_5
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_4
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 3
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_4
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 3
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_4
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 3
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_1
+      ElementHash: 0
+      ListIndex: 33
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_4
+      ElementHash: 0
+      ListIndex: 35
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_5
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_6m_A_1
+      ElementHash: 0
+      ListIndex: 17
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_3
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_5
+      ElementHash: 0
+      ListIndex: 22
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_Bend_L3_A_1
+      ElementHash: 0
+      ListIndex: 26
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_Bend_R2_A_1
+      ElementHash: 0
+      ListIndex: 29
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_2m_A_1
+      ElementHash: 0
+      ListIndex: 16
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: 6
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  - Name:
+    ElementList:
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_2
+      ElementHash: 0
+      ListIndex: 19
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_4
+      ElementHash: 0
+      ListIndex: 21
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 5
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_3
+      ElementHash: 0
+      ListIndex: 20
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 7
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_A_1
+      ElementHash: 0
+      ListIndex: 18
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_2
+      ElementHash: 0
+      ListIndex: 34
+      Spawn: 6
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_12m_AB_1
+      ElementHash: 0
+      ListIndex: 23
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_Flat_24m_B_2
+      ElementHash: 0
+      ListIndex: 6
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_12m_BA_1
+      ElementHash: 0
+      ListIndex: 5
+      Spawn: 0
+      Theme: 0
+      Group: 2
+      relicIndex: -1
+    - Element: JNG_Flat_24m_A_4
+      ElementHash: 0
+      ListIndex: 35
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    - Element: JNG_ANIM_ChaseBridge_A_1
+      ElementHash: 0
+      ListIndex: 1
+      Spawn: 0
+      Theme: 0
+      Group: 1
+      relicIndex: -1
+    DifficultyGroups:
+    StraightAheadSection: -1
+    BranchLeftSection: -1
+    BranchRightSection: -1
+    TutorialSection: 1
+  SetPiece: 0
+  AuthoredSectionsActive: 0
+  TestWorld: 0
+  TestSection: -1
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

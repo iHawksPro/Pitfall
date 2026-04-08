@@ -1,0 +1,350 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea63121d5894f9f09ae7aec472862873, type: 3}
+  m_Name: Achievements
+  m_EditorClassIdentifier:
+  achievements:
+  - Identifier: oneshot.endurance
+    Name: S_ACH_O_ENDURANCE
+    PreEarnedDesc: S_ACH_O_ENDURANCE_PRE
+    EarnedDesc: S_ACH_O_ENDURANCE_POST
+    nPoints: 15
+    nSteps: 10000
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.hoarder
+    Name: S_ACH_O_HOARDER
+    PreEarnedDesc: S_ACH_O_HOARDER_PRE
+    EarnedDesc: S_ACH_O_HOARDER_POST
+    nPoints: 15
+    nSteps: 500
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.meow
+    Name: S_ACH_O_MEOW
+    PreEarnedDesc: S_ACH_O_MEOW_PRE
+    EarnedDesc: S_ACH_O_MEOW_POST
+    nPoints: 15
+    nSteps: 5
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.prettyboy
+    Name: S_ACH_O_PRETTYBOY
+    PreEarnedDesc: S_ACH_O_PRETTYBOY_PRE
+    EarnedDesc: S_ACH_O_PRETTYBOY_POST
+    nPoints: 15
+    nSteps: 3
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.toxicologist
+    Name: S_ACH_O_TOXICOLOGIST
+    PreEarnedDesc: S_ACH_O_TOXICOLOGIST_PRE
+    EarnedDesc: S_ACH_O_TOXICOLOGIST_POST
+    nPoints: 15
+    nSteps: 5
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.sting
+    Name: S_ACH_O_STING
+    PreEarnedDesc: S_ACH_O_STING_PRE
+    EarnedDesc: S_ACH_O_STING_POST
+    nPoints: 15
+    nSteps: 5
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.lazarus
+    Name: S_ACH_O_LAZARUS
+    PreEarnedDesc: S_ACH_O_LAZARUS_PRE
+    EarnedDesc: S_ACH_O_LAZARUS_POST
+    nPoints: 15
+    nSteps: 5
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.venomous
+    Name: S_ACH_O_VENOMOUS
+    PreEarnedDesc: S_ACH_O_VENOMOUS_PRE
+    EarnedDesc: S_ACH_O_VENOMOUS_POST
+    nPoints: 15
+    nSteps: 10
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.swinger
+    Name: S_ACH_O_SWINGER
+    PreEarnedDesc: S_ACH_O_SWINGER_PRE
+    EarnedDesc: S_ACH_O_SWINGER_POST
+    nPoints: 15
+    nSteps: 6
+    Step: 0
+    Version: 1
+  - Identifier: accum.endurance
+    Name: S_ACH_A_ENDURANCE
+    PreEarnedDesc: S_ACH_A_ENDURANCE_PRE
+    EarnedDesc: S_ACH_A_ENDURANCE_POST
+    nPoints: 15
+    nSteps: 100000
+    Step: 0
+    Version: 1
+  - Identifier: accum.hoarder
+    Name: S_ACH_A_HOARDER
+    PreEarnedDesc: S_ACH_A_HOARDER_PRE
+    EarnedDesc: S_ACH_A_HOARDER_POST
+    nPoints: 15
+    nSteps: 5000
+    Step: 0
+    Version: 1
+  - Identifier: accum.meow
+    Name: S_ACH_A_MEOW
+    PreEarnedDesc: S_ACH_A_MEOW_PRE
+    EarnedDesc: S_ACH_A_MEOW_POST
+    nPoints: 15
+    nSteps: 50
+    Step: 0
+    Version: 1
+  - Identifier: accum.prettyboy
+    Name: S_ACH_A_PRETTYBOY
+    PreEarnedDesc: S_ACH_A_PRETTYBOY_PRE
+    EarnedDesc: S_ACH_A_PRETTYBOY_POST
+    nPoints: 15
+    nSteps: 30
+    Step: 0
+    Version: 1
+  - Identifier: accum.toxicologist
+    Name: S_ACH_A_TOXICOLOGIST
+    PreEarnedDesc: S_ACH_A_TOXICOLOGIST_PRE
+    EarnedDesc: S_ACH_A_TOXICOLOGIST_POST
+    nPoints: 15
+    nSteps: 50
+    Step: 0
+    Version: 1
+  - Identifier: accum.sting
+    Name: S_ACH_A_STING
+    PreEarnedDesc: S_ACH_A_STING_PRE
+    EarnedDesc: S_ACH_A_STING_POST
+    nPoints: 15
+    nSteps: 200
+    Step: 0
+    Version: 1
+  - Identifier: accum.lazarus
+    Name: S_ACH_A_LAZARUS
+    PreEarnedDesc: S_ACH_A_LAZARUS_PRE
+    EarnedDesc: S_ACH_A_LAZARUS_POST
+    nPoints: 15
+    nSteps: 50
+    Step: 0
+    Version: 1
+  - Identifier: accum.venomous
+    Name: S_ACH_A_VENOMOUS
+    PreEarnedDesc: S_ACH_A_VENOMOUS_PRE
+    EarnedDesc: S_ACH_A_VENOMOUS_POST
+    nPoints: 15
+    nSteps: 200
+    Step: 0
+    Version: 1
+  - Identifier: accum.swinger
+    Name: S_ACH_A_SWINGER
+    PreEarnedDesc: S_ACH_A_SWINGER_PRE
+    EarnedDesc: S_ACH_A_SWINGER_POST
+    nPoints: 15
+    nSteps: 100
+    Step: 0
+    Version: 1
+  - Identifier: distinction.bronze
+    Name: S_ACH_D_BRONZE
+    PreEarnedDesc: S_ACH_D_BRONZE_PRE
+    EarnedDesc: S_ACH_D_BRONZE_POST
+    nPoints: 25
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: distinction.silver
+    Name: S_ACH_D_SILVER
+    PreEarnedDesc: S_ACH_D_SILVER_PRE
+    EarnedDesc: S_ACH_D_SILVER_POST
+    nPoints: 25
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: distinction.gold
+    Name: S_ACH_D_GOLD
+    PreEarnedDesc: S_ACH_D_GOLD_PRE
+    EarnedDesc: S_ACH_D_GOLD_POST
+    nPoints: 25
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: distinction.platinum
+    Name: S_ACH_D_PLATINUM
+    PreEarnedDesc: S_ACH_D_PLATINUM_PRE
+    EarnedDesc: S_ACH_D_PLATINUM_POST
+    nPoints: 25
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.wings
+    Name: S_ACH_O_WINGS
+    PreEarnedDesc: S_ACH_O_WINGS_PRE
+    EarnedDesc: S_ACH_O_WINGS_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.bear
+    Name: S_ACH_O_BEAR
+    PreEarnedDesc: S_ACH_O_BEAR_PRE
+    EarnedDesc: S_ACH_O_BEAR_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.aviator
+    Name: S_ACH_O_AVIATOR
+    PreEarnedDesc: S_ACH_O_AVIATOR_PRE
+    EarnedDesc: S_ACH_O_AVIATOR_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.antivenom
+    Name: S_ACH_O_ANTIVENOM
+    PreEarnedDesc: S_ACH_O_ANTIVENOM_PRE
+    EarnedDesc: S_ACH_O_ANTIVENOM_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.addicted
+    Name: S_ACH_O_ADDICTED
+    PreEarnedDesc: S_ACH_O_ADDICTED_PRE
+    EarnedDesc: S_ACH_O_ADDICTED_POST
+    nPoints: 15
+    nSteps: 3
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.haste
+    Name: S_ACH_O_HASTE
+    PreEarnedDesc: S_ACH_O_HASTE_PRE
+    EarnedDesc: S_ACH_O_HASTE_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: accum.fashionista
+    Name: S_ACH_A_FASHIONISTA
+    PreEarnedDesc: S_ACH_A_FASHIONISTA_PRE
+    EarnedDesc: S_ACH_A_FASHIONISTA_POST
+    nPoints: 15
+    nSteps: 7
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.educational
+    Name: S_ACH_O_EDUCATIONAL
+    PreEarnedDesc: S_ACH_O_EDUCATIONAL_PRE
+    EarnedDesc: S_ACH_O_EDUCATIONAL_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.crocs
+    Name: S_ACH_O_REPTILE
+    PreEarnedDesc: S_ACH_O_REPTILE_PRE
+    EarnedDesc: S_ACH_O_REPTILE_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.dismount
+    Name: S_ACH_O_DISMOUNT
+    PreEarnedDesc: S_ACH_O_DISMOUNT_PRE
+    EarnedDesc: S_ACH_O_DISMOUNT_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 1
+  - Identifier: accum.complete
+    Name: S_ACH_O_COMPLETE
+    PreEarnedDesc: S_ACH_O_COMPLETE_PRE
+    EarnedDesc: S_ACH_O_COMPLETE_POST
+    nPoints: 50
+    nSteps: 32
+    Step: 0
+    Version: 1
+  - Identifier: oneshot.inauguration
+    Name: S_ACH_O_INAUGURATION
+    PreEarnedDesc: S_ACH_O_INAUGURATION_PRE
+    EarnedDesc: S_ACH_O_INAUGURATION_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 2
+  - Identifier: oneshot.pose
+    Name: S_ACH_O_POSE
+    PreEarnedDesc: S_ACH_O_POSE_PRE
+    EarnedDesc: S_ACH_O_POSE_POST
+    nPoints: 15
+    nSteps: 1
+    Step: 0
+    Version: 2
+  - Identifier: oneshot.breakneck
+    Name: S_ACH_O_BREAKNECK
+    PreEarnedDesc: S_ACH_O_BREAKNECK_PRE
+    EarnedDesc: S_ACH_O_BREAKNECK_POST
+    nPoints: 15
+    nSteps: 5
+    Step: 0
+    Version: 2
+  - Identifier: accum.junglist
+    Name: S_ACH_A_JUNGLIST
+    PreEarnedDesc: S_ACH_A_JUNGLIST_PRE
+    EarnedDesc: S_ACH_A_JUNGLIST_POST
+    nPoints: 15
+    nSteps: 4
+    Step: 0
+    Version: 2
+  - Identifier: accum.summit
+    Name: S_ACH_A_SUMMIT
+    PreEarnedDesc: S_ACH_A_SUMMIT_PRE
+    EarnedDesc: S_ACH_A_SUMMIT_POST
+    nPoints: 15
+    nSteps: 4
+    Step: 0
+    Version: 2
+  - Identifier: accum.mine
+    Name: S_ACH_A_MINE
+    PreEarnedDesc: S_ACH_A_MINE_PRE
+    EarnedDesc: S_ACH_A_MINE_POST
+    nPoints: 15
+    nSteps: 4
+    Step: 0
+    Version: 2
+  - Identifier: accum.unfaltering
+    Name: S_ACH_A_UNFALTERING
+    PreEarnedDesc: S_ACH_A_UNFALTERING_PRE
+    EarnedDesc: S_ACH_A_UNFALTERING_POST
+    nPoints: 15
+    nSteps: 12
+    Step: 0
+    Version: 2
+  - Identifier: accum.relicget
+    Name: S_ACH_A_RELICGET
+    PreEarnedDesc: S_ACH_A_RELICGET_PRE
+    EarnedDesc: S_ACH_A_RELICGET_POST
+    nPoints: 15
+    nSteps: 32
+    Step: 0
+    Version: 2
+  - Identifier: accum.completedroid
+    Name: S_ACH_O_COMPLETE
+    PreEarnedDesc: S_ACH_O_COMPLETE_PRE
+    EarnedDesc: S_ACH_O_COMPLETE_POST
+    nPoints: 50
+    nSteps: 40
+    Step: 0
+    Version: 2

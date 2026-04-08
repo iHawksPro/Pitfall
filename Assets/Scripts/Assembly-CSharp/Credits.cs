@@ -1,0 +1,641 @@
+using UnityEngine;
+
+public class Credits : MonoBehaviour
+{
+	public UIScrollList m_ScrollList;
+
+	public GameObject m_CreditsLineHeadingPrefab;
+
+	public GameObject m_CreditsLineTitlePrefab;
+
+	public GameObject m_CreditsLineSubtitlePrefab;
+
+	public CreditsController m_Controller;
+
+	public float m_scrollSpeed = 0.008f;
+
+	private float m_Pos;
+
+	private bool m_ManualScroll;
+
+	private float m_ManualScrollCooldown;
+
+	public static string[] m_creditList = new string[515]
+	{
+		"<H>Pitfall!",
+		string.Empty,
+		"<H>The Blast Furnace",
+		string.Empty,
+		"<T>Alan Abram",
+		"<S>For Tamia, Cameron and Esmée.",
+		string.Empty,
+		"<T>Lizi Attwood",
+		"<S>With thanks to Ross.",
+		string.Empty,
+		"<T>Dave Ambler",
+		"<S>You think of a witty motto then...",
+		string.Empty,
+		"<T>Matt Bishop",
+		"<S>For the old man, the wife, the boy and my girl.",
+		string.Empty,
+		"<T>Martyn Bramall",
+		"<S>Thanks to my wife Sally and son Evan.",
+		string.Empty,
+		"<T>Martyn Brown",
+		"<S>Great to finally see this first title from a very special development team. Thanks to all those who helped make it all happen!",
+		string.Empty,
+		"<T>Richard Bull",
+		"<S>To Impending First-born. Please Keep it Down. Daddy’s playing Videogames.",
+		string.Empty,
+		"<T>Andy Clitheroe",
+		"<S>Thanks to Jackie and Mahale for being the best family anyone could wish for. Love you both!",
+		string.Empty,
+		"<T>Paul Colls",
+		"<S>Thanks to Jodie, my girls Summer & Bee. My family & close friends (you know who you are) & all of my colleagues here at TBF.",
+		string.Empty,
+		"<T>Przemyslaw Dadun",
+		"<S>Thanks to my family and close friends who always supported me. Best regards to all TL members.",
+		string.Empty,
+		"<T>John Dennis",
+		"<S>With love to Mik, Evan and Jackson.",
+		string.Empty,
+		"<T>Neil Dodwell",
+		"<S>Hi to Ray, Duncan, Kirsty, Debi, Dave, Jade, Owen, Dan, Ryan, Doug, Leona, Carl and Oscar Dog!",
+		string.Empty,
+		"<T>Paul Dunstan",
+		"<S>Judged the designer least likely to finish a coherent sentenc…",
+		string.Empty,
+		"<T>Andy Fern",
+		"<S>Proud to work with such a great team! Hope you all enjoy the game…",
+		string.Empty,
+		"<T>Jason Gee",
+		"<S>Claire, Lily & Jacob for all their love & support.",
+		string.Empty,
+		"<T>Anthony Gowland",
+		"<S>Love & thanks to Susan. Hate & thanks to trains.",
+		string.Empty,
+		"<T>Andrew Greensmith",
+		"<S>Thanks to Naomi, Isobel and Owen.",
+		string.Empty,
+		"<T>Dianne Grove",
+		"<S>Cool to be on the inside at last.",
+		string.Empty,
+		"<T>Jason Haddington",
+		"<S>Love to Linda, Luke and Matthew. Greetings to Joel & Lewis Braun. Shout out to all of Luke & Matthews friends at Scalby School.",
+		string.Empty,
+		"<T>Gordon Hall",
+		"<S>Thanks to James for helping with the testing.",
+		string.Empty,
+		"<T>Ash Henstock",
+		"<S>Thanks to Mum, Dad, Karrie, James & Tess.",
+		string.Empty,
+		"<T>Chris Hogg",
+		"<S>Old artist, new father and newer team member. Giddy about all three.",
+		string.Empty,
+		"<T>Paul Kilburn",
+		"<S>Thanks to Michelle, Joe, Evie and Stan for all their help and support!",
+		string.Empty,
+		"<T>John Li",
+		"<S>A special thanks to Vikki, Ethan & Joseph for all their support x",
+		string.Empty,
+		"<T>Ian Lindsey",
+		"<S>Thanks to Lindsey and Miya for their support.",
+		string.Empty,
+		"<T>Mark Lloyd",
+		"<S>What they all said, and I know you’ll enjoy this game.",
+		string.Empty,
+		"<T>Graeme Love",
+		"<S>Error: Witty motto not found!",
+		string.Empty,
+		"<T>Ian Marsden",
+		"<S>For Jake and Matt.",
+		string.Empty,
+		"<T>Daniel Martin",
+		"<S>Testing games to destruction. Thanks also to my wife Dee.",
+		string.Empty,
+		"<T>Neil McWilliam",
+		"<S>Hello to my family and friends, and especially Lauren for not complaining (much) about me moving to the other end of the country.",
+		string.Empty,
+		"<T>Krzysztof Nizielski",
+		"<S>Greetings to Marta and the little one. See you on the trail soon! Cheers to TLPL and WKK.",
+		string.Empty,
+		"<T>Jerr O'Carroll",
+		"<S>For Sharron, Shannon, Josh, Danny, Trish, Holly, Romilly and Ben.",
+		string.Empty,
+		"<T>Christian Russell",
+		"<S>Big cheers for Kerry and little Miss Hollie Mae – X",
+		string.Empty,
+		"<T>Dan Roberts",
+		"<S>Thanks to Whitby bay and the M40. No thanks to the codman.",
+		string.Empty,
+		"<T>Paul Roberts",
+		"<S>With love to my amazing wife Emma and our three children Isobelle, Brandon and Charlotte.",
+		string.Empty,
+		"<T>Aten Skinner",
+		"<S>Shout out to Lorna, Angela and Mum.",
+		string.Empty,
+		"<T>Chris Smart",
+		"<S>Thanks to\u00a0 Xueyan and Audi – for always making me laugh and pushing me on to do bigger better things.",
+		string.Empty,
+		"<T>Michael Stephens",
+		"<S>Thanks to Zoe for all her support and for pushing me to believe I can do anything.",
+		string.Empty,
+		"<T>Mark Taylor-Flynn",
+		"<S>I’d like to thank my wife Kirst for all the taxiing and understanding and my kids Connie + Charlie for their awesomeness x",
+		string.Empty,
+		"<T>Michael Tuck",
+		"<S>Big hello to all the guys in Infusion BDF",
+		string.Empty,
+		"<T>Chris Waring",
+		"<S>A big thank you to my wife for her patience and support.",
+		string.Empty,
+		"<T>Mark Washbrook",
+		"<S>Thanks to Sam and Zach true gamers and Julie for all the support xxx",
+		string.Empty,
+		"<H>The Blast Furnace",
+		"<H>Special Thanks",
+		string.Empty,
+		"<S>Nicky Lothian ",
+		"<S>Vicky Rowley",
+		"<S>Ian Mattingly",
+		"<S>Neil Holmes",
+		"<S>Mike Constantas",
+		"<S>Natalie Hooper",
+		"<S>Justin McNaughton",
+		"<S>Debby Scott",
+		"<S>Sarah Brazier",
+		"<S>Chetna Pandya",
+		"<S>Andy Irvin",
+		"<S>Jason Quire",
+		"<S>Dawn Wilson",
+		string.Empty,
+		"<H>The Blast Furnace",
+		"<H>New Arrivals",
+		string.Empty,
+		"<T>Evelyn Rose Bull",
+		"<S>Warm congratulations to Rich and Karen on the safe arrival of baby Evelyn. From all of us at The Blast Furnace.",
+		string.Empty,
+		"<H>ACTIVISION MOBILE",
+		string.Empty,
+		"<T>VP, Mobile",
+		"<S>Greg Canessa",
+		string.Empty,
+		"<T>CTO, Mobile",
+		"<S>Karthik Bala",
+		string.Empty,
+		"<T>Director, Mobile Planning",
+		"<T>and Operations",
+		"<S>Mark Vela",
+		string.Empty,
+		"<H>Production",
+		string.Empty,
+		"<T>Executive Producer",
+		"<S>Jeremiah Maza",
+		string.Empty,
+		"<T>Producer",
+		"<S>Jason 'JD' Livergood",
+		string.Empty,
+		"<H>Additional Production",
+		string.Empty,
+		"<T>Senior Producer",
+		"<S>James T. Johnson",
+		string.Empty,
+		"<T>Producer",
+		"<S>Alex Bortoluzzi",
+		string.Empty,
+		"<T>Associate Producer",
+		"<S>Peter Cesario",
+		string.Empty,
+		"<H>Digital Distribution",
+		string.Empty,
+		"<T>Director, Digital Distribution",
+		"<S>Jon Estanislao",
+		string.Empty,
+		"<H>Business and Legal Affairs",
+		string.Empty,
+		"<T>Senior Director,",
+		"<T>Business & Legal Affairs",
+		"<S>Christopher Cosby",
+		string.Empty,
+		"<T>Senior Director, Legal",
+		"<S>Phil Terzian",
+		string.Empty,
+		"<T>Associate Counsel",
+		"Kelly Schwarm",
+		string.Empty,
+		"<T>Clearance Paralegal",
+		"<S>Chris Scaglione",
+		string.Empty,
+		"<H>Technical Requirements Group",
+		string.Empty,
+		"<T>Senior Director, Quality Assurance",
+		"<S>Christopher D. Wilson",
+		string.Empty,
+		"<T>TRG Manager",
+		"<S>John Rosser",
+		string.Empty,
+		"<T>TRG Submissions Lead",
+		"<S>Dustin Carter",
+		string.Empty,
+		"<T>TRG Submissions Team",
+		"<S>Richard Tom",
+		string.Empty,
+		"<T>TRG Senior Platform Lead",
+		"<S>Sasan “Sauce” Helmi",
+		string.Empty,
+		"<T>TRG Testers",
+		"<S>Lucas Goodman",
+		"<S>Michael Laursen",
+		string.Empty,
+		"<H>Customer Care",
+		string.Empty,
+		"<T>Senior Director, Customer Care",
+		"<S>Tim Rondeau",
+		string.Empty,
+		"<T>Senior Manager",
+		"<T>Service Design and Supportability",
+		"<S>Paul Boustany",
+		string.Empty,
+		"<T>Customer Experience",
+		"<T>Program Manager",
+		"<S>Chuck McNamee",
+		string.Empty,
+		"<H>Activision Mobile",
+		"<T>Special Thanks",
+		string.Empty,
+		"<S>Aakash Ranavat",
+		"<S>Alyssa Delhotal",
+		"<S>Amrita Ahuja",
+		"<S>Bob Loya",
+		"<S>Bobby Kotick",
+		"<S>Coddy Johnson",
+		"<S>Dan Winters",
+		"<S>Dave Stohl ",
+		"<S>Eddie Chan",
+		"<S>Eric Hirshberg ",
+		"<S>Eunice Lee",
+		"<S>Evalina Shin",
+		"<S>Evan Sroka",
+		"<S>George Hom",
+		"<S>Gina Hope",
+		"<S>Humam Sakhnini",
+		"<S>Jason Posada",
+		"<S>Jennifer Hendrickson",
+		"<S>Marcus Sanford",
+		"<S>Mark Burmeister",
+		"<S>Nick Trutanic",
+		"<S>Ric Romero",
+		"<S>Rodrigo Mora",
+		"<S>Rose Clarke",
+		"<S>Sheilah Brooks",
+		"<S>Thomas Tippl ",
+		string.Empty,
+		string.Empty,
+		"<H>Activision Publishing Minneapolis",
+		string.Empty,
+		"<T>Executive Vice President",
+		"<T>& General Manager",
+		"<S>David Oxford",
+		string.Empty,
+		"<T>Vice President of Studios",
+		"<S>Scott Bandy",
+		string.Empty,
+		"<T>Vice President of Finance",
+		"<S>Kurt Niederloh",
+		string.Empty,
+		"<T>Vice President of Sales Strategy",
+		"<S>Jennifer Mirabelli",
+		string.Empty,
+		"<T>Vice President of Marketing",
+		"<S>Lori Davis",
+		string.Empty,
+		"<T>Executive Assistant",
+		"<S>Margo Chadwick",
+		string.Empty,
+		"<H>Production",
+		string.Empty,
+		"<T>Director of Technology",
+		"<S>Chris Arends",
+		string.Empty,
+		"<H>Marketing",
+		string.Empty,
+		"<T>Director of Marketing",
+		"<S>Vicharin Vadakan",
+		string.Empty,
+		"<T>Brand Manager",
+		"<S>Nicole Armstrong",
+		string.Empty,
+		"<T>Associate Brand Manager",
+		"<S>Pam Caironi",
+		string.Empty,
+		"<T>Multimedia Editor",
+		"<S>Kyle Kehrwald",
+		string.Empty,
+		"<H>Public Relations",
+		string.Empty,
+		"<S>Sandbox Strategies",
+		string.Empty,
+		"<H>Legal",
+		string.Empty,
+		"<T>Senior Counsel",
+		"<S>Miri Frankel",
+		string.Empty,
+		"<T>Associate Paralegal",
+		"<S>Timothy Connolly",
+		string.Empty,
+		string.Empty,
+		"<H>Functional Quality Assurance Team",
+		string.Empty,
+		"<T>Director, Quality Assurance",
+		"<S>Jason Wong",
+		string.Empty,
+		"<T>QA Project Lead",
+		"<S>David Fortin",
+		"<S>Patrick Lacharité",
+		string.Empty,
+		"<T>QA Floor Lead",
+		"<S>Christian Giroux",
+		string.Empty,
+		"<T>QA Testers",
+		"<S>Daniel Girard",
+		"<S>François Toupin",
+		"<S>Jean-Philippe Bujold-Boutin",
+		"<S>Julie Guay",
+		"<S>Nicolas Ghislain",
+		"<S>Rafaële Bolduc",
+		"<S>William Émond-Paradis",
+		string.Empty,
+		"<T>QA Lead Database Administrator",
+		"<S>Jean-François Le Houillier",
+		string.Empty,
+		"<T>QA Database Specialists",
+		"<S>Guillaume Rochat",
+		string.Empty,
+		"<T>QA Manager",
+		"<S>Albert Yao",
+		string.Empty,
+		"<T>QA Director",
+		"<S>Matt McClure",
+		string.Empty,
+		"<T>QA IT Lead",
+		"<S>Etienne Dubé",
+		string.Empty,
+		"<T>QA IT Technician",
+		"<S>Hugo Roy",
+		"<S>Nicolas M. Careau",
+		"<S>Stéphane Elie",
+		string.Empty,
+		"<T>Admin Technician",
+		"<S>Josée Laboissonnière",
+		string.Empty,
+		"<T>HR Manager",
+		"<S>Antoine Lépine",
+		string.Empty,
+		"<H>DemonWare",
+		string.Empty,
+		"<S>John Allen",
+		"<S>Nadia Alramli",
+		"<S>Ruy Asan",
+		"<S>Edward Baker",
+		"<S>David Ballano Fernandez",
+		"<S>Miroslaw Baran",
+		"<S>Gustavo Baratto",
+		"<S>Patrick Barrington",
+		"<S>Rick Barzilli",
+		"<S>Annie Bennett",
+		"<S>Rashid Bhamjee",
+		"<S>David “REspawn” Brennan",
+		"<S>Morgan Brickley",
+		"<S>Don Browne",
+		"<S>Luke Burden",
+		"<S>David Cahill",
+		"<S>Graham Campbell",
+		"<S>Lee Cash",
+		"<S>Stephanie Cates",
+		"<S>Riley Chang",
+		"<S>Martin Clarke",
+		"<S>Nicola Colleran",
+		"<S>Michael Collins",
+		"<S>Owen Corrigan",
+		"<S>Colin Cox",
+		"<S>Alex Couture-Beil",
+		"<S>Lok Crystal Koo",
+		"<S>Tim Czerniak",
+		"<S>Stephanie Dean",
+		"<S>Colin Deasy",
+		"<S>Richard Delaney",
+		"<S>Sinead Devereaux",
+		"<S>Brendan Dillon",
+		"<S>Tyler Dixon",
+		"<S>Malcolm Dowse",
+		"<S>Stephane Dudzinski",
+		"<S>Dmytro Dyachuk",
+		"<S>Matthew Edwards",
+		"<S>David Falloon",
+		"<S>Brendan Fields",
+		"<S>Christian Flodihn",
+		"<S>Jonathan Frawley",
+		"<S>Azamat Galimzhov",
+		"<S>Siobhan Golden",
+		"<S>Arthur Green",
+		"<S>Padraic Hallinan",
+		"<S>John Hamill",
+		"<S>Conor Hennessy",
+		"<S>Sterling Hoeree",
+		"<S>Graeme Humphries",
+		"<S>Ryan Hunter",
+		"<S>Steffen Higel",
+		"<S>Travis Kay",
+		"<S>Eli Kazmirouk",
+		"<S>Tony Kelly",
+		"<S>John Kirk",
+		"<S>Gordon Klok",
+		"<S>Allan Kumka",
+		"<S>Lance Laursen",
+		"<S>Youhua Li",
+		"<S>Daniel Lin",
+		"<S>Roman Lisagor",
+		"<S>Garrett Lynch",
+		"<S>Patrick Mamaid",
+		"<S>Damien Marshall",
+		"<S>Tendayi Mawushe",
+		"<S>Rob McAdoo",
+		"<S>Emma McBreen",
+		"<S>Ciarán McCann",
+		"<S>Catherine McCarthy",
+		"<S>Mark McGree",
+		"<S>Craig McInnes",
+		"<S>Liam MacInnes",
+		"<S>Duncan McNab",
+		"<S>Christopher Mueller",
+		"<S>Faham Negini",
+		"<S>Nic Nero",
+		"<S>Y Nguyen",
+		"<S>Erik Niklas",
+		"<S>Hugh Nowlan",
+		"<S>Sean O’Donnell",
+		"<S>Sean O’Sullivan",
+		"<S>Adrian Oliver",
+		"<S>Tim Patterson",
+		"<S>Craig Penner",
+		"<S>Byron Pile",
+		"<S>Andrey Polakov",
+		"<S>Joseph Power",
+		"<S>Ruaidhrí Power",
+		"<S>Henry Precheur",
+		"<S>Gary Quan",
+		"<S>Gary Rafter",
+		"<S>Yunduz Rakhmangulov",
+		"<S>Lisa Reilly",
+		"<S>Stefan Reimer",
+		"<S>Davide Romani",
+		"<S>David Ruane",
+		"<S>Vladimir Ryzhov",
+		"<S>Matthew Sawasy",
+		"<S>Gordon Schneider",
+		"<S>Parvinder Singh Grewal",
+		"<S>Amy Smith",
+		"<S>Evan Smith",
+		"<S>Fei Song",
+		"<S>Tao Su",
+		"<S>Adam Talsma",
+		"<S>Dennis Theurer",
+		"<S>Craig Thompson",
+		"<S>Stefan Tjarks",
+		"<S>Michael Tom Wing",
+		"<S>Vladislav Titov",
+		"<S>Max Vizard",
+		"<S>Jason “Hagao” Wei",
+		"<S>Christie Wilson",
+		"<S>Woosley Xu",
+		"<S>Steven Young",
+		string.Empty,
+		"<H>Audio",
+		string.Empty,
+		"<T>Pitfall Harry",
+		"<S>David Rodriguez",
+		string.Empty,
+		"<T>V.O. Recording Engineer",
+		"<S>Christian Portwine",
+		string.Empty,
+		"<T>Pitstop Productions",
+		string.Empty,
+		"<H>Red Kite Games",
+		string.Empty,
+		"<S>Simon Iwaniszak",
+		"<S>Andrew Wiley",
+		"<S>Jonathan Lilley",
+		string.Empty,
+		"<H>This program was created ",
+		"<H>using Unity 3.x.  Portions",
+		"<H>of this program ©2005-2012",
+		"<H>Unity Technologies.",
+		string.Empty,
+		string.Empty,
+		string.Empty,
+		string.Empty,
+		string.Empty,
+		string.Empty,
+		string.Empty
+	};
+
+	private void OnDisable()
+	{
+		m_ScrollList.ClearList(true);
+	}
+
+	private void Start()
+	{
+	}
+
+	private void AddCredit(GameObject prefab, string textToAdd)
+	{
+		GameObject gameObject = new GameObject("CreditContainer");
+		gameObject.AddComponent<UIListItemContainer>();
+		GameObject gameObject2 = Object.Instantiate(prefab) as GameObject;
+		SpriteText component = gameObject2.GetComponent<SpriteText>();
+		component.text = textToAdd;
+		gameObject2.transform.parent = gameObject.transform;
+		m_ScrollList.AddItem(gameObject);
+	}
+
+	private void OnEnable()
+	{
+		m_ScrollList.SetInputDelegate(OnInput);
+		m_ManualScroll = false;
+		m_ManualScrollCooldown = 0f;
+		m_ScrollList.ClearList(true);
+		AddCredit(m_CreditsLineHeadingPrefab, "\n\n");
+		AddCredit(m_CreditsLineHeadingPrefab, "\n\n");
+		AddCredit(m_CreditsLineHeadingPrefab, "\n\n");
+		AddCredit(m_CreditsLineHeadingPrefab, "\n\n");
+		AddCredit(m_CreditsLineHeadingPrefab, "\n\n");
+		AddCredit(m_CreditsLineHeadingPrefab, "\n\n");
+		for (int i = 0; i < m_creditList.Length; i++)
+		{
+			string text = m_creditList[i];
+			if (text.Length > 0)
+			{
+				if (text.StartsWith("<H>"))
+				{
+					AddCredit(m_CreditsLineHeadingPrefab, text.Remove(0, 3));
+				}
+				else if (text.StartsWith("<T>"))
+				{
+					AddCredit(m_CreditsLineTitlePrefab, text.Remove(0, 3));
+				}
+				else if (text.StartsWith("<S>"))
+				{
+					AddCredit(m_CreditsLineSubtitlePrefab, text.Remove(0, 3));
+				}
+				else
+				{
+					AddCredit(m_CreditsLineSubtitlePrefab, text);
+				}
+			}
+			else
+			{
+				AddCredit(m_CreditsLineHeadingPrefab, "\n");
+			}
+		}
+		m_Pos = 0f;
+	}
+
+	private void Update()
+	{
+		if (m_ManualScroll || m_ScrollList.IsScrolling() || m_ManualScrollCooldown > 0f)
+		{
+			m_Pos = m_ScrollList.ScrollPosition;
+			if (m_ManualScrollCooldown > 0f)
+			{
+				m_ManualScrollCooldown -= Time.deltaTime;
+			}
+			return;
+		}
+		m_ScrollList.ScrollListTo(m_Pos);
+		m_Pos += m_scrollSpeed * Time.deltaTime;
+		if (Finished())
+		{
+			m_Controller.OnBackPressed();
+		}
+	}
+
+	public bool Finished()
+	{
+		return m_Pos >= 1f;
+	}
+
+	private void OnInput(ref POINTER_INFO ptr)
+	{
+		Debug.Log(string.Concat("event ", ptr.evt, " manual ", m_ManualScroll));
+		if (ptr.evt == POINTER_INFO.INPUT_EVENT.PRESS)
+		{
+			m_ManualScroll = true;
+		}
+		else if (ptr.evt == POINTER_INFO.INPUT_EVENT.RELEASE || ptr.evt == POINTER_INFO.INPUT_EVENT.RELEASE_OFF || ptr.evt == POINTER_INFO.INPUT_EVENT.TAP)
+		{
+			m_ManualScroll = false;
+			m_ManualScrollCooldown = 2f;
+		}
+	}
+}

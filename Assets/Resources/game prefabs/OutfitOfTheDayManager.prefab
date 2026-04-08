@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: OutfitOfTheDayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e98a8285c15401785f007e8cf6444aa, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_outfitDefinitions:
+  - m_costume: 3
+    m_notificationText: S_OOTD_EXTREME_NOTIFY
+    m_bonusText: S_OOTD_EXTREME
+  - m_costume: 2
+    m_notificationText: S_OOTD_FAIRY_NOTIFY
+    m_bonusText: S_OOTD_FAIRY
+  - m_costume: 7
+    m_notificationText: S_OOTD_SWAT_NOTIFY
+    m_bonusText: S_OOTD_SWAT
+  - m_costume: 6
+    m_notificationText: S_OOTD_PIRATE_NOTIFY
+    m_bonusText: S_OOTD_PIRATE
+  - m_costume: 4
+    m_notificationText: S_OOTD_NINJA_NOTIFY
+    m_bonusText: S_OOTD_NINJA
+  - m_costume: 1
+    m_notificationText: S_OOTD_BEAR_NOTIFY
+    m_bonusText: S_OOTD_BEAR
+  - m_costume: 5
+    m_notificationText: S_OOTD_AVIATOR_NOTIFY
+    m_bonusText: S_OOTD_AVIATOR
+  m_matchDialogPrefab: {fileID: 114589667821646929, guid: 2b72e2892e5de204fbfe42c91461b4b6, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77dcf41e70dc5789a62c4abc4eb0e1a6, type: 3}
+  m_Name: Stats
+  m_EditorClassIdentifier:
+  stats:
+  - Identifier: player.oneshot.endurance
+    Name: S_STAT_LONGEST_RUN
+    Suffix: m
+  - Identifier: player.oneshot.highscore
+    Name: S_STAT_HIGHEST_SCORE
+    Suffix:
+  - Identifier: player.oneshot.hoarder
+    Name: S_STAT_TREASURE
+    Suffix:
+  - Identifier: player.oneshot.venomous
+    Name: S_STAT_SNAKES
+    Suffix:
+  - Identifier: player.oneshot.sting
+    Name: S_STAT_SCORPIONS
+    Suffix:
+  - Identifier: player.oneshot.crocs
+    Name: S_STAT_CROC
+    Suffix:
+  - Identifier: player.oneshot.toxicologist
+    Name: S_STAT_BITTEN
+    Suffix:
+  - Identifier: player.oneshot.stung
+    Name: S_STAT_STUNG
+    Suffix:
+  - Identifier: player.oneshot.checkpoints
+    Name: S_STAT_CHECKPOINT
+    Suffix:
+  - Identifier: player.oneshot.prettyboy
+    Name: S_STAT_MACAW
+    Suffix:
+  - Identifier: player.oneshot.lazarus
+    Name: S_STAT_LIFE_TONIC
+    Suffix:
+  - Identifier: player.oneshot.haste
+    Name: S_STAT_HASTE_TONIC
+    Suffix:
+  - Identifier: player.oneshot.antivenom
+    Name: S_STAT_ANTI_VENOM
+    Suffix:
+  - Identifier: player.oneshot.meow
+    Name: S_STAT_JAGUAR
+    Suffix:
+  - Identifier: player.oneshot.minecart
+    Name: S_STAT_MINE_CART
+    Suffix: m
+  - Identifier: player.oneshot.bike
+    Name: S_STAT_MOTORBIKE
+    Suffix: m
+  - Identifier: player.oneshot.swinger
+    Name: S_STAT_ROPE
+    Suffix:
+  - Identifier: player.accum.runsfinished
+    Name: S_STAT_TOTAL_RUNS
+    Suffix:
+  - Identifier: player.accum.endurance
+    Name: S_STAT_TOTAL_DIST
+    Suffix:
+  - Identifier: player.accum.highscore
+    Name: S_STAT_TOTAL_SCORE
+    Suffix:
+  - Identifier: player.accum.hoarder
+    Name: S_STAT_TOTAL_TREASURE
+    Suffix:
+  - Identifier: player.accum.gemsearned
+    Name: S_STAT_TOTAL_DIAMONDS
+    Suffix:
+  - Identifier: player.accum.checkpoints
+    Name: S_STAT_TOTAL_CHECKPOINTS
+    Suffix:
+  - Identifier: player.accum.venomous
+    Name: S_STAT_TOTAL_SNAKES
+    Suffix:
+  - Identifier: player.accum.sting
+    Name: S_STAT_TOTAL_SCORPIONS
+    Suffix:
+  - Identifier: player.accum.crocs
+    Name: S_STAT_TOTAL_CROCS
+    Suffix:
+  - Identifier: player.accum.toxicologist
+    Name: S_STAT_TOTAL_BITTEN
+    Suffix:
+  - Identifier: player.accum.stung
+    Name: S_STAT_TOTAL_STUNG
+    Suffix:
+  - Identifier: player.accum.prettyboy
+    Name: S_STAT_TOTAL_MACAWS
+    Suffix:
+  - Identifier: player.accum.lazarus
+    Name: S_STAT_TOTAL_LIFE
+    Suffix:
+  - Identifier: player.accum.haste
+    Name: S_STAT_TOTAL_HASTE
+    Suffix:
+  - Identifier: player.accum.antivenom
+    Name: S_STAT_TOTAL_ANTI
+    Suffix:
+  - Identifier: player.accum.meow
+    Name: S_STAT_TOTAL_JAGUARS
+    Suffix:
+  - Identifier: player.accum.minecart
+    Name: S_STAT_TOTAL_MINE
+    Suffix: m
+  - Identifier: player.accum.bike
+    Name: S_STAT_TOTAL_MOTORBIKE
+    Suffix: m
+  - Identifier: player.accum.swinger
+    Name: S_STAT_TOTAL_ROPE
+    Suffix:
+  - Identifier: player.accum.treasurespent
+    Name: S_STAT_TOTAL_TREASURE_SPENT
+    Suffix:
+  - Identifier: player.accum.gemsspent
+    Name: S_STAT_TOTAL_DIAMONDS_SPENT
+    Suffix:

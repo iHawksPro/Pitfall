@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1845417d05c44039ec1b576ff55ee1, type: 3}
+  m_Name: Outfits
+  m_EditorClassIdentifier:
+  products:
+  - Identifier: outfit.standard
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_STANDARD_T
+    Levels:
+    - Description: S_OUT_STANDARD_D
+      CoinPrice: 0
+      GemPrice: 0
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: outfit.adventurer
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_ADVENTURER_T
+    Levels:
+    - Description: S_OUT_ADVENTURER_D
+      CoinPrice: 5000
+      GemPrice: 8
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: outfit.fairy
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_FAIRY_T
+    Levels:
+    - Description: S_OUT_FAIRY_D
+      CoinPrice: 10000
+      GemPrice: 16
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: outfit.swat
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_SWAT_T
+    Levels:
+    - Description: S_OUT_SWAT_D
+      CoinPrice: 10000
+      GemPrice: 16
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: outfit.pirate
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_PIRATE_T
+    Levels:
+    - Description: S_OUT_PIRATE_D
+      CoinPrice: 12000
+      GemPrice: 18
+      Quantity: 1
+    LevelUnlock: 10
+    Discount: 0
+  - Identifier: outfit.ninja
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_NINJA_T
+    Levels:
+    - Description: S_OUT_NINJA_D
+      CoinPrice: 12000
+      GemPrice: 18
+      Quantity: 1
+    LevelUnlock: 10
+    Discount: 0
+  - Identifier: outfit.bear
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_BEAR_T
+    Levels:
+    - Description: S_OUT_BEAR_D
+      CoinPrice: 12000
+      GemPrice: 18
+      Quantity: 1
+    LevelUnlock: 10
+    Discount: 0
+  - Identifier: outfit.aviator
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OUT_AVIATOR_T
+    Levels:
+    - Description: S_OUT_AVIATOR_D
+      CoinPrice: 15000
+      GemPrice: 20
+      Quantity: 1
+    LevelUnlock: 20
+    Discount: 0
+  - Identifier: outfit.super
+    AssociatedUpgradeID:
+    Category: 2
+    Title: S_OOTD_SUPER
+    Levels:
+    - Description: S_OOTD_SUPER
+      CoinPrice: 0
+      GemPrice: 0
+      Quantity: 1
+    LevelUnlock: 1
+    Discount: 0

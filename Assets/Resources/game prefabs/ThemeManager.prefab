@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_Component:
+  - 4: {fileID: 4730242686860875}
+  - 114: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: ThemeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943e2cbf0cb330045653a9594824df42, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_initialTheme: 1
+  m_postInitialTheme: 0
+  m_initialThemeCutoff: 600
+  m_postInitialThemeCutoff: 2800
+  m_themeSettings:
+  - m_theme: 0
+    m_scene: tilesJungle
+  - m_theme: 1
+    m_scene: tilesMountain
+  - m_theme: 2
+    m_scene: tilesCave
+  - m_theme: 4
+    m_scene: tilesMinecart
+  - m_theme: 5
+    m_scene: tilesBike
+  m_themeRenderSettings:
+  - m_theme: 0
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.4392157, g: 0.6901961, b: 1, a: 1}
+    m_fogStart: 35
+    m_fogEnd: 75
+  - m_theme: 1
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.45490196, g: 0.69803923, b: 0.99607843, a: 1}
+    m_fogStart: 45
+    m_fogEnd: 75
+  - m_theme: 2
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.4862745, g: 0.46666667, b: 0.44705883, a: 1}
+    m_fogStart: 25
+    m_fogEnd: 75
+  - m_theme: 3
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.45490196, g: 0.69803923, b: 0.99607843, a: 1}
+    m_fogStart: 5
+    m_fogEnd: 75
+  - m_theme: 4
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.41568628, g: 0.08235294, b: 0.043137256, a: 1}
+    m_fogStart: 35
+    m_fogEnd: 75
+  - m_theme: 5
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.29411766, g: 0.5803922, b: 0.9411765, a: 1}
+    m_fogStart: 35
+    m_fogEnd: 75
+  - m_theme: 6
+    m_ambientColour: {r: 1, g: 1, b: 1, a: 1}
+    m_fogEnabled: 1
+    m_fogColour: {r: 0.45490196, g: 0.69411767, b: 0.99215686, a: 1}
+    m_fogStart: 50
+    m_fogEnd: 550
+  SetPieceController:
+    SceneFilenames:
+    - Theme: 0
+      AuthoredSetPieceScene: Jungle01
+      MinimumDistanceBetweenSetPieces: 300
+      MaximumDistanceBetweenSetPieces: 350
+      AdjustStraightLengthForPlayerSpeed: 1
+    - Theme: 4
+      AuthoredSetPieceScene: MineCart01
+      MinimumDistanceBetweenSetPieces: 200
+      MaximumDistanceBetweenSetPieces: 350
+      AdjustStraightLengthForPlayerSpeed: 1
+    - Theme: 1
+      AuthoredSetPieceScene: MountainSide01
+      MinimumDistanceBetweenSetPieces: 300
+      MaximumDistanceBetweenSetPieces: 350
+      AdjustStraightLengthForPlayerSpeed: 1
+    - Theme: 2
+      AuthoredSetPieceScene: Caves01
+      MinimumDistanceBetweenSetPieces: 300
+      MaximumDistanceBetweenSetPieces: 350
+      AdjustStraightLengthForPlayerSpeed: 1
+    - Theme: 5
+      AuthoredSetPieceScene: MotorBike01
+      MinimumDistanceBetweenSetPieces: 300
+      MaximumDistanceBetweenSetPieces: 350
+      AdjustStraightLengthForPlayerSpeed: 1
+    InitialDistanceBeforeSetPiecesAppear: 1850
+    DisableThemeSetPieces: 0
+  m_minThemeRestartDistance: 100
+  m_themeSequence:
+  - m_theme: 2
+    m_distanceInTheme: 800
+  - m_theme: 4
+    m_distanceInTheme: 800
+  - m_theme: 0
+    m_distanceInTheme: 500
+  - m_theme: 5
+    m_distanceInTheme: 800
+  - m_theme: 0
+    m_distanceInTheme: 300
+  - m_theme: 1
+    m_distanceInTheme: 800
+  - m_theme: 0
+    m_distanceInTheme: 800
+  - m_theme: 4
+    m_distanceInTheme: 500
+  - m_theme: 2
+    m_distanceInTheme: 200
+  - m_theme: 0
+    m_distanceInTheme: 800
+  - m_theme: 5
+    m_distanceInTheme: 800
+  - m_theme: 0
+    m_distanceInTheme: 800
+  - m_theme: 1
+    m_distanceInTheme: 800
+--- !u!1001 &100100000
+Prefab:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1709254077376921}
+  m_IsPrefabParent: 1
+  m_IsExploded: 0

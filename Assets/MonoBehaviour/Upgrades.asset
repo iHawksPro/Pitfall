@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b1845417d05c44039ec1b576ff55ee1, type: 3}
+  m_Name: Upgrades
+  m_EditorClassIdentifier:
+  products:
+  - Identifier: upgrade.jaguar
+    AssociatedUpgradeID:
+    Category: 1
+    Title: S_UP_JAGUAR_T
+    Levels:
+    - Description: S_UP_JAGUAR_L1_D
+      CoinPrice: 1200
+      GemPrice: 4
+      Quantity: 1
+    - Description: S_UP_JAGUAR_L2_D
+      CoinPrice: 8000
+      GemPrice: 16
+      Quantity: 1
+    - Description: S_UP_JAGUAR_L3_D
+      CoinPrice: 20000
+      GemPrice: 32
+      Quantity: 1
+    - Description: S_UP_JAGUAR_L4_D
+      CoinPrice: 0
+      GemPrice: 0
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: upgrade.jungle
+    AssociatedUpgradeID:
+    Category: 1
+    Title: S_UP_JUNGLE_T
+    Levels:
+    - Description: S_UP_JUNGLE_L1_D
+      CoinPrice: 2800
+      GemPrice: 8
+      Quantity: 1
+    - Description: S_UP_JUNGLE_L2_D
+      CoinPrice: 12000
+      GemPrice: 24
+      Quantity: 1
+    - Description: S_UP_JUNGLE_L3_D
+      CoinPrice: 30000
+      GemPrice: 48
+      Quantity: 1
+    - Description: S_UP_JUNGLE_L4_D
+      CoinPrice: 0
+      GemPrice: 0
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: upgrade.speedincrease
+    AssociatedUpgradeID:
+    Category: 1
+    Title: S_UP_SPEEDINCREASE_T
+    Levels:
+    - Description: S_UP_SPEEDINCREASE_L1_D
+      CoinPrice: 1200
+      GemPrice: 4
+      Quantity: 1
+    - Description: S_UP_SPEEDINCREASE_L2_D
+      CoinPrice: 6000
+      GemPrice: 12
+      Quantity: 1
+    - Description: S_UP_SPEEDINCREASE_L3_D
+      CoinPrice: 15000
+      GemPrice: 24
+      Quantity: 1
+    - Description: S_UP_SPEEDINCREASE_L4_D
+      CoinPrice: 0
+      GemPrice: 0
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0
+  - Identifier: upgrade.poison
+    AssociatedUpgradeID:
+    Category: 1
+    Title: S_UP_POISON_T
+    Levels:
+    - Description: S_UP_POISON_L1_D
+      CoinPrice: 1200
+      GemPrice: 4
+      Quantity: 1
+    - Description: S_UP_POISON_L2_D
+      CoinPrice: 8000
+      GemPrice: 16
+      Quantity: 1
+    - Description: S_UP_POISON_L3_D
+      CoinPrice: 20000
+      GemPrice: 32
+      Quantity: 1
+    - Description: S_UP_POISON_L4_D
+      CoinPrice: 0
+      GemPrice: 0
+      Quantity: 1
+    LevelUnlock: 0
+    Discount: 0

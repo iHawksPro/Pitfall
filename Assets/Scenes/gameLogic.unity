@@ -1,0 +1,867 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &14
+SceneSettings:
+  m_ObjectHideFlags: 0
+  m_PVSData:
+  m_PVSObjectsArray: []
+  m_PVSPortalsArray: []
+  m_OcclusionBakeSettings:
+    smallestOccluder: 0
+    smallestHole: 0
+    backfaceThreshold: 0
+--- !u!104 &18
+RenderSettings:
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientLight: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 0}
+  m_ObjectHideFlags: 0
+--- !u!127 &22
+HaloManager:
+  m_ObjectHideFlags: 0
+--- !u!157 &23
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  m_LightProbes: {fileID: 0}
+  m_Lightmaps: []
+  m_LightmapsMode: 1
+  m_BakedColorSpace: 0
+  m_UseDualLightmapsInForward: 0
+  m_LightmapEditorSettings:
+    m_Resolution: 2
+    m_LastUsedResolution: 0
+    m_TextureWidth: 1024
+    m_TextureHeight: 1024
+    m_BounceBoost: 1
+    m_BounceIntensity: 1
+    m_SkyLightColor: {r: 0.86, g: 0.93, b: 1, a: 1}
+    m_SkyLightIntensity: 0
+    m_Quality: 0
+    m_Bounces: 1
+    m_FinalGatherRays: 1000
+    m_FinalGatherContrastThreshold: 0.05
+    m_FinalGatherGradientThreshold: 0
+    m_FinalGatherInterpolationPoints: 15
+    m_AOAmount: 0
+    m_AOMaxDistance: 1
+    m_AOContrast: 1
+    m_LODSurfaceMappingDistance: 1
+    m_Padding: 2
+    m_TextureCompression: 1
+    m_LockAtlas: 0
+--- !u!196 &24
+NavMeshSettings:
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    accuratePlacement: 0
+    minRegionArea: 2
+    widthInaccuracy: 0
+    heightInaccuracy: 0
+  m_NavMesh: {fileID: 0}
+--- !u!1 &1
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Component:
+  - 4: {fileID: 6}
+  - 33: {fileID: 15}
+  - 23: {fileID: 11}
+  - 111: {fileID: 19}
+  m_Layer: 0
+  m_Name: SilverBar1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &2
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Component:
+  - 4: {fileID: 7}
+  - 33: {fileID: 16}
+  - 23: {fileID: 12}
+  - 111: {fileID: 20}
+  m_Layer: 0
+  m_Name: GoldBar1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &3
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Component:
+  - 4: {fileID: 8}
+  - 33: {fileID: 17}
+  - 23: {fileID: 13}
+  - 111: {fileID: 21}
+  m_Layer: 0
+  m_Name: Pickup_Speed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &4
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Component:
+  - 4: {fileID: 9}
+  - 114: {fileID: 25}
+  - 114: {fileID: 26}
+  m_Layer: 0
+  m_Name: Gameplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &5
+GameObject:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Component:
+  - 4: {fileID: 10}
+  - 114: {fileID: 27}
+  m_Layer: 0
+  m_Name: AppearanceRulesController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1}
+  m_LocalRotation: {x: -0.5562845, y: -0.66746974, z: -0.081870265, w: 0.48818964}
+  m_LocalPosition: {x: 0, y: -1000, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &7
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2}
+  m_LocalRotation: {x: -0.75726867, y: -0.5041309, z: -0.36452252, w: 0.19879535}
+  m_LocalPosition: {x: 0, y: -1000, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &8
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 3}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -1000, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &9
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &10
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.6568418, y: 3.103445, z: 1.6606827}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &11
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 5c1597950b77ef9478e7abfa94bb6657, type: 2}
+  m_SubsetIndices:
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!23 &12
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ea4b3ba485937f94b9e508b61096ad42, type: 2}
+  m_SubsetIndices:
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!23 &13
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 3}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 4ea1aabfeecca6f4397035e1cd11045a, type: 2}
+  m_SubsetIndices:
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &15
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1}
+  m_Mesh: {fileID: 4300000, guid: 081b1053642b5504a864a41ecc871d60, type: 2}
+--- !u!33 &16
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2}
+  m_Mesh: {fileID: 4300000, guid: 2a87be3756ad0cb49a5e7cc9822e8cc2, type: 2}
+--- !u!33 &17
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 3}
+  m_Mesh: {fileID: 4300000, guid: c94708830f50d6749b3fad04baa42764, type: 2}
+--- !u!111 &19
+Animation:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1}
+  m_Enabled: 1
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &20
+Animation:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2}
+  m_Enabled: 1
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &21
+Animation:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 3}
+  m_Enabled: 1
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &25
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 4}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 383f5d40679ca3e776e0a9e4cd40c99a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  CoinModel: {fileID: 2}
+  CoinLowValueModel: {fileID: 1}
+  CoinCollectPFX: {fileID: 1709254077376921, guid: 52cd182a2164f9f40bde3badb13abce5, type: 2}
+  PowerupModel: {fileID: 3}
+  PowerupPeriodMinimum: 160
+  PowerupPeriodMaximum: 165
+  CoinSineGradientMax: 12
+  CoinRunDepth: 20
+  CoinSpacingStep: 2
+  DistanceBetweenCoinRuns: 75
+  MaxDistanceCanSpawnAheadOfCheckpoint: 1700
+  PlayerAnimatedTransform: {fileID: 0}
+  ThemesThatExcludePickups: 030000000400000005000000
+--- !u!114 &26
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 4}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3169beb6649fe195ce1cf6c53972d64b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  GroupTransitionManager:
+    DefaultMinimumTimeInGroup: 5
+    DefaultMaximumTimeInGroup: 6
+    OverrideList:
+    - Theme: 0
+      Group: 1
+      MinimumTimeInGroup: 20
+      MaximumTimeInGroup: 25
+    - Theme: 0
+      Group: 2
+      MinimumTimeInGroup: 5
+      MaximumTimeInGroup: 6
+    - Theme: 0
+      Group: 3
+      MinimumTimeInGroup: 5
+      MaximumTimeInGroup: 6
+    - Theme: 0
+      Group: 4
+      MinimumTimeInGroup: 5
+      MaximumTimeInGroup: 6
+    - Theme: 1
+      Group: 1
+      MinimumTimeInGroup: 10
+      MaximumTimeInGroup: 15
+    - Theme: 1
+      Group: 2
+      MinimumTimeInGroup: 10
+      MaximumTimeInGroup: 15
+    - Theme: 1
+      Group: 4
+      MinimumTimeInGroup: 10
+      MaximumTimeInGroup: 15
+    - Theme: 1
+      Group: 5
+      MinimumTimeInGroup: 10
+      MaximumTimeInGroup: 15
+    - Theme: 1
+      Group: 6
+      MinimumTimeInGroup: 10
+      MaximumTimeInGroup: 15
+    CurrentTimeInGroup: 0
+  MultipieceRuleManager:
+    Rules:
+    - Theme: 0
+      Group: 0
+      Type: 2
+      MinimumLoopSections: 3
+      MaximumLoopSections: 6
+    - Theme: 1
+      Group: 0
+      Type: 2
+      MinimumLoopSections: 3
+      MaximumLoopSections: 6
+    - Theme: 2
+      Group: 0
+      Type: 2
+      MinimumLoopSections: 4
+      MaximumLoopSections: 6
+    - Theme: 4
+      Group: 0
+      Type: 2
+      MinimumLoopSections: 3
+      MaximumLoopSections: 6
+    - Theme: 0
+      Group: 0
+      Type: 0
+      MinimumLoopSections: 0
+      MaximumLoopSections: 0
+    - Theme: 5
+      Group: 0
+      Type: 2
+      MinimumLoopSections: 2
+      MaximumLoopSections: 3
+    DefaultMinimumLoopSections: 1
+    DefaultMaximumLoopSections: 4
+  AppearenceRules: {fileID: 27}
+  DebugOverrides:
+    ReactionTime: 0
+    PlayerSpeed: 0
+    MetreMark: 0
+    OverrideSettings: 0
+  MinimumTimeBetweenOptionalJunctions: 140
+  MinimumTimeBetweenRopeSwings: 5
+  MinecartTransitionInJumpTime: 1
+  MinecartTransitionOutJumpTime: 1
+  BikeTransitionInJumpTime: 1
+  BikeTransitionOutJumpTime: 1
+  MinimumNumberOfNextType: 1
+  MaximumNumberOfNextType: 3
+  StraightLengthForBaddie: 12
+  ReactionTime:
+    Phases:
+    - PhaseDurationInMetres: 1000
+      StartingReactionTime: 1.9
+      SmallestReactionTime: 1.7
+    - PhaseDurationInMetres: 1000
+      StartingReactionTime: 1.6
+      SmallestReactionTime: 1.3
+    - PhaseDurationInMetres: 1000
+      StartingReactionTime: 1
+      SmallestReactionTime: 0.6
+    - PhaseDurationInMetres: 1500
+      StartingReactionTime: 0.8
+      SmallestReactionTime: 0.3
+    - PhaseDurationInMetres: 1000
+      StartingReactionTime: 0.6
+      SmallestReactionTime: -0.04
+    - PhaseDurationInMetres: 1000
+      StartingReactionTime: 0.4
+      SmallestReactionTime: -0.07
+    - PhaseDurationInMetres: 0
+      StartingReactionTime: 0.2
+      SmallestReactionTime: -0.07
+    BikePhases:
+    - PhaseDurationInMetres: 0
+      StartingReactionTime: 0.8
+      SmallestReactionTime: 0.6
+    MinecartPhases:
+    - PhaseDurationInMetres: 0
+      StartingReactionTime: 2
+      SmallestReactionTime: 1.4
+    MinimumTimeBetweenReactonDecrease: 2
+    MaximumTimeBetweenReactonDecrease: 3
+    MinimumReactonDecreaseTime: 4
+    MaximumReactonDecreaseTime: 5
+  LevelLayout:
+    SectionTypeList: []
+  PreventLayoutReset: 0
+  PreventThemeTransition: 0
+  OutputDebugSpam: 0
+--- !u!114 &27
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 5}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16946f6bfbb0e7cc6bbf182818b7a49, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Rules:
+  - StartDistance: 0
+    EndDistance: 1100
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 0
+    - DifficultyID: 30
+      Chance: 0
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 0
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 1100
+    EndDistance: 1300
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 0
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 0
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 1300
+    EndDistance: 1500
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 0
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 1500
+    EndDistance: 3000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 0
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 0
+    - DifficultyID: 510
+      Chance: 0
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 3000
+    EndDistance: 4500
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 0
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 0
+    DebugComment:
+  - StartDistance: 4500
+    EndDistance: 5000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 0
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 5000
+    EndDistance: 10000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 0
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 10000
+    EndDistance: 11000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 50
+    - DifficultyID: 90
+      Chance: 0
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 11000
+    EndDistance: 16000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 1
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 30
+    - DifficultyID: 90
+      Chance: 50
+    - DifficultyID: 100
+      Chance: 0
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  - StartDistance: 16000
+    EndDistance: 20000
+    Elements:
+    - DifficultyID: 0
+      Chance: 1
+    - DifficultyID: 10
+      Chance: 1
+    - DifficultyID: 20
+      Chance: 1
+    - DifficultyID: 30
+      Chance: 1
+    - DifficultyID: 40
+      Chance: 0
+    - DifficultyID: 50
+      Chance: 1
+    - DifficultyID: 60
+      Chance: 1
+    - DifficultyID: 70
+      Chance: 1
+    - DifficultyID: 80
+      Chance: 50
+    - DifficultyID: 90
+      Chance: 50
+    - DifficultyID: 100
+      Chance: 50
+    - DifficultyID: 500
+      Chance: 1
+    - DifficultyID: 510
+      Chance: 1
+    - DifficultyID: 520
+      Chance: 1
+    - DifficultyID: 530
+      Chance: 1
+    DebugComment:
+  Crocodile: 500
+  Scorpion: 510
+  Snake: 520
+  Meteor: 530

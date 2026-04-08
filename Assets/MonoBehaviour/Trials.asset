@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773db482118ff0dc68e81b5eb8c3cd30, type: 3}
+  m_Name: Trials
+  m_EditorClassIdentifier:
+  m_completionReward: 5
+  m_completeAchievementId: accum.unfaltering
+  m_singleAchievementId: oneshot.inauguration
+  m_trialGroups:
+  - m_theme: 0
+    m_achievementId: accum.junglist
+    m_trials:
+    - m_identifier: jungle.easy
+      m_title: S_TRIALS_JUNGLE01
+      m_shorttitle: S_TRIALS_JUNGLE01_SHORT
+      m_difficulty: 0
+      m_levelName: Challenge_JNG_01
+      m_numCollectables: 1
+      m_rewardGems: 1
+      m_fBronzeTime: 92
+      m_fSilverTime: 70
+      m_fGoldTime: 62
+      m_unlockedbycompleting:
+    - m_identifier: jungle.medium
+      m_title: S_TRIALS_JUNGLE02
+      m_shorttitle: S_TRIALS_JUNGLE02_SHORT
+      m_difficulty: 1
+      m_levelName: Challenge_JNG_02
+      m_numCollectables: 2
+      m_rewardGems: 2
+      m_fBronzeTime: 94
+      m_fSilverTime: 79
+      m_fGoldTime: 69
+      m_unlockedbycompleting: jungle.easy
+    - m_identifier: jungle.hard
+      m_title: S_TRIALS_JUNGLE03
+      m_shorttitle: S_TRIALS_JUNGLE03_SHORT
+      m_difficulty: 2
+      m_levelName: Challenge_JNG_03
+      m_numCollectables: 3
+      m_rewardGems: 3
+      m_fBronzeTime: 107
+      m_fSilverTime: 95
+      m_fGoldTime: 89
+      m_unlockedbycompleting: jungle.medium
+    - m_identifier: jungle.pro
+      m_title: S_TRIALS_JUNGLE04
+      m_shorttitle: S_TRIALS_JUNGLE04_SHORT
+      m_difficulty: 3
+      m_levelName: Challenge_PRO_01
+      m_numCollectables: 4
+      m_rewardGems: 4
+      m_fBronzeTime: 92
+      m_fSilverTime: 84
+      m_fGoldTime: 80
+      m_unlockedbycompleting: jungle.hard
+  - m_theme: 1
+    m_achievementId: accum.summit
+    m_trials:
+    - m_identifier: mountain.easy
+      m_title: S_TRIALS_MNT01
+      m_shorttitle: S_TRIALS_MNT01_SHORT
+      m_difficulty: 0
+      m_levelName: Challenge_MNT_01
+      m_numCollectables: 1
+      m_rewardGems: 1
+      m_fBronzeTime: 122
+      m_fSilverTime: 105
+      m_fGoldTime: 94
+      m_unlockedbycompleting:
+    - m_identifier: mountain.medium
+      m_title: S_TRIALS_MNT02
+      m_shorttitle: S_TRIALS_MNT02_SHORT
+      m_difficulty: 1
+      m_levelName: Challenge_MNT_02
+      m_numCollectables: 2
+      m_rewardGems: 2
+      m_fBronzeTime: 94
+      m_fSilverTime: 78
+      m_fGoldTime: 70
+      m_unlockedbycompleting: mountain.easy
+    - m_identifier: mountain.hard
+      m_title: S_TRIALS_MNT03
+      m_shorttitle: S_TRIALS_MNT03_SHORT
+      m_difficulty: 2
+      m_levelName: Challenge_MNT_03
+      m_numCollectables: 3
+      m_rewardGems: 3
+      m_fBronzeTime: 109
+      m_fSilverTime: 93
+      m_fGoldTime: 88
+      m_unlockedbycompleting: mountain.medium
+    - m_identifier: mountain.pro
+      m_title: S_TRIALS_MNT04
+      m_shorttitle: S_TRIALS_MNT04_SHORT
+      m_difficulty: 3
+      m_levelName: Challenge_PRO_02
+      m_numCollectables: 5
+      m_rewardGems: 4
+      m_fBronzeTime: 93
+      m_fSilverTime: 85
+      m_fGoldTime: 82
+      m_unlockedbycompleting: mountain.hard
+  - m_theme: 4
+    m_achievementId: accum.mine
+    m_trials:
+    - m_identifier: minecart.easy
+      m_title: S_TRIALS_MINE01
+      m_shorttitle: S_TRIALS_MINE01_SHORT
+      m_difficulty: 0
+      m_levelName: Challenge_MIN_01
+      m_numCollectables: 1
+      m_rewardGems: 1
+      m_fBronzeTime: 91
+      m_fSilverTime: 70
+      m_fGoldTime: 60
+      m_unlockedbycompleting:
+    - m_identifier: minecart.medium
+      m_title: S_TRIALS_MINE02
+      m_shorttitle: S_TRIALS_MINE02_SHORT
+      m_difficulty: 1
+      m_levelName: Challenge_MIN_02
+      m_numCollectables: 2
+      m_rewardGems: 2
+      m_fBronzeTime: 67
+      m_fSilverTime: 54
+      m_fGoldTime: 47
+      m_unlockedbycompleting: minecart.easy
+    - m_identifier: minecart.hard
+      m_title: S_TRIALS_MINE03
+      m_shorttitle: S_TRIALS_MINE03_SHORT
+      m_difficulty: 2
+      m_levelName: Challenge_MIN_03
+      m_numCollectables: 3
+      m_rewardGems: 3
+      m_fBronzeTime: 141
+      m_fSilverTime: 119
+      m_fGoldTime: 109
+      m_unlockedbycompleting: minecart.medium
+    - m_identifier: minecart.pro
+      m_title: S_TRIALS_MINE04
+      m_shorttitle: S_TRIALS_MINE04_SHORT
+      m_difficulty: 3
+      m_levelName: Challenge_PRO_03
+      m_numCollectables: 5
+      m_rewardGems: 4
+      m_fBronzeTime: 102
+      m_fSilverTime: 92
+      m_fGoldTime: 90
+      m_unlockedbycompleting: minecart.hard
+  m_burstTonic:
+    m_maxBurstTonics: 10
+    m_burstTonicSpeedMultiplier: 1.4
+    m_burstTonicDuration: 10
+    m_burstTonicRefillTime: 3600
+    m_maxBoostAchivementId: oneshot.breakneck
+  m_relicAchievementId: accum.relicget

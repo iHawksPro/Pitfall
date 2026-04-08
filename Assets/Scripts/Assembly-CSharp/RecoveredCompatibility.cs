@@ -33,4 +33,12 @@ public static class RecoveredCompatibility
 			return IsAndroidRuntime;
 		}
 	}
+
+	public static bool LimitTitleStatePreload
+	{
+		get
+		{
+			return IsAndroidRuntime;
+		}
+	}
 }

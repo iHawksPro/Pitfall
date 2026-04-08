@@ -25,6 +25,10 @@ public class LoadStates : MonoBehaviour
 	{
 		get
 		{
+			if (RecoveredCompatibility.LimitTitleStatePreload)
+			{
+				return new string[2] { "Title", "Game" };
+			}
 			return new string[8] { "Title", "Game", "Results", "Pause", "BaseCamp", "FieldGuide", "Options", "Challenges" };
 		}
 	}

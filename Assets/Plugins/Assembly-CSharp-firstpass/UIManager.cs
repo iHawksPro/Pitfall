@@ -302,7 +302,7 @@ public class UIManager : MonoBehaviour
 		{
 			pointerType = POINTER_TYPE.MOUSE;
 		}
-		else if (pointerType == POINTER_TYPE.AUTO_TOUCHPAD && Application.platform != RuntimePlatform.Android)
+		else if (pointerType == POINTER_TYPE.AUTO_TOUCHPAD)
 		{
 			pointerType = POINTER_TYPE.TOUCHPAD;
 		}

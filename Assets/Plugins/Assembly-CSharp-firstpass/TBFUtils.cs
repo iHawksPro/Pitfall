@@ -4,6 +4,8 @@ public class TBFUtils
 {
 	private static AndroidJavaObject TBFUtilsObject;
 
+	private static bool TBFUtilsUnavailable;
+
 	private static float UIScaling;
 
 	private static float InverseUIScaling;
@@ -36,7 +38,12 @@ public class TBFUtils
 		{
 			if (Application.platform == RuntimePlatform.Android)
 			{
-				return CallTBFJar<string>("getBuildVersion");
+				string text = CallTBFJar<string>("getBuildVersion");
+				if (!string.IsNullOrEmpty(text))
+				{
+					return text;
+				}
+				return "1.0.0";
 			}
 			return BundleVersion;
 		}
@@ -48,7 +55,12 @@ public class TBFUtils
 		{
 			if (Application.platform == RuntimePlatform.Android)
 			{
-				return CallTBFJar<string>("getBundleVersion");
+				string text = CallTBFJar<string>("getBundleVersion");
+				if (!string.IsNullOrEmpty(text))
+				{
+					return text;
+				}
+				return "1.0.0";
 			}
 			return "1.0";
 		}
@@ -100,7 +112,11 @@ public class TBFUtils
 		{
 			if (Application.platform == RuntimePlatform.Android)
 			{
-				return CallTBFJar<string>("getDeviceManufacturer");
+				string text = CallTBFJar<string>("getDeviceManufacturer");
+				if (!string.IsNullOrEmpty(text))
+				{
+					return text;
+				}
 			}
 			return "Unknown";
 		}
@@ -112,9 +128,13 @@ public class TBFUtils
 		{
 			if (Application.platform == RuntimePlatform.Android)
 			{
-				return CallTBFJar<string>("getDeviceModel");
+				string text = CallTBFJar<string>("getDeviceModel");
+				if (!string.IsNullOrEmpty(text))
+				{
+					return text;
+				}
 			}
-			return "Unknown";
+			return SystemInfo.deviceModel;
 		}
 	}
 
@@ -124,9 +144,13 @@ public class TBFUtils
 		{
 			if (Application.platform == RuntimePlatform.Android)
 			{
-				return CallTBFJar<string>("getOSVersion");
+				string text = CallTBFJar<string>("getOSVersion");
+				if (!string.IsNullOrEmpty(text))
+				{
+					return text;
+				}
 			}
-			return "Unknown";
+			return SystemInfo.operatingSystem;
 		}
 	}
 
@@ -148,16 +172,29 @@ public class TBFUtils
 
 	private static AndroidJavaObject GetTBFUtilsObject()
 	{
+		if (TBFUtilsUnavailable)
+		{
+			return null;
+		}
 		if (TBFUtilsObject == null)
 		{
-			TBFUtilsObject = new AndroidJavaObject("com.activision.TBFUtils");
-			if (TBFUtilsObject == null)
+			try
 			{
-				DebugLog("Could not create java object for TBFUtils");
+				TBFUtilsObject = new AndroidJavaObject("com.activision.TBFUtils");
+				if (TBFUtilsObject == null)
+				{
+					DebugLog("Could not create java object for TBFUtils");
+				}
+				else
+				{
+					CallTBFJar("Initialise");
+				}
 			}
-			else
+			catch (System.Exception ex)
 			{
-				CallTBFJar("Initialise");
+				TBFUtilsUnavailable = true;
+				Debug.LogWarning("TBFUtils Android bridge unavailable: " + ex.Message);
+				TBFUtilsObject = null;
 			}
 		}
 		return TBFUtilsObject;
@@ -182,9 +219,20 @@ public class TBFUtils
 		AndroidJavaObject tBFUtilsObject = GetTBFUtilsObject();
 		if (tBFUtilsObject != null)
 		{
-			T result = tBFUtilsObject.Call<T>(function, new object[0]);
-			DebugLog("function: " + function + " " + result.ToString());
-			return result;
+			try
+			{
+				T result = tBFUtilsObject.Call<T>(function, new object[0]);
+				if (result != null)
+				{
+					DebugLog("function: " + function + " " + result.ToString());
+				}
+				return result;
+			}
+			catch (System.Exception ex)
+			{
+				TBFUtilsUnavailable = true;
+				Debug.LogWarning("TBFUtils call failed for '" + function + "': " + ex.Message);
+			}
 		}
 		DebugLog("TBFUtilsObject was null " + function);
 		return default(T);

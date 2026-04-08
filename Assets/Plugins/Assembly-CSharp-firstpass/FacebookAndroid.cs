@@ -6,13 +6,28 @@ public class FacebookAndroid
 {
 	private static AndroidJavaObject _facebookPlugin;
 
+	private static bool _pluginUnavailable;
+
+	private static bool IsAvailable()
+	{
+		return Application.platform == RuntimePlatform.Android && !_pluginUnavailable && _facebookPlugin != null;
+	}
+
 	static FacebookAndroid()
 	{
 		if (Application.platform == RuntimePlatform.Android)
 		{
-			using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.FacebookPlugin"))
+			try
 			{
-				_facebookPlugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+				using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.FacebookPlugin"))
+				{
+					_facebookPlugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+				}
+			}
+			catch (Exception ex)
+			{
+				_pluginUnavailable = true;
+				Debug.LogWarning("Facebook Android plugin unavailable: " + ex.Message);
 			}
 			FacebookManager.preLoginSucceededEvent += delegate
 			{
@@ -23,7 +38,7 @@ public class FacebookAndroid
 
 	public static void init(string appId)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_facebookPlugin.Call("init", appId);
 			Facebook.instance.accessToken = getAccessToken();
@@ -32,7 +47,7 @@ public class FacebookAndroid
 
 	public static bool isSessionValid()
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return false;
 		}
@@ -41,7 +56,7 @@ public class FacebookAndroid
 
 	public static string getAccessToken()
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return string.Empty;
 		}
@@ -50,7 +65,7 @@ public class FacebookAndroid
 
 	public static void extendAccessToken()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_facebookPlugin.Call("extendAccessToken");
 		}
@@ -68,7 +83,7 @@ public class FacebookAndroid
 
 	public static void loginWithRequestedPermissions(string[] permissions)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			IntPtr methodID = AndroidJNI.GetMethodID(_facebookPlugin.GetRawClass(), "showLoginDialog", "([Ljava/lang/String;)V");
 			AndroidJNI.CallVoidMethod(_facebookPlugin.GetRawObject(), methodID, AndroidJNIHelper.CreateJNIArgArray(new object[1] { permissions }));
@@ -77,7 +92,7 @@ public class FacebookAndroid
 
 	public static void logout()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_facebookPlugin.Call("logout");
 			Facebook.instance.accessToken = string.Empty;
@@ -102,7 +117,7 @@ public class FacebookAndroid
 
 	public static void showDialog(string dialogType, Dictionary<string, string> parameters)
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return;
 		}
@@ -125,7 +140,7 @@ public class FacebookAndroid
 
 	public static void restRequest(string restMethod, string httpMethod, Dictionary<string, string> parameters)
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return;
 		}
@@ -150,7 +165,7 @@ public class FacebookAndroid
 
 	public static void graphRequest(string graphPath, string httpMethod, Dictionary<string, string> parameters)
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return;
 		}

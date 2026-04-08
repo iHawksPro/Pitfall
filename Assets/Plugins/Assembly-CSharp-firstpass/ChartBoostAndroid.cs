@@ -4,21 +4,36 @@ public class ChartBoostAndroid
 {
 	private static AndroidJavaObject _plugin;
 
+	private static bool _pluginUnavailable;
+
+	private static bool IsAvailable()
+	{
+		return Application.platform == RuntimePlatform.Android && !_pluginUnavailable && _plugin != null;
+	}
+
 	static ChartBoostAndroid()
 	{
 		if (Application.platform != RuntimePlatform.Android)
 		{
 			return;
 		}
-		using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.chartboost.ChartBoostPlugin"))
+		try
 		{
-			_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+			using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.chartboost.ChartBoostPlugin"))
+			{
+				_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+			}
+		}
+		catch (System.Exception ex)
+		{
+			_pluginUnavailable = true;
+			Debug.LogWarning("Chartboost Android plugin unavailable: " + ex.Message);
 		}
 	}
 
 	public static void onStart()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("onStart");
 		}
@@ -26,7 +41,7 @@ public class ChartBoostAndroid
 
 	public static void onDestroy()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("onDestroy");
 		}
@@ -34,7 +49,7 @@ public class ChartBoostAndroid
 
 	public static void onStop()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("onStop");
 		}
@@ -42,7 +57,7 @@ public class ChartBoostAndroid
 
 	public static void onBackPressed()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("onBackPressed");
 		}
@@ -50,7 +65,7 @@ public class ChartBoostAndroid
 
 	public static void init(string appId, string appSignature)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("init", appId, appSignature);
 		}
@@ -58,7 +73,7 @@ public class ChartBoostAndroid
 
 	public static void cacheInterstitial(string location)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			if (location == null)
 			{
@@ -70,7 +85,7 @@ public class ChartBoostAndroid
 
 	public static bool hasCachedInterstitial(string location)
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return false;
 		}
@@ -83,7 +98,7 @@ public class ChartBoostAndroid
 
 	public static void showInterstitial(string location)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			if (location == null)
 			{
@@ -95,7 +110,7 @@ public class ChartBoostAndroid
 
 	public static void cacheMoreApps()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("cacheMoreApps");
 		}
@@ -103,7 +118,7 @@ public class ChartBoostAndroid
 
 	public static bool hasCachedMoreApps()
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return false;
 		}
@@ -112,7 +127,7 @@ public class ChartBoostAndroid
 
 	public static void showMoreApps()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("showMoreApps");
 		}

@@ -278,6 +278,8 @@ public class Bedrock : MonoBehaviour
 
 	private static AndroidJavaObject BedrockSupport_plugin;
 
+	private static bool _bedrockRuntimeUnavailable;
+
 	public BedrockLeaderboardConfig Config;
 
 	private static ISwrveButtonListener swrveMessageButtonListener = new PitfallButtonListener();
@@ -518,12 +520,12 @@ public class Bedrock : MonoBehaviour
 		if (_instance == null)
 		{
 			_instance = this;
-			_bedrockActive = true;
+			_bedrockActive = isSupportedPlatform();
 			UnityEngine.Object.DontDestroyOnLoad(this);
-			AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-			AndroidJavaObject androidJavaObject = androidJavaClass.GetStatic<AndroidJavaObject>("currentActivity");
-			BedrockSupport_plugin = new AndroidJavaObject("com.stovepipe.cp.bedrock.BedrockSupport", androidJavaObject);
-			BedrockSupport_plugin.Call("InitialTasks");
+			if (_bedrockActive)
+			{
+				TryInitializePlatformBridge();
+			}
 			if (!_instance._bedrockInitializedExternally)
 			{
 				initializeBedrock();
@@ -583,11 +585,40 @@ public class Bedrock : MonoBehaviour
 
 	public static void StartUp()
 	{
-		if (_instance != null && !_bedrockActive)
+		if (_instance != null && !_bedrockActive && !_bedrockRuntimeUnavailable)
 		{
 			_instance._hasConnected = false;
 			_bedrockActive = true;
 			_instance.initializeBedrock();
+		}
+	}
+
+	private static void DisableBedrockForCurrentSession(string reason)
+	{
+		_bedrockActive = false;
+		_bedrockRuntimeUnavailable = true;
+		Debug.LogWarning("Bedrock disabled for this session: " + reason);
+	}
+
+	private static void TryInitializePlatformBridge()
+	{
+		if (Application.platform != RuntimePlatform.Android)
+		{
+			return;
+		}
+		try
+		{
+			using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+			{
+				AndroidJavaObject androidJavaObject = androidJavaClass.GetStatic<AndroidJavaObject>("currentActivity");
+				BedrockSupport_plugin = new AndroidJavaObject("com.stovepipe.cp.bedrock.BedrockSupport", androidJavaObject);
+				BedrockSupport_plugin.Call("InitialTasks");
+			}
+		}
+		catch (Exception ex)
+		{
+			BedrockSupport_plugin = null;
+			DisableBedrockForCurrentSession("Android bridge unavailable (" + ex.Message + ")");
 		}
 	}
 
@@ -639,7 +670,14 @@ public class Bedrock : MonoBehaviour
 			settings._swrveABUrl = platformConfig._sandboxSwrveABUrl;
 		}
 		TBFUtils.DebugLog("settings._titleName = " + settings._titleName);
-		initBedrock(ref settings);
+		try
+		{
+			initBedrock(ref settings);
+		}
+		catch (Exception ex)
+		{
+			DisableBedrockForCurrentSession("native library unavailable (" + ex.Message + ")");
+		}
 	}
 
 	private void Update()
@@ -650,7 +688,14 @@ public class Bedrock : MonoBehaviour
 			if (_timeTillNextUpdate <= 0f)
 			{
 				_timeTillNextUpdate = _UpdateIntervalSeconds;
-				brUpdate();
+				try
+				{
+					brUpdate();
+				}
+				catch (Exception ex)
+				{
+					DisableBedrockForCurrentSession("update failed (" + ex.Message + ")");
+				}
 			}
 		}
 	}

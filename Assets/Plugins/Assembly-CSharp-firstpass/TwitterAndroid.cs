@@ -5,21 +5,36 @@ public class TwitterAndroid
 {
 	private static AndroidJavaObject _plugin;
 
+	private static bool _pluginUnavailable;
+
+	private static bool IsAvailable()
+	{
+		return Application.platform == RuntimePlatform.Android && !_pluginUnavailable && _plugin != null;
+	}
+
 	static TwitterAndroid()
 	{
 		if (Application.platform != RuntimePlatform.Android)
 		{
 			return;
 		}
-		using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.TwitterPlugin"))
+		try
 		{
-			_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+			using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.TwitterPlugin"))
+			{
+				_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+			}
+		}
+		catch (System.Exception ex)
+		{
+			_pluginUnavailable = true;
+			Debug.LogWarning("Twitter Android plugin unavailable: " + ex.Message);
 		}
 	}
 
 	public static void init(string consumerKey, string consumerSecret)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("init", consumerKey, consumerSecret);
 		}
@@ -27,7 +42,7 @@ public class TwitterAndroid
 
 	public static bool isLoggedIn()
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return false;
 		}
@@ -36,7 +51,7 @@ public class TwitterAndroid
 
 	public static void showLoginDialog()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("showLoginDialog");
 		}
@@ -44,7 +59,7 @@ public class TwitterAndroid
 
 	public static void logout()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("logout");
 		}
@@ -60,7 +75,7 @@ public class TwitterAndroid
 
 	public static void postUpdateWithImage(string update, byte[] image)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("postUpdateWithImage", update, image);
 		}
@@ -78,7 +93,7 @@ public class TwitterAndroid
 
 	public static void performRequest(string methodType, string path, Dictionary<string, string> parameters)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			string text = ((parameters == null) ? string.Empty : parameters.toJson());
 			_plugin.Call("performRequest", methodType, path, text);

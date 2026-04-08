@@ -4,21 +4,36 @@ public class VungleAndroid
 {
 	private static AndroidJavaObject _plugin;
 
+	private static bool _pluginUnavailable;
+
+	private static bool IsAvailable()
+	{
+		return Application.platform == RuntimePlatform.Android && !_pluginUnavailable && _plugin != null;
+	}
+
 	static VungleAndroid()
 	{
 		if (Application.platform != RuntimePlatform.Android)
 		{
 			return;
 		}
-		using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.VunglePlugin"))
+		try
 		{
-			_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+			using (AndroidJavaClass androidJavaClass = new AndroidJavaClass("com.prime31.VunglePlugin"))
+			{
+				_plugin = androidJavaClass.CallStatic<AndroidJavaObject>("instance", new object[0]);
+			}
+		}
+		catch (System.Exception ex)
+		{
+			_pluginUnavailable = true;
+			Debug.LogWarning("Vungle Android plugin unavailable: " + ex.Message);
 		}
 	}
 
 	public static void init(string appId)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("init", appId);
 		}
@@ -26,7 +41,7 @@ public class VungleAndroid
 
 	public static void onPause()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("onPause");
 		}
@@ -34,7 +49,7 @@ public class VungleAndroid
 
 	public static void onResume()
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("onResume");
 		}
@@ -42,7 +57,7 @@ public class VungleAndroid
 
 	public static bool isVideoAvailable()
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return false;
 		}
@@ -51,7 +66,7 @@ public class VungleAndroid
 
 	public static void setSoundEnabled(bool isEnabled)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("setSoundEnabled", isEnabled);
 		}
@@ -59,7 +74,7 @@ public class VungleAndroid
 
 	public static void setAdOrientation(VungleAdOrientation orientation)
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			_plugin.Call("setAdOrientation", (int)orientation);
 		}
@@ -67,7 +82,7 @@ public class VungleAndroid
 
 	public static bool isSoundEnabled()
 	{
-		if (Application.platform != RuntimePlatform.Android)
+		if (!IsAvailable())
 		{
 			return true;
 		}
@@ -76,7 +91,7 @@ public class VungleAndroid
 
 	public static void playAd(bool showCloseButton, bool incentivized = false, string user = "")
 	{
-		if (Application.platform == RuntimePlatform.Android)
+		if (IsAvailable())
 		{
 			if (user == null)
 			{

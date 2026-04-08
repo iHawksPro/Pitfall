@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+	private const float DesktopLaneDoubleTapWindow = 0.3f;
+
 	public enum SwipeBias
 	{
 		Horizontal = 0,
@@ -26,6 +28,10 @@ public class InputController : MonoBehaviour
 	private float mTapBias;
 
 	private bool mEnableMouseInput;
+
+	private float mLastDesktopLeftTapTime = -10f;
+
+	private float mLastDesktopRightTapTime = -10f;
 
 	public static InputController Instance()
 	{
@@ -83,8 +89,46 @@ public class InputController : MonoBehaviour
 		PlayerYoke playerYoke = CurrentPlayerController.GetComponent(typeof(PlayerYoke)) as PlayerYoke;
 		playerYoke.Reset();
 		mKeyHandler.Update(playerYoke);
+		UpdateDesktopLaneSwitchInput(playerYoke);
 		mSwipeHandler.Update(playerYoke, mSwipeBias, mTapBias, mEnableMouseInput);
 		mTiltHandler.Update(playerYoke);
+	}
+
+	private void UpdateDesktopLaneSwitchInput(PlayerYoke playerYoke)
+	{
+		if (Application.isMobilePlatform)
+		{
+			return;
+		}
+		float unscaledTime = Time.unscaledTime;
+		if (Input.GetButtonDown("TiltLeft"))
+		{
+			if (unscaledTime - mLastDesktopLeftTapTime <= DesktopLaneDoubleTapWindow)
+			{
+				PlayerYoke.SetAnyInput(playerYoke);
+				PlayerYoke.SetTurnLeft(playerYoke);
+				playerYoke.TiltLeft = false;
+				mLastDesktopLeftTapTime = -10f;
+			}
+			else
+			{
+				mLastDesktopLeftTapTime = unscaledTime;
+			}
+		}
+		if (Input.GetButtonDown("TiltRight"))
+		{
+			if (unscaledTime - mLastDesktopRightTapTime <= DesktopLaneDoubleTapWindow)
+			{
+				PlayerYoke.SetAnyInput(playerYoke);
+				PlayerYoke.SetTurnRight(playerYoke);
+				playerYoke.TiltRight = false;
+				mLastDesktopRightTapTime = -10f;
+			}
+			else
+			{
+				mLastDesktopRightTapTime = unscaledTime;
+			}
+		}
 	}
 
 	public void DebugRender()

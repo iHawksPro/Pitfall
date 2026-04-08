@@ -75,10 +75,13 @@ public class TitleController : StateController
 			UnityEngine.Object.Destroy(m_twitterButton);
 			m_twitterButton = null;
 		}
-		if (TBFUtils.Is256mbDevice())
+		if (m_facebookButton != null)
 		{
 			UnityEngine.Object.Destroy(m_facebookButton);
 			m_facebookButton = null;
+		}
+		if (TBFUtils.Is256mbDevice())
+		{
 			UnityEngine.Object.Destroy(m_leaderboardButton);
 			m_leaderboardButton = null;
 		}

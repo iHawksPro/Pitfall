@@ -443,6 +443,11 @@ public class MobileNetworkManager : MonoBehaviour
 		{
 			return true;
 		}
+		if (Application.platform == RuntimePlatform.Android && !FacebookAndroid.isPluginAvailable())
+		{
+			ShowAlertDialog("S_NET_UNAVAILABLE_TITLE_DROID", "S_NET_UNAVAILABLE_BODY_DROID", "S_OK");
+			return false;
+		}
 		Resources.UnloadUnusedAssets();
 		m_pendingFbCaption = Caption;
 		m_pendingFbLink = Link;
@@ -474,6 +479,13 @@ public class MobileNetworkManager : MonoBehaviour
 
 	private void StartFacebookLogin()
 	{
+		if (Application.platform == RuntimePlatform.Android && !FacebookAndroid.isPluginAvailable())
+		{
+			ShowAlertDialog("S_NET_UNAVAILABLE_TITLE_DROID", "S_NET_UNAVAILABLE_BODY_DROID", "S_OK");
+			m_currentFbOp = FacebookOp.FB_NONE;
+			m_pendingFbOp = FacebookOp.FB_NONE;
+			return;
+		}
 		m_currentFbOp = FacebookOp.FB_LOGIN;
 		StartCoroutine("PerformFacebookOps");
 	}
@@ -578,6 +590,11 @@ public class MobileNetworkManager : MonoBehaviour
 		{
 			return true;
 		}
+		if (Application.platform == RuntimePlatform.Android && !TwitterAndroid.isPluginAvailable())
+		{
+			ShowAlertDialog("S_NET_UNAVAILABLE_TITLE_DROID", "S_NET_UNAVAILABLE_BODY_DROID", "S_OK");
+			return false;
+		}
 		Resources.UnloadUnusedAssets();
 		m_pendingTwitterCaption = Caption;
 		if (TwitterAndroid.isLoggedIn())
@@ -596,6 +613,13 @@ public class MobileNetworkManager : MonoBehaviour
 
 	private void StartTwitterLogin()
 	{
+		if (Application.platform == RuntimePlatform.Android && !TwitterAndroid.isPluginAvailable())
+		{
+			ShowAlertDialog("S_NET_UNAVAILABLE_TITLE_DROID", "S_NET_UNAVAILABLE_BODY_DROID", "S_OK");
+			m_currentTwOp = TwitterOp.TW_NONE;
+			m_pendingTwOp = TwitterOp.TW_NONE;
+			return;
+		}
 		TBFUtils.DebugLog("Start Twitter login");
 		m_currentTwOp = TwitterOp.TW_LOGIN;
 		StartCoroutine("PerformTwitterOps");

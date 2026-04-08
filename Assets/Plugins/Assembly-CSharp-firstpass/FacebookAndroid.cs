@@ -13,6 +13,11 @@ public class FacebookAndroid
 		return Application.platform == RuntimePlatform.Android && !_pluginUnavailable && _facebookPlugin != null;
 	}
 
+	public static bool isPluginAvailable()
+	{
+		return IsAvailable();
+	}
+
 	static FacebookAndroid()
 	{
 		if (Application.platform == RuntimePlatform.Android)

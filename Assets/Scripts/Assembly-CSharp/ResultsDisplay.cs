@@ -90,7 +90,7 @@ public class ResultsDisplay : StateController
 			Object.Destroy(m_twitterButton);
 			m_twitterButton = null;
 		}
-		if (TBFUtils.Is256mbDevice() && m_facebookButton != null)
+		if (m_facebookButton != null)
 		{
 			Object.Destroy(m_facebookButton);
 			m_facebookButton = null;

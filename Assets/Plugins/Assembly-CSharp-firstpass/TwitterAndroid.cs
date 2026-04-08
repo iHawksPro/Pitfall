@@ -12,6 +12,11 @@ public class TwitterAndroid
 		return Application.platform == RuntimePlatform.Android && !_pluginUnavailable && _plugin != null;
 	}
 
+	public static bool isPluginAvailable()
+	{
+		return IsAvailable();
+	}
+
 	static TwitterAndroid()
 	{
 		if (Application.platform != RuntimePlatform.Android)

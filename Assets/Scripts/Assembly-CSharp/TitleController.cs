@@ -97,6 +97,7 @@ public class TitleController : StateController
 			UnityEngine.Object.Destroy(m_GiftButton);
 			m_GiftButton = null;
 		}
+		DisableRecoveredTitleOverlays();
 	}
 
 	private IEnumerator Start()
@@ -110,6 +111,8 @@ public class TitleController : StateController
 		{
 			yield return null;
 		}
+		ForceRecoveredTitleInputReady();
+		EnsureRecoveredTitlePresentation();
 	}
 
 	protected override void OnStateActivate(string OldStateName)
@@ -246,7 +249,10 @@ public class TitleController : StateController
 		}
 		if (ChartBoostWrapper.Instance != null)
 		{
-			ChartBoostWrapper.Instance.ShowAd("Main Menu");
+			if (!RecoveredCompatibility.IsAndroidRuntime)
+			{
+				ChartBoostWrapper.Instance.ShowAd("Main Menu");
+			}
 		}
 	}
 
@@ -266,7 +272,10 @@ public class TitleController : StateController
 			UnityEngine.Debug.LogWarning("Started the game without all objects loaded");
 		}
 		base.gameObject.BroadcastMessage("GoOffScreen", SendMessageOptions.DontRequireReceiver);
-		m_saleDialog.Hide();
+		if (m_saleDialog != null)
+		{
+			m_saleDialog.Hide();
+		}
 		yield return new WaitForSeconds(0.2f);
 		MenuSFX.Instance.Play2D("MenuBoxSwoosh");
 		yield return new WaitForSeconds(0.2f);
@@ -512,6 +521,8 @@ public class TitleController : StateController
 		ForceRecoveredTitleInputReady();
 		if (UIMenuBackground.Instance != null)
 		{
+			UIMenuBackground.Instance.Show();
+			UIMenuBackground.Instance.SwitchCameraFocus("Title");
 			UIMenuBackground.Instance.InitialRunOn();
 		}
 	}
@@ -577,9 +588,11 @@ public class TitleController : StateController
 	{
 		if (!(button == null))
 		{
+			button.Start();
 			button.gameObject.SetActiveRecursively(true);
 			button.controlIsEnabled = true;
 			button.Hide(false);
+			button.UpdateCollider();
 			Collider component = button.GetComponent<Collider>();
 			if (component != null)
 			{
@@ -610,12 +623,14 @@ public class TitleController : StateController
 		{
 			try
 			{
+				m_saleDialog.enabled = false;
 				m_saleDialog.Hide();
 			}
 			catch (Exception ex)
 			{
 				UnityEngine.Debug.LogWarning("Recovered sale dialog hide fallback: " + ex.Message);
 			}
+			DisableRecoveredSaleDialogChildren(m_saleDialog.gameObject);
 			m_saleDialog.gameObject.SetActiveRecursively(false);
 		}
 	}
@@ -659,5 +674,18 @@ public class TitleController : StateController
 			component2.enabled = false;
 		}
 		gameObject.SetActiveRecursively(false);
+	}
+
+	private static void DisableRecoveredSaleDialogChildren(GameObject root)
+	{
+		Transform[] componentsInChildren = root.GetComponentsInChildren<Transform>(true);
+		for (int i = 0; i < componentsInChildren.Length; i++)
+		{
+			Transform transform = componentsInChildren[i];
+			if (!(transform == null) && (transform.name == "VisibleContents" || transform.name == "Overlay" || transform.name == "Product" || transform.name == "HiddenGold" || transform.name == "Background" || transform.name == "Badge"))
+			{
+				transform.gameObject.SetActiveRecursively(false);
+			}
+		}
 	}
 }

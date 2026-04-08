@@ -302,7 +302,7 @@ public class UIManager : MonoBehaviour
 		{
 			pointerType = POINTER_TYPE.MOUSE;
 		}
-		else if (pointerType == POINTER_TYPE.AUTO_TOUCHPAD)
+		else if (pointerType == POINTER_TYPE.AUTO_TOUCHPAD && Application.platform != RuntimePlatform.Android)
 		{
 			pointerType = POINTER_TYPE.TOUCHPAD;
 		}
@@ -319,7 +319,7 @@ public class UIManager : MonoBehaviour
 		}
 		else if (pointerType == POINTER_TYPE.AUTO_TOUCHPAD)
 		{
-			numTouches = 12;
+			numTouches = ((Application.platform == RuntimePlatform.Android) ? 2 : 12);
 		}
 		else if (pointerType == POINTER_TYPE.MOUSE_AND_RAY)
 		{
@@ -329,7 +329,6 @@ public class UIManager : MonoBehaviour
 		{
 			numTouches = 1;
 		}
-		numTouches = 1;
 		if (pointerType == POINTER_TYPE.AUTO_TOUCHPAD || pointerType == POINTER_TYPE.MOUSE || pointerType == POINTER_TYPE.MOUSE_AND_RAY)
 		{
 			numTouchPointers = numTouches - 1;

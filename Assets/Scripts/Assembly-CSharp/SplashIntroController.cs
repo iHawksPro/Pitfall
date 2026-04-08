@@ -13,6 +13,24 @@ public class SplashIntroController : StateController
 
 	public SpriteText m_skipText;
 
+	private void HideIntroImmediately()
+	{
+		UIManager.instance.blockInput = true;
+		if (m_skipText != null)
+		{
+			m_skipText.Hide(true);
+		}
+		if (m_introAnim != null)
+		{
+			Animation animation = m_introAnim.GetComponent<Animation>();
+			if (animation != null)
+			{
+				animation.Stop();
+			}
+		}
+		HideState();
+	}
+
 	public override void Awake()
 	{
 		LoadingScreen.Instance.Show();
@@ -49,6 +67,7 @@ public class SplashIntroController : StateController
 	{
 		if (!m_introDone)
 		{
+			HideIntroImmediately();
 			UIMenuBackground.Instance.SwitchCameraFocus("Title");
 			UIMenuBackground.Instance.Show();
 			UIMenuBackground.Instance.PlayPostSplashAnim();
@@ -64,5 +83,11 @@ public class SplashIntroController : StateController
 			StopCoroutine("WaitForIntroEnd");
 		}
 		IntroDone();
+	}
+
+	protected override IEnumerator AnimateStateOut()
+	{
+		HideIntroImmediately();
+		yield break;
 	}
 }

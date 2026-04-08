@@ -34,8 +34,6 @@ public class TitleController : StateController
 
 	private bool m_SelectionMade;
 
-	private float m_recoveredTitleRefreshTime;
-
 	[HideInInspector]
 	public static float m_pendingCheckpointRestart;
 
@@ -46,7 +44,7 @@ public class TitleController : StateController
 	{
 		get
 		{
-			return !m_SelectionMade && (RecoveredCompatibility.DisableLegacyStartupPromos || !DialogManager.DialogActive);
+			return !m_SelectionMade && !DialogManager.DialogActive;
 		}
 	}
 
@@ -97,7 +95,6 @@ public class TitleController : StateController
 			UnityEngine.Object.Destroy(m_GiftButton);
 			m_GiftButton = null;
 		}
-		DisableRecoveredTitleOverlays();
 	}
 
 	private IEnumerator Start()
@@ -111,27 +108,22 @@ public class TitleController : StateController
 		{
 			yield return null;
 		}
-		ForceRecoveredTitleInputReady();
-		EnsureRecoveredTitlePresentation();
 	}
 
 	protected override void OnStateActivate(string OldStateName)
 	{
 		m_SelectionMade = false;
-		ForceRecoveredTitleInputReady();
 		base.OnStateActivate(OldStateName);
-		if (m_MoreAppsButton != null && (SwrveServerVariables.Instance == null || string.IsNullOrEmpty(SwrveServerVariables.Instance.MoreAppsURI) || SwrveServerVariables.Instance.MoreAppsURI == "null"))
+		if (m_MoreAppsButton != null && (string.IsNullOrEmpty(SwrveServerVariables.Instance.MoreAppsURI) || SwrveServerVariables.Instance.MoreAppsURI == "null"))
 		{
 			UnityEngine.Object.Destroy(m_MoreAppsButton);
 			m_MoreAppsButton = null;
 		}
-		EnsureRecoveredTitlePresentation();
 	}
 
 	protected override IEnumerator AnimateStateIn()
 	{
 		DialogManager.ResetCounter();
-		ForceRecoveredTitleInputReady();
 		if (TBFUtils.Is256mbDevice())
 		{
 			GC.Collect();
@@ -147,13 +139,16 @@ public class TitleController : StateController
 		if (m_initialLaunch)
 		{
 			LoadingScreen.Instance.Hide();
-			float waitTime = PrepareInitialLaunchBackground();
-			if (waitTime > 0f)
+			if (!UIMenuBackground.Instance.IsPostSplashPlaying)
 			{
-				yield return new WaitForSeconds(waitTime);
+				UIMenuBackground.Instance.SwitchCameraFocus("Title");
+				UIMenuBackground.Instance.Show();
+				UIMenuBackground.Instance.PlayPostSplashAnim();
 			}
+			float waitTime = UIMenuBackground.Instance.PostSplashAnimLength();
+			yield return new WaitForSeconds(waitTime);
 			m_initialLaunch = false;
-			if (!RecoveredCompatibility.IsAndroidRuntime && MobileNetworkManager.Instance != null && !MobileNetworkManager.Instance.IsLoggedIn)
+			if (!MobileNetworkManager.Instance.IsLoggedIn)
 			{
 				MobileNetworkManager.Instance.Login();
 			}
@@ -161,31 +156,13 @@ public class TitleController : StateController
 		}
 		base.gameObject.BroadcastMessage("BringOnScreen", SendMessageOptions.DontRequireReceiver);
 		ShowState();
-		ForceRecoveredTitleInputReady();
-		EnsureRecoveredTitlePresentation();
-		try
-		{
-			if (MusicManager.Instance != null)
-			{
-				MusicManager.Instance.PlayTitleMusic();
-			}
-		}
-		catch (Exception ex)
-		{
-			UnityEngine.Debug.LogWarning("Recovered title music fallback: " + ex.Message);
-		}
-		if (!RecoveredCompatibility.DisableLegacyStartupPromos && m_saleDialog != null)
+		MusicManager.Instance.PlayTitleMusic();
+		if (m_saleDialog != null)
 		{
 			m_saleDialog.ShowItemsOnSale();
 		}
-		SafeTitleAction(delegate
-		{
-			Bedrock.AnalyticsLogEvent("UI.Lobby.View");
-		}, "title analytics");
-		if (!RecoveredCompatibility.DisableLegacyStartupPromos)
-		{
-			DialogManager.Instance.LaunchTitleDialogs();
-		}
+		Bedrock.AnalyticsLogEvent("UI.Lobby.View");
+		DialogManager.Instance.LaunchTitleDialogs();
 		if (m_pendingCheckpointRestart > 0f)
 		{
 			OnLaunchGameFromCheckpoint(m_pendingCheckpointRestart);
@@ -198,61 +175,27 @@ public class TitleController : StateController
 		}
 		m_pendingCheckpointRestart = 0f;
 		m_pendingTutorialLaunch = false;
-		if (OutfitOfTheDayManager.Instance != null && OutfitOfTheDayManager.Instance.IsOOTD(SecureStorage.Instance.GetCurrentCostumeType()))
+		if (OutfitOfTheDayManager.Instance.IsOOTD(SecureStorage.Instance.GetCurrentCostumeType()))
 		{
 			AchievementManager.Instance.SetCompleted("oneshot.pose");
 		}
-		if (!initialLaunch && SwrveServerVariables.Instance != null)
+		if (!initialLaunch)
 		{
 			SwrveServerVariables.Instance.RefreshSelectedVars();
-		}
-		ForceRecoveredTitleInputReady();
-	}
-
-	private float PrepareInitialLaunchBackground()
-	{
-		UIMenuBackground instance = UIMenuBackground.Instance;
-		if (instance == null)
-		{
-			return 0f;
-		}
-		try
-		{
-			instance.SwitchCameraFocus("Title");
-			instance.Show();
-			if (RecoveredCompatibility.SkipLegacySplash)
-			{
-				instance.InitialRunOn();
-				return 0f;
-			}
-			if (!instance.IsPostSplashPlaying)
-			{
-				instance.PlayPostSplashAnim();
-			}
-			return instance.PostSplashAnimLength();
-		}
-		catch (Exception ex)
-		{
-			UnityEngine.Debug.LogWarning("Recovered title intro fallback: " + ex.Message);
-			return 0f;
 		}
 	}
 
 	protected override void ShowState()
 	{
 		base.ShowState();
-		ForceRecoveredTitleInputReady();
-		EnsureRecoveredTitlePresentation();
+		UIManager.instance.blockInput = false;
 		if (m_buildInfo != null)
 		{
 			m_buildInfo.gameObject.SetActiveRecursively(true);
 		}
 		if (ChartBoostWrapper.Instance != null)
 		{
-			if (!RecoveredCompatibility.IsAndroidRuntime)
-			{
-				ChartBoostWrapper.Instance.ShowAd("Main Menu");
-			}
+			ChartBoostWrapper.Instance.ShowAd("Main Menu");
 		}
 	}
 
@@ -272,10 +215,7 @@ public class TitleController : StateController
 			UnityEngine.Debug.LogWarning("Started the game without all objects loaded");
 		}
 		base.gameObject.BroadcastMessage("GoOffScreen", SendMessageOptions.DontRequireReceiver);
-		if (m_saleDialog != null)
-		{
-			m_saleDialog.Hide();
-		}
+		m_saleDialog.Hide();
 		yield return new WaitForSeconds(0.2f);
 		MenuSFX.Instance.Play2D("MenuBoxSwoosh");
 		yield return new WaitForSeconds(0.2f);
@@ -315,7 +255,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SafeTitleAction(SwrveUserData.UploadAllAttributes, "uploading title analytics");
+			SwrveUserData.UploadAllAttributes();
 			m_SelectionMade = true;
 			StartCoroutine(LaunchGame(null, fromCheckpoint, GameType.GT_CLASSIC));
 		}
@@ -354,7 +294,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SafeTitleAction(SwrveEventsUI.StoreButtonTouched, "store analytics");
+			SwrveEventsUI.StoreButtonTouched();
 			StateManager.Instance.LoadAndActivateState("BaseCamp");
 			m_SelectionMade = true;
 		}
@@ -364,7 +304,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SafeTitleAction(SwrveEventsUI.FieldGuideTouched, "field guide analytics");
+			SwrveEventsUI.FieldGuideTouched();
 			FieldGuideController.Instance.RePopulate();
 			StateManager.Instance.LoadAndActivateState("FieldGuide");
 			m_SelectionMade = true;
@@ -375,7 +315,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SafeTitleAction(SwrveEventsUI.OptionsTouched, "options analytics");
+			SwrveEventsUI.OptionsTouched();
 			StateManager.Instance.LoadAndActivateState("Options");
 			m_SelectionMade = true;
 		}
@@ -384,13 +324,13 @@ public class TitleController : StateController
 	public void OnAchievementsPressed()
 	{
 		MobileNetworkManager.Instance.showAchievements();
-		SafeTitleAction(SwrveEventsUI.AchievementsButtonTouched, "achievements analytics");
+		SwrveEventsUI.AchievementsButtonTouched();
 	}
 
 	public void OnLeaderboardsPressed()
 	{
 		MobileNetworkManager.Instance.showLeaderboards();
-		SafeTitleAction(SwrveEventsUI.LeaderboardsButtonTouched, "leaderboard analytics");
+		SwrveEventsUI.LeaderboardsButtonTouched();
 	}
 
 	public void OnResetPressed()
@@ -401,28 +341,24 @@ public class TitleController : StateController
 
 	public void OnFacebookPressed()
 	{
-		SafeTitleAction(SwrveEventsUI.FacebookButtonTouched, "facebook analytics");
+		SwrveEventsUI.FacebookButtonTouched();
 		DialogManager.Instance.TellFacebookFriends();
 	}
 
 	public void OnTwitterPressed()
 	{
-		SafeTitleAction(SwrveEventsUI.TwitterButtonTouched, "twitter analytics");
+		SwrveEventsUI.TwitterButtonTouched();
 		DialogManager.Instance.TellTwitterFollowers();
 	}
 
 	public void OnGiftPressed()
 	{
-		SafeTitleAction(SwrveEventsUI.GiftButtonTouched, "gift analytics");
+		SwrveEventsUI.GiftButtonTouched();
 	}
 
 	public void OnMoreAppsPressed()
 	{
-		SafeTitleAction(SwrveEventsUI.MoreAppsButtonTouched, "more apps analytics");
-		if (SwrveServerVariables.Instance == null || string.IsNullOrEmpty(SwrveServerVariables.Instance.MoreAppsURI))
-		{
-			return;
-		}
+		SwrveEventsUI.MoreAppsButtonTouched();
 		string strURI = string.Format("{0}?{1}={2}&{3}={4}", SwrveServerVariables.Instance.MoreAppsURI, "referrer", "pitfall", "odid", TBFUtils.ODIN);
 		if (Application.internetReachability == NetworkReachability.NotReachable)
 		{
@@ -438,7 +374,7 @@ public class TitleController : StateController
 	{
 		if (CanPressButton)
 		{
-			SafeTitleAction(SwrveEventsUI.TrialsButtonTouched, "trials analytics");
+			SwrveEventsUI.TrialsButtonTouched();
 			StateManager.Instance.LoadAndActivateState("Challenges");
 			m_SelectionMade = true;
 		}
@@ -454,7 +390,7 @@ public class TitleController : StateController
 
 	public void OnFreeDiamondsPressed()
 	{
-		SafeTitleAction(SwrveEventsUI.FreeDiamondsButtonTouched, "free diamonds analytics");
+		SwrveEventsUI.FreeDiamondsButtonTouched();
 		if (CanPressButton)
 		{
 			m_SelectionMade = true;
@@ -464,11 +400,6 @@ public class TitleController : StateController
 
 	private void Update()
 	{
-		if (RecoveredCompatibility.IsAndroidRuntime && StateManager.Instance != null && StateManager.Instance.CurrentStateName == "Title" && !m_SelectionMade && Time.unscaledTime >= m_recoveredTitleRefreshTime)
-		{
-			MaintainRecoveredTitleRuntime();
-			m_recoveredTitleRefreshTime = Time.unscaledTime + 0.25f;
-		}
 		if (StateManager.Instance.CurrentStateName == "Title" && Input.GetKeyDown(KeyCode.Escape))
 		{
 			EtceteraAndroidManager.alertButtonClickedEvent += ApplicationQuitConfirm;
@@ -493,199 +424,14 @@ public class TitleController : StateController
 	{
 		if (text == Language.Get("S_YES"))
 		{
-			UnityEngine.Debug.Log("Quitting Pitfall : " + text);
+		UnityEngine.Debug.Log("Quitting Pitfall : " + text);
 			Process.GetCurrentProcess().Kill();
 		}
 		else
 		{
-			UnityEngine.Debug.Log("Quit Cancelled : " + text);
+		UnityEngine.Debug.Log("Quit Cancelled : " + text);
 			EtceteraAndroidManager.alertButtonClickedEvent -= ApplicationQuitConfirm;
 			EtceteraAndroidManager.promptCancelledEvent -= ApplicationQuitCancel;
-		}
-	}
-
-	private void ForceRecoveredTitleInputReady()
-	{
-		UIButton.sInputLocked = false;
-		DialogManager.ResetCounter();
-		if (UIManager.Exists())
-		{
-			UIManager.instance.ForceUnlockAllInput();
-		}
-		EnsureTitleButtonsEnabled();
-		DisableRecoveredTitleOverlays();
-	}
-
-	private void MaintainRecoveredTitleRuntime()
-	{
-		ForceRecoveredTitleInputReady();
-		if (UIMenuBackground.Instance != null)
-		{
-			UIMenuBackground.Instance.Show();
-			UIMenuBackground.Instance.SwitchCameraFocus("Title");
-			UIMenuBackground.Instance.InitialRunOn();
-		}
-	}
-
-	private void SafeTitleAction(Action action, string context)
-	{
-		if (action == null)
-		{
-			return;
-		}
-		try
-		{
-			action();
-		}
-		catch (Exception ex)
-		{
-			UnityEngine.Debug.LogWarning("Recovered title action fallback (" + context + "): " + ex.Message);
-		}
-	}
-
-	private void EnsureRecoveredTitlePresentation()
-	{
-		if (!RecoveredCompatibility.IsAndroidRuntime)
-		{
-			return;
-		}
-		EnsureTitleButtonsEnabled();
-		DisableRecoveredTitleOverlays();
-		try
-		{
-			if (UIMenuBackground.Instance != null)
-			{
-				UIMenuBackground.Instance.SwitchCameraFocus("Title");
-				UIMenuBackground.Instance.InitialRunOn();
-			}
-		}
-		catch (Exception ex)
-		{
-			UnityEngine.Debug.LogWarning("Recovered title presentation fallback: " + ex.Message);
-		}
-	}
-
-	private void EnsureTitleButtonsEnabled()
-	{
-		EnableAllRecoveredTitleButtons();
-		EnableButton(m_startButton);
-		EnableButton(m_storeButton);
-		EnableButtonOnObject(m_challengesButton);
-		EnableButtonOnObject(m_MoreAppsButton);
-		EnableButtonOnObject(m_facebookButton);
-		EnableButtonOnObject(m_twitterButton);
-	}
-
-	private void EnableButtonOnObject(GameObject buttonRoot)
-	{
-		if (!(buttonRoot == null))
-		{
-			EnableButton(buttonRoot.GetComponentInChildren<UIButton>());
-		}
-	}
-
-	private static void EnableButton(UIButton button)
-	{
-		if (!(button == null))
-		{
-			button.Start();
-			button.gameObject.SetActiveRecursively(true);
-			button.controlIsEnabled = true;
-			button.Hide(false);
-			button.UpdateCollider();
-			Collider component = button.GetComponent<Collider>();
-			if (component != null)
-			{
-				component.enabled = true;
-			}
-		}
-	}
-
-	private void DisableRecoveredTitleOverlays()
-	{
-		if (!RecoveredCompatibility.DisableLegacyStartupPromos)
-		{
-			return;
-		}
-		DisableOverlayObject("TransparentButton");
-		DisableOverlayObject("DialogBackground");
-		DisableOverlayObject("DialogBackground Grid [1,1]");
-		DisableOverlayObject("DialogBackground Grid [1,2]");
-		DisableOverlayObject("DialogBackground Grid [1,3]");
-		DisableOverlayObject("DialogBackground Grid [2,1]");
-		DisableOverlayObject("DialogBackground Grid [2,2]");
-		DisableOverlayObject("DialogBackground Grid [2,3]");
-		DisableOverlayObject("DialogBackground Grid [3,1]");
-		DisableOverlayObject("DialogBackground Grid [3,2]");
-		DisableOverlayObject("DialogBackground Grid [3,3]");
-		DisableOverlayObject("OnSaleDialog");
-		if (m_saleDialog != null)
-		{
-			try
-			{
-				m_saleDialog.enabled = false;
-				m_saleDialog.Hide();
-			}
-			catch (Exception ex)
-			{
-				UnityEngine.Debug.LogWarning("Recovered sale dialog hide fallback: " + ex.Message);
-			}
-			DisableRecoveredSaleDialogChildren(m_saleDialog.gameObject);
-			m_saleDialog.gameObject.SetActiveRecursively(false);
-		}
-	}
-
-	private void EnableAllRecoveredTitleButtons()
-	{
-		UIButton[] componentsInChildren = GetComponentsInChildren<UIButton>(true);
-		for (int i = 0; i < componentsInChildren.Length; i++)
-		{
-			if (!(componentsInChildren[i] == null) && !IsRecoveredBlockedOverlayName(componentsInChildren[i].gameObject.name))
-			{
-				EnableButton(componentsInChildren[i]);
-			}
-		}
-	}
-
-	private static bool IsRecoveredBlockedOverlayName(string objectName)
-	{
-		if (string.IsNullOrEmpty(objectName))
-		{
-			return false;
-		}
-		return objectName == "TransparentButton" || objectName == "DialogBackground" || objectName == "OnSaleDialog" || objectName.StartsWith("DialogBackground Grid ");
-	}
-
-	private static void DisableOverlayObject(string objectName)
-	{
-		GameObject gameObject = GameObject.Find(objectName);
-		if (gameObject == null)
-		{
-			return;
-		}
-		UIButton component = gameObject.GetComponent<UIButton>();
-		if (component != null)
-		{
-			component.controlIsEnabled = false;
-		}
-		Collider component2 = gameObject.GetComponent<Collider>();
-		if (component2 != null)
-		{
-			component2.enabled = false;
-		}
-		gameObject.SetActiveRecursively(false);
-	}
-
-	private static void DisableRecoveredSaleDialogChildren(GameObject root)
-	{
-		Transform[] componentsInChildren = root.GetComponentsInChildren<Transform>(true);
-		for (int i = 0; i < componentsInChildren.Length; i++)
-		{
-			Transform transform = componentsInChildren[i];
-			if (!(transform == null) && (transform.name == "VisibleContents" || transform.name == "Overlay" || transform.name == "Product" || transform.name == "HiddenGold" || transform.name == "Background" || transform.name == "Badge"))
-			{
-				transform.gameObject.SetActiveRecursively(false);
-			}
 		}
 	}
 }

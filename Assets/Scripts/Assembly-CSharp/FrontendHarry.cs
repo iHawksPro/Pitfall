@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -24,21 +23,19 @@ public class FrontendHarry : MonoBehaviour
 
 	private GameObject m_currentModel;
 
-	private Animation CurrentAnimation
-	{
-		get
-		{
-			if (m_currentModel == null)
-			{
-				return null;
-			}
-			return m_currentModel.GetComponent<Animation>();
-		}
-	}
-
 	private void Start()
 	{
-		EnsureInitialized();
+		if (!m_started)
+		{
+			Costume currentCostumeType = SecureStorage.Instance.GetCurrentCostumeType();
+			SetCostume(currentCostumeType);
+			GameObject gameObject = (GameObject)Object.Instantiate(m_iPad.m_iPadPrefab);
+			gameObject.transform.position = m_offScreenPos.transform.position;
+			gameObject.transform.rotation = m_offScreenPos.transform.rotation;
+			gameObject.transform.parent = base.transform;
+			m_iPad.m_model = gameObject;
+			m_started = true;
+		}
 	}
 
 	private void WipeAnimations(GameObject go)
@@ -49,7 +46,7 @@ public class FrontendHarry : MonoBehaviour
 			bool playAutomatically = go.GetComponent<Animation>().playAutomatically;
 			bool animatePhysics = go.GetComponent<Animation>().animatePhysics;
 			AnimationCullingType cullingType = go.GetComponent<Animation>().cullingType;
-			UnityEngine.Object.DestroyImmediate(go.GetComponent<Animation>());
+			Object.DestroyImmediate(go.GetComponent<Animation>());
 			Animation animation = go.AddComponent<Animation>();
 			animation.wrapMode = wrapMode;
 			animation.playAutomatically = playAutomatically;
@@ -63,31 +60,36 @@ public class FrontendHarry : MonoBehaviour
 		if (m_currentModel != null)
 		{
 			WipeAnimations(m_currentModel);
-			UnityEngine.Object.DestroyImmediate(m_currentModel);
+			Object.DestroyImmediate(m_currentModel);
 			m_currentModel = null;
 			if (TBFUtils.Is256mbDevice())
 			{
 				Resources.UnloadUnusedAssets();
 			}
 		}
-		HarryCostume harryCostume = FindCostume(CostumeType);
-		if (!TryInstantiateCostume(harryCostume))
+		for (int i = 0; i < m_costumes.Length; i++)
 		{
-			harryCostume = FindCostume(Costume.None);
-			if (!TryInstantiateCostume(harryCostume))
+			if (m_costumes[i].m_costume != CostumeType)
 			{
-				for (int i = 0; i < m_costumes.Length; i++)
+				continue;
+			}
+			GameObject gameObject = (GameObject)Resources.Load(m_costumes[i].m_costumeResource);
+			if (gameObject != null)
+			{
+				m_currentModel = (GameObject)Object.Instantiate(gameObject);
+				m_currentModel.transform.position = m_offScreenPos.transform.position;
+				m_currentModel.transform.rotation = m_offScreenPos.transform.rotation;
+				m_currentModel.transform.parent = base.transform;
+				if (CostumeType == Costume.Super && !TrialsDataManager.Instance.HaveCollectedAllRelics)
 				{
-					if (TryInstantiateCostume(m_costumes[i]))
+					SkinnedMeshRenderer componentInChildren = m_currentModel.GetComponentInChildren<SkinnedMeshRenderer>();
+					if (componentInChildren != null)
 					{
-						break;
+						componentInChildren.material = m_superLockedMaterial;
 					}
 				}
 			}
-		}
-		if (m_currentModel == null)
-		{
-			Debug.LogWarning("Recovered Harry fallback: unable to load any front-end costume.");
+			m_currentCostume = m_costumes[i];
 		}
 	}
 
@@ -98,44 +100,32 @@ public class FrontendHarry : MonoBehaviour
 
 	private void PlayAnim(string animName, QueueMode queueMode, bool NoTransition)
 	{
-		Animation currentAnimation = CurrentAnimation;
-		if (currentAnimation == null || currentAnimation.GetClip(animName) == null)
-		{
-			return;
-		}
 		if (NoTransition)
 		{
-			currentAnimation.Play(animName, PlayMode.StopAll);
+			m_currentModel.GetComponent<Animation>().Play(animName, PlayMode.StopAll);
 		}
 		else
 		{
-			currentAnimation.CrossFadeQueued(animName, 0.3f, queueMode);
+			m_currentModel.GetComponent<Animation>().CrossFadeQueued(animName, 0.3f, queueMode);
 		}
 	}
 
 	public float IpadToTitleLen()
 	{
-		EnsureInitialized();
-		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("IpadToTitle") == null)
+		if (!m_started)
 		{
-			return 0f;
+			Start();
 		}
-		return CurrentAnimation.GetClip("IpadToTitle").length;
+		return m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle").length;
 	}
 
 	public float IpadToTitle()
 	{
-		EnsureInitialized();
-		if (RecoveredCompatibility.IsAndroidRuntime)
+		if (!m_started)
 		{
-			EnsureRecoveredTitleVisible();
-			return 0f;
+			Start();
 		}
-		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("IpadToTitle") == null)
-		{
-			return 0f;
-		}
-		float length = CurrentAnimation.GetClip("IpadToTitle").length;
+		float length = m_currentModel.GetComponent<Animation>().GetClip("IpadToTitle").length;
 		PlayAnim("IpadToTitle", QueueMode.PlayNow, true);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
 		float length2 = m_iPad.m_model.GetComponent<Animation>().clip.length;
@@ -154,22 +144,9 @@ public class FrontendHarry : MonoBehaviour
 
 	public void RunOnScreen()
 	{
-		EnsureRecoveredTitleVisible();
-		if (m_currentModel == null)
+		if (!m_started)
 		{
-			return;
-		}
-		Animation currentAnimation = CurrentAnimation;
-		if (RecoveredCompatibility.IsAndroidRuntime || currentAnimation == null || currentAnimation.GetClip("OffScreenToTitle") == null)
-		{
-			SnapToTitlePose();
-			PlayTitleIdleFallback();
-			CancelInvoke("IdleBreak");
-			if (currentAnimation != null && currentAnimation.GetClip("TitleIdle") != null)
-			{
-				InvokeRepeating("IdleBreak", m_idleBreakTime, m_idleBreakTime);
-			}
-			return;
+			Start();
 		}
 		PlayAnim("OffScreenToTitle", QueueMode.PlayNow, true);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
@@ -178,13 +155,12 @@ public class FrontendHarry : MonoBehaviour
 
 	private void IdleBreak()
 	{
-		Animation currentAnimation = CurrentAnimation;
-		if (currentAnimation != null && currentAnimation.IsPlaying("TitleIdle"))
+		if (m_currentModel.GetComponent<Animation>().IsPlaying("TitleIdle"))
 		{
 			int num;
 			do
 			{
-				num = UnityEngine.Random.Range(0, 4);
+				num = Random.Range(0, 4);
 			}
 			while (num == m_lastTitleIdle);
 			m_lastTitleIdle = num;
@@ -196,37 +172,25 @@ public class FrontendHarry : MonoBehaviour
 
 	public void ResultsToShop()
 	{
-		if (m_currentModel == null)
-		{
-			return;
-		}
 		PlayAnim("TitleToShop", QueueMode.PlayNow, true);
 		PlayAnim("ShopIdle", QueueMode.CompleteOthers);
 	}
 
 	public void TitleToShop()
 	{
-		if (m_currentModel == null)
-		{
-			return;
-		}
 		PlayAnim("TitleToShop", QueueMode.PlayNow);
 		PlayAnim("ShopIdle", QueueMode.CompleteOthers);
 	}
 
 	public void ShopToTitle()
 	{
-		if (m_currentModel == null)
-		{
-			return;
-		}
 		PlayAnim("ShopToTitle", QueueMode.PlayNow);
 		PlayAnim("TitleIdle", QueueMode.CompleteOthers);
 	}
 
 	public void ChangeCostume(Costume newCostume)
 	{
-		if (m_currentCostume != null && newCostume != m_currentCostume.m_costume)
+		if (newCostume != m_currentCostume.m_costume)
 		{
 			StartCoroutine(ChangeCostumeCoroutine(newCostume));
 		}
@@ -237,7 +201,7 @@ public class FrontendHarry : MonoBehaviour
 		PlayAnim("ShopExitRight", QueueMode.PlayNow);
 		yield return new WaitForSeconds(0.5f);
 		SetCostume(newCostume);
-		if (m_currentCostume != null && m_currentCostume.m_shopAppearSfx != null)
+		if (m_currentCostume.m_shopAppearSfx != null)
 		{
 			m_currentCostume.m_shopAppearSfx.Play2D();
 		}
@@ -247,10 +211,6 @@ public class FrontendHarry : MonoBehaviour
 
 	public void TitleToGame()
 	{
-		if (m_currentModel == null)
-		{
-			return;
-		}
 		PlayAnim("TitleToGame", QueueMode.PlayNow);
 		CancelInvoke("IdleBreak");
 	}
@@ -262,176 +222,15 @@ public class FrontendHarry : MonoBehaviour
 
 	public float TitleToGameAnimLength()
 	{
-		if (m_currentModel == null || CurrentAnimation == null || CurrentAnimation.GetClip("TitleToGame") == null)
-		{
-			return 0f;
-		}
-		return CurrentAnimation.GetClip("TitleToGame").length;
+		return m_currentModel.GetComponent<Animation>().GetClip("TitleToGame").length;
 	}
 
 	public void StopAllAnims()
 	{
 		CancelInvoke("IdleBreak");
-		if (CurrentAnimation != null)
+		if (m_currentModel != null && m_currentModel != null)
 		{
-			CurrentAnimation.Stop();
-		}
-	}
-
-	private HarryCostume FindCostume(Costume costumeType)
-	{
-		for (int i = 0; i < m_costumes.Length; i++)
-		{
-			if (m_costumes[i].m_costume == costumeType)
-			{
-				return m_costumes[i];
-			}
-		}
-		return null;
-	}
-
-	private bool TryInstantiateCostume(HarryCostume costume)
-	{
-		if (costume == null || string.IsNullOrEmpty(costume.m_costumeResource))
-		{
-			return false;
-		}
-		GameObject gameObject = RecoveredResources.Load<GameObject>(costume.m_costumeResource);
-		if (gameObject == null)
-		{
-			return false;
-		}
-		m_currentModel = (GameObject)UnityEngine.Object.Instantiate(gameObject);
-		Transform transform = ((m_offScreenPos != null) ? m_offScreenPos.transform : base.transform);
-		m_currentModel.transform.position = transform.position;
-		m_currentModel.transform.rotation = transform.rotation;
-		m_currentModel.transform.parent = base.transform;
-		if (costume.m_costume == Costume.Super && !TrialsDataManager.Instance.HaveCollectedAllRelics)
-		{
-			SkinnedMeshRenderer componentInChildren = m_currentModel.GetComponentInChildren<SkinnedMeshRenderer>();
-			if (componentInChildren != null)
-			{
-				componentInChildren.material = m_superLockedMaterial;
-			}
-		}
-		m_currentCostume = costume;
-		return true;
-	}
-
-	private void SnapToTitlePose()
-	{
-		if (m_currentModel == null)
-		{
-			return;
-		}
-		Transform transform = ((m_titlePos != null) ? m_titlePos.transform : base.transform);
-		m_currentModel.transform.position = transform.position;
-		m_currentModel.transform.rotation = transform.rotation;
-	}
-
-	private void PlayTitleIdleFallback()
-	{
-		Animation currentAnimation = CurrentAnimation;
-		if (currentAnimation != null && currentAnimation.GetClip("TitleIdle") != null)
-		{
-			currentAnimation.Play("TitleIdle", PlayMode.StopAll);
-		}
-	}
-
-	public void EnsureRecoveredTitleVisible()
-	{
-		EnsureInitialized();
-		if (m_currentModel == null)
-		{
-			RecoverCurrentCostume();
-		}
-		if (m_currentModel == null)
-		{
-			return;
-		}
-		m_currentModel.SetActiveRecursively(true);
-		EnableHierarchyRenderers(m_currentModel);
-		SnapToTitlePose();
-		PlayTitleIdleFallback();
-	}
-
-	private void EnsureInitialized()
-	{
-		if (m_started)
-		{
-			return;
-		}
-		m_started = true;
-		RecoverCurrentCostume();
-		TryCreateIpadModel();
-	}
-
-	private void RecoverCurrentCostume()
-	{
-		Costume costume = Costume.None;
-		try
-		{
-			costume = SecureStorage.Instance.GetCurrentCostumeType();
-		}
-		catch (Exception ex)
-		{
-			Debug.LogWarning("Recovered Harry costume lookup fallback: " + ex.Message);
-		}
-		try
-		{
-			SetCostume(costume);
-		}
-		catch (Exception ex2)
-		{
-			Debug.LogWarning("Recovered Harry costume load fallback: " + ex2.Message);
-			TryRestoreFallbackCostume();
-		}
-	}
-
-	private void TryRestoreFallbackCostume()
-	{
-		try
-		{
-			SetCostume(Costume.None);
-		}
-		catch (Exception ex)
-		{
-			Debug.LogWarning("Recovered Harry default costume fallback: " + ex.Message);
-		}
-	}
-
-	private void TryCreateIpadModel()
-	{
-		if (m_iPad == null || m_iPad.m_iPadPrefab == null || m_iPad.m_model != null)
-		{
-			return;
-		}
-		try
-		{
-			GameObject gameObject = (GameObject)UnityEngine.Object.Instantiate(m_iPad.m_iPadPrefab);
-			Transform transform = ((m_offScreenPos != null) ? m_offScreenPos.transform : base.transform);
-			gameObject.transform.position = transform.position;
-			gameObject.transform.rotation = transform.rotation;
-			gameObject.transform.parent = base.transform;
-			m_iPad.m_model = gameObject;
-		}
-		catch (Exception ex)
-		{
-			Debug.LogWarning("Recovered Harry iPad fallback: " + ex.Message);
-		}
-	}
-
-	private static void EnableHierarchyRenderers(GameObject root)
-	{
-		Renderer[] componentsInChildren = root.GetComponentsInChildren<Renderer>(true);
-		for (int i = 0; i < componentsInChildren.Length; i++)
-		{
-			componentsInChildren[i].enabled = true;
-		}
-		Animation[] componentsInChildren2 = root.GetComponentsInChildren<Animation>(true);
-		for (int j = 0; j < componentsInChildren2.Length; j++)
-		{
-			componentsInChildren2[j].enabled = true;
+			m_currentModel.GetComponent<Animation>().Stop();
 		}
 	}
 }

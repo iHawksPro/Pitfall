@@ -17,7 +17,7 @@ public class SingletonMonoBehaviour : SafeMonoBehaviour
 		if (singletonInstance == null && !SafeMonoBehaviour.IsShuttingDown)
 		{
 			string text = typeof(T).Name;
-			GameObject gameObject = (GameObject)UnityEngine.Object.Instantiate(RecoveredResources.Load<GameObject>("Game Prefabs/" + text));
+			GameObject gameObject = (GameObject)UnityEngine.Object.Instantiate(Resources.Load("Game Prefabs/" + text));
 			if (gameObject == null)
 			{
 				Debug.LogError("Unable to find resource named '" + text + "' to auto-instantiate singleton object.");

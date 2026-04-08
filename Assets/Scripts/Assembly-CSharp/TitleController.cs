@@ -157,12 +157,15 @@ public class TitleController : StateController
 		base.gameObject.BroadcastMessage("BringOnScreen", SendMessageOptions.DontRequireReceiver);
 		ShowState();
 		MusicManager.Instance.PlayTitleMusic();
-		if (m_saleDialog != null)
+		if (!RecoveredCompatibility.DisableLegacyStartupPromos && m_saleDialog != null)
 		{
 			m_saleDialog.ShowItemsOnSale();
 		}
 		Bedrock.AnalyticsLogEvent("UI.Lobby.View");
-		DialogManager.Instance.LaunchTitleDialogs();
+		if (!RecoveredCompatibility.DisableLegacyStartupPromos)
+		{
+			DialogManager.Instance.LaunchTitleDialogs();
+		}
 		if (m_pendingCheckpointRestart > 0f)
 		{
 			OnLaunchGameFromCheckpoint(m_pendingCheckpointRestart);

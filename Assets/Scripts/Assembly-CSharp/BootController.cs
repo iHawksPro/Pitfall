@@ -34,6 +34,7 @@ public class BootController : StateController
 		ThreadPriority oldThreadPri = Application.backgroundLoadingPriority;
 		string titleSceneName = SceneNameResolver.Resolve("Title");
 		string gameSceneName = SceneNameResolver.Resolve("Game");
+		string initialStateName = (!RecoveredCompatibility.SkipLegacySplash) ? "SplashIntro" : "Title";
 		Application.backgroundLoadingPriority = ThreadPriority.High;
 		yield return null;
 		yield return null;
@@ -60,6 +61,6 @@ public class BootController : StateController
 			yield return aGameOp;
 		}
 		Application.backgroundLoadingPriority = oldThreadPri;
-		StateManager.Instance.LoadAndActivateState("SplashIntro");
+		StateManager.Instance.LoadAndActivateState(initialStateName);
 	}
 }

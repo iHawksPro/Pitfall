@@ -565,6 +565,10 @@ public class Bedrock : MonoBehaviour
 
 	private static void SwrveTalkShowMessage(string eventName)
 	{
+		if (RecoveredCompatibility.DisableLegacyStartupPromos)
+		{
+			return;
+		}
 		if (SwrveTalkComponent.Instance == null)
 		{
 			return;
